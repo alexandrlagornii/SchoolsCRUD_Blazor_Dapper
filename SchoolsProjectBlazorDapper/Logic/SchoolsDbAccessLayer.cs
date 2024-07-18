@@ -12,7 +12,8 @@ namespace SchoolsProjectBlazorDapper.Logic
         private const string SCHOOLS_DATABASE = "SchoolsDb";
 
         // Queries
-        private const string GET_GRADES = "select * from SH_Grades";
+        private const string GET_GRADES = "select * from SH_Grades;";
+        private const string GET_PERSONS = "select * from SH_Persons;";
         
         // Constructor
         public SchoolsDbAccessLayer(IConfiguration configuration)
@@ -21,12 +22,31 @@ namespace SchoolsProjectBlazorDapper.Logic
         }
 
         // Function Queries
-        public async Task<List<SH_PersonWithTypeSchoolsNames>> GetPersonsWithTypeSchoolsNames()
+        public async Task<List<SH_Person>> GetPersons()
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
-                IEnumerable<SH_PersonWithTypeSchoolsNames> result = await db.QueryAsync<SH_PersonWithTypeSchoolsNames>("GetPersonsWithTypeSchoolsNames", commandType: CommandType.StoredProcedure);
+                IEnumerable<SH_Person> result = await db.QueryAsync<SH_Person>(GET_PERSONS);
+                return result.ToList();
+            }
+        }
+        public async Task<List<PersonWithTypeSchoolsNames>> GetPersonsWithTypeSchoolsNames()
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+                IEnumerable<PersonWithTypeSchoolsNames> result = await db.QueryAsync<PersonWithTypeSchoolsNames>("GetPersonsWithTypeSchoolsNames", commandType: CommandType.StoredProcedure);
+                return result.ToList();
+            }
+        }
+
+        public async Task<List<SchoolWithCityCountryNames>> GetSchoolsWithCityCountryNames()
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+                IEnumerable<SchoolWithCityCountryNames> result = await db.QueryAsync<SchoolWithCityCountryNames>("GetSchoolsWithCityCountryNames", commandType: CommandType.StoredProcedure);
                 return result.ToList();
             }
         }
@@ -41,13 +61,24 @@ namespace SchoolsProjectBlazorDapper.Logic
             }
         }
 
-        public async Task<List<SH_GradeWithNames>> GetGradesWithNames()
+        public async Task<List<GradeWithNames>> GetGradesWithNames()
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
-                IEnumerable<SH_GradeWithNames> result = await db.QueryAsync<SH_GradeWithNames>("GetGradesWithNames", commandType: CommandType.StoredProcedure);
+                IEnumerable<GradeWithNames> result = await db.QueryAsync<GradeWithNames>("GetGradesWithNames", commandType: CommandType.StoredProcedure);
                 return result.ToList();
+            }
+        }
+
+        public async Task DeleteGrade(int Id)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+                var p = new DynamicParameters();
+                p.Add("@Id", Id);
+                await db.QueryAsync("DeleteGrade", p, commandType: CommandType.StoredProcedure);
             }
         }
     }

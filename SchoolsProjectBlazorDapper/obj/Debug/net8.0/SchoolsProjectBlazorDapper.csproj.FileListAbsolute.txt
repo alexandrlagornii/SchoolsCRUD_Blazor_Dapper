@@ -134,3 +134,4 @@ C:\Users\UserPC\Desktop\Job\SchoolsProjectBlazorDapper\SchoolsProjectBlazorDappe
 C:\Users\UserPC\Desktop\Job\SchoolsProjectBlazorDapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.pdb
 C:\Users\UserPC\Desktop\Job\SchoolsProjectBlazorDapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.genruntimeconfig.cache
 C:\Users\UserPC\Desktop\Job\SchoolsProjectBlazorDapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\ref\SchoolsProjectBlazorDapper.dll
+C:\Users\UserPC\Desktop\Job\SchoolsProjectBlazorDapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.sourcelink.json

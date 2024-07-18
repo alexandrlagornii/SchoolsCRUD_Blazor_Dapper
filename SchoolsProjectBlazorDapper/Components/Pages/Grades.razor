@@ -1,14 +1,23 @@
 ﻿@page "/grades"
 @inject Logic.SchoolsDbAccessLayer dbLayer
+@inject NavigationManager NavigationManager
 @attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 @using SchoolsProjectBlazorDapper.Models;
 
 <PageTitle>Grades</PageTitle>
 
-<h3>All Grades</h3>
+<h5>Do you want to delete a certain grade?</h5>
+<p>Enter desirable Id of the grade to delete it</p>
 
-@if (SH_GradesWithNames.Count == 0)
+<input @bind="IdForRemoval" />
+<button style="height:30px; width: 80" @onclick="DeleteGradeRefresh">Delete</button>
+
+
+<h3 style="margin-top: 30px;">All Grades</h3>
+
+@if (GradesWithNames.Count == 0)
 {
     <p><em>Loading Grades...</em></p>
 }
@@ -17,6 +26,7 @@ else
     <table class="table">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Grade</th>
                 <th>Student ID</th>
                 <th>Student Full Name</th>
@@ -26,9 +36,10 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var grade in SH_GradesWithNames)
+            @foreach (var grade in GradesWithNames)
             {
                 <tr>
+                    <td>@grade.Id</td>
                     <td>@grade.Grade</td>
                     <td>@grade.StudentId</td>
                     <td>@grade.StudentName</td>
@@ -42,11 +53,18 @@ else
 }
 
 @code {
-    List<SH_GradeWithNames> SH_GradesWithNames = new();
+    List<GradeWithNames> GradesWithNames = new();
+    int IdForRemoval = 0;
 
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(500);
-        SH_GradesWithNames = await dbLayer.GetGradesWithNames();
+        GradesWithNames = await dbLayer.GetGradesWithNames();
+    }
+
+    private async Task DeleteGradeRefresh()
+    {
+        await dbLayer.DeleteGrade(IdForRemoval);
+        NavigationManager.NavigateTo(NavigationManager.Uri, true);
     }
 }
