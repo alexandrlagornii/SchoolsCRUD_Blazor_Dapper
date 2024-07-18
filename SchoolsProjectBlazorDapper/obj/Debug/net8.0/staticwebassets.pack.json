@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SchoolsProjectBlazorDapper.bundle.scp.css",
+      "PackagePath": "staticwebassets\\SchoolsProjectBlazorDapper.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SchoolsProjectBlazorDapper.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SchoolsProjectBlazorDapper.props",
+      "PackagePath": "build\\SchoolsProjectBlazorDapper.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SchoolsProjectBlazorDapper.props",
+      "PackagePath": "buildMultiTargeting\\SchoolsProjectBlazorDapper.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SchoolsProjectBlazorDapper.props",
+      "PackagePath": "buildTransitive\\SchoolsProjectBlazorDapper.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

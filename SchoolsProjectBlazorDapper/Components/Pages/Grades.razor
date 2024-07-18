@@ -1,0 +1,52 @@
+﻿@page "/grades"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@attribute [StreamRendering]
+
+@using SchoolsProjectBlazorDapper.Models;
+
+<PageTitle>Grades</PageTitle>
+
+<h3>All Grades</h3>
+
+@if (SH_GradesWithNames.Count == 0)
+{
+    <p><em>Loading Grades...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Grade</th>
+                <th>Student ID</th>
+                <th>Student Full Name</th>
+                <th>Teacher ID</th>
+                <th>Teacher Full Name</th>
+                <th>Subject Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var grade in SH_GradesWithNames)
+            {
+                <tr>
+                    <td>@grade.Grade</td>
+                    <td>@grade.StudentId</td>
+                    <td>@grade.StudentName</td>
+                    <td>@grade.TeacherId</td>
+                    <td>@grade.TeacherName</td>
+                    <td>@grade.SubjectName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<SH_GradeWithNames> SH_GradesWithNames = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        SH_GradesWithNames = await dbLayer.GetGradesWithNames();
+    }
+}

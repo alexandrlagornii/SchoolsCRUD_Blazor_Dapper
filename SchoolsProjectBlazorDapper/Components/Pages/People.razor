@@ -1,0 +1,52 @@
+﻿@page "/people"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@attribute [StreamRendering]
+
+@using SchoolsProjectBlazorDapper.Models;
+
+<PageTitle>People</PageTitle>
+
+<h3>People</h3>
+
+@if (PeopleWithNamesTypes.Count == 0)
+{
+    <p><em>Loading People...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Type</th>
+                <th>SchoolName</th>
+                <th>DateOfBirth</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in PeopleWithNamesTypes)
+            {
+                <tr>
+                    <td>@person.Id</td>
+                    <td>@person.Name</td>
+                    <td>@person.Age</td>
+                    <td>@person.Type</td>
+                    <td>@person.SchoolName</td>
+                    <td>@person.DateOfBirth</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<SH_PersonWithTypeSchoolsNames> PeopleWithNamesTypes = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        PeopleWithNamesTypes = await dbLayer.GetPersonsWithTypeSchoolsNames();
+    }
+}
