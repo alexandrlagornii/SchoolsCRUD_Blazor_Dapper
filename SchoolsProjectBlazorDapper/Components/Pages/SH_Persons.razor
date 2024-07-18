@@ -1,0 +1,54 @@
+﻿@page "/sh-persons"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@attribute [StreamRendering]
+
+@using SchoolsProjectBlazorDapper.Models;
+
+<PageTitle>SH_Persons Table</PageTitle>
+
+<h3>SH_Persons Table</h3>
+
+@if (Persons.Count == 0)
+{
+    <p><em>Loading SH_Persons...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>SchoolId</th>
+                <th>TypeId</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Age</th>
+                <th>DateOfBirth</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Persons)
+            {
+                <tr>
+                    <td>@person.Id</td>
+                    <td>@person.SchoolId</td>
+                    <td>@person.TypeId</td>
+                    <td>@person.FirstName</td>
+                    <td>@person.LastName</td>
+                    <td>@person.Age</td>
+                    <td>@person.DateOfBirth</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<SH_Person> Persons = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        Persons = await dbLayer.GetPersons();
+    }
+}
