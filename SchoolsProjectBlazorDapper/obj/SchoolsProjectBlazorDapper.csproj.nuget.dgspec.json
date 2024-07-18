@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj": {}
+    "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj": {}
   },
   "projects": {
-    "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj": {
+    "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj",
+        "projectUniqueName": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj",
         "projectName": "SchoolsProjectBlazorDapper",
-        "projectPath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj",
+        "projectPath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj",
         "packagesPath": "C:\\Users\\UserPC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\obj\\",
+        "outputPath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\UserPC\\AppData\\Roaming\\NuGet\\NuGet.Config",

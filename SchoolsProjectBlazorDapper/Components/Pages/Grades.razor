@@ -8,12 +8,8 @@
 
 <PageTitle>Grades</PageTitle>
 
-<h5>Do you want to delete a certain grade?</h5>
-<p>Enter desirable Id of the grade to delete it</p>
-
-<input @bind="IdForRemoval" />
-<button style="height:30px; width: 80" @onclick="DeleteGradeRefresh">Delete</button>
-
+<h5>Do you want to add grade?</h5>
+<button style="height:30px; width:70px;">Add</button>
 
 <h3 style="margin-top: 30px;">All Grades</h3>
 
@@ -33,6 +29,7 @@ else
                 <th>Teacher ID</th>
                 <th>Teacher Full Name</th>
                 <th>Subject Name</th>
+                <th>OPTIONS</th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +43,9 @@ else
                     <td>@grade.TeacherId</td>
                     <td>@grade.TeacherName</td>
                     <td>@grade.SubjectName</td>
+                    <td><button style="height:30px; width: 80;" @onclick="@(() => DeleteGradeRefresh(grade.Id))">Delete</button>
+                        <button style="height:30px; width: 80;">Edit</button>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -54,7 +54,6 @@ else
 
 @code {
     List<GradeWithNames> GradesWithNames = new();
-    int IdForRemoval = 0;
 
     protected override async Task OnInitializedAsync()
     {
@@ -62,7 +61,7 @@ else
         GradesWithNames = await dbLayer.GetGradesWithNames();
     }
 
-    private async Task DeleteGradeRefresh()
+    private async Task DeleteGradeRefresh(int IdForRemoval)
     {
         await dbLayer.DeleteGrade(IdForRemoval);
         NavigationManager.NavigateTo(NavigationManager.Uri, true);

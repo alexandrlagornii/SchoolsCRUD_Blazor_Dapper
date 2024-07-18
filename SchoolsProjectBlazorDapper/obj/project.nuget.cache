@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B51Vcqs5bA8=",
+  "dgSpecHash": "IsoXn2x0r0Q=",
   "success": true,
-  "projectFilePath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj",
+  "projectFilePath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\UserPC\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\UserPC\\.nuget\\packages\\azure.identity\\1.11.3\\azure.identity.1.11.3.nupkg.sha512",
