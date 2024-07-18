@@ -11,4 +11,10 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Components\Pages\InsertGrade.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 </Project>

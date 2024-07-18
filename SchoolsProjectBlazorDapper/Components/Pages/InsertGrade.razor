@@ -1,0 +1,44 @@
+﻿@page "/insert-grade"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@inject NavigationManager NavigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+
+<PageTitle>Insert Grade</PageTitle>
+
+<h3 style="margin-top: 30px;">Insert Grade</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Grade</th>
+            <th>Student Id</th>
+            <th>Teacher Id</th>
+            <th>Subject Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input @bind=grade.Grade /></td>
+            <td><input @bind=grade.StudentId /></td>
+            <td><input @bind=grade.TeacherId /></td>
+            <td><input @bind=grade.SubjectId /></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<button style="height:30px; width: 100px;" @onclick="@(() => CallInsertGrade(grade))">Submit</button>
+
+@code {
+    public SH_Grade grade = new();
+    
+    private async Task CallInsertGrade(SH_Grade grade)
+    {
+        await dbLayer.InsertGrade(grade);
+        NavigationManager.NavigateTo("/grades");
+    }
+}

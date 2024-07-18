@@ -9,7 +9,7 @@
 <PageTitle>Grades</PageTitle>
 
 <h5>Do you want to add grade?</h5>
-<button style="height:30px; width:70px;">Add</button>
+<button style="height:30px; width:70px;" @onclick="AddGradeRedirect">Add</button>
 
 <h3 style="margin-top: 30px;">All Grades</h3>
 
@@ -43,8 +43,8 @@ else
                     <td>@grade.TeacherId</td>
                     <td>@grade.TeacherName</td>
                     <td>@grade.SubjectName</td>
-                    <td><button style="height:30px; width: 80;" @onclick="@(() => DeleteGradeRefresh(grade.Id))">Delete</button>
-                        <button style="height:30px; width: 80;">Edit</button>
+                    <td><button style="height:30px; width: 80px;" @onclick="@(() => DeleteGradeRefresh(grade))">Delete</button>
+                        <button style="height:30px; width: 80px;" @onclick="@(() => EditGradeRedirect(grade))">Edit</button>
                     </td>
                 </tr>
             }
@@ -61,9 +61,19 @@ else
         GradesWithNames = await dbLayer.GetGradesWithNames();
     }
 
-    private async Task DeleteGradeRefresh(int IdForRemoval)
+    private async Task DeleteGradeRefresh(GradeWithNames grade)
     {
-        await dbLayer.DeleteGrade(IdForRemoval);
+        await dbLayer.DeleteGrade(grade);
         NavigationManager.NavigateTo(NavigationManager.Uri, true);
+    }
+
+    private async Task EditGradeRedirect(GradeWithNames grade)
+    {
+        NavigationManager.NavigateTo($"/edit-grade/{grade.Id}");
+    }
+
+    private async Task AddGradeRedirect()
+    {
+        NavigationManager.NavigateTo("/insert-grade");
     }
 }

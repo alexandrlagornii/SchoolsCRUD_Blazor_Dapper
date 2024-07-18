@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nHD/34cUJziQU2Co5lFZz0yuJw2Zxp62d9FElhVrD50=",
+  "Hash": "hwfES+DFORnL1GLP7W9GIg/bKmF2EULAtvUBTTUF35A=",
   "Source": "SchoolsProjectBlazorDapper",
   "BasePath": "_content/SchoolsProjectBlazorDapper",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "SchoolsProjectBlazorDapper\\wwwroot",
       "Source": "SchoolsProjectBlazorDapper",
-      "ContentRoot": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\",
+      "ContentRoot": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\",
       "BasePath": "_content/SchoolsProjectBlazorDapper",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SchoolsProjectBlazorDapper.styles.css",
+      "Identity": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SchoolsProjectBlazorDapper.styles.css",
       "SourceId": "SchoolsProjectBlazorDapper",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/SchoolsProjectBlazorDapper",
       "RelativePath": "SchoolsProjectBlazorDapper.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SchoolsProjectBlazorDapper.styles.css"
+      "OriginalItemSpec": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SchoolsProjectBlazorDapper.styles.css"
     },
     {
-      "Identity": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SchoolsProjectBlazorDapper.bundle.scp.css",
+      "Identity": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SchoolsProjectBlazorDapper.bundle.scp.css",
       "SourceId": "SchoolsProjectBlazorDapper",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/SchoolsProjectBlazorDapper",
       "RelativePath": "SchoolsProjectBlazorDapper.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SchoolsProjectBlazorDapper.bundle.scp.css"
+      "OriginalItemSpec": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SchoolsProjectBlazorDapper.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\app.css",
+      "Identity": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\app.css",
       "SourceId": "SchoolsProjectBlazorDapper",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\",
+      "ContentRoot": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\",
       "BasePath": "_content/SchoolsProjectBlazorDapper",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "SchoolsProjectBlazorDapper",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\",
+      "ContentRoot": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\",
       "BasePath": "_content/SchoolsProjectBlazorDapper",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "SchoolsProjectBlazorDapper",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\",
+      "ContentRoot": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\",
       "BasePath": "_content/SchoolsProjectBlazorDapper",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\favicon.png",
+      "Identity": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\favicon.png",
       "SourceId": "SchoolsProjectBlazorDapper",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\",
+      "ContentRoot": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\wwwroot\\",
       "BasePath": "_content/SchoolsProjectBlazorDapper",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
