@@ -1731,19 +1731,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\me\\.nuget\\packages\\": {}
+    "C:\\Users\\UserPC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj",
+      "projectUniqueName": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj",
       "projectName": "SchoolsProjectBlazorDapper",
-      "projectPath": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj",
-      "packagesPath": "C:\\Users\\me\\.nuget\\packages\\",
-      "outputPath": "A:\\Studying\\JOB\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\",
+      "projectPath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj",
+      "packagesPath": "C:\\Users\\UserPC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\me\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\UserPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

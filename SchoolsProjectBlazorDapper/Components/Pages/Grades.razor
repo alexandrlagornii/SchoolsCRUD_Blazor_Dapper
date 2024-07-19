@@ -69,11 +69,13 @@ else
 
     private async Task EditGradeRedirect(GradeWithNames grade)
     {
+        await Task.Delay(50);
         NavigationManager.NavigateTo($"/edit-grade/{grade.Id}");
     }
 
     private async Task AddGradeRedirect()
     {
+        await Task.Delay(50);
         NavigationManager.NavigateTo("/insert-grade");
     }
 }

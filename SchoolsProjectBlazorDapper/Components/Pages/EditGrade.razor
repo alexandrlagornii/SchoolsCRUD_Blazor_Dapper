@@ -10,7 +10,7 @@
 
 <h3 style="margin-top: 30px;">Edit Grades</h3>
 
-@if (grade.Id == 0)
+@if (gradeId.Equals("0"))
 {
     <p><em>Loading Grade...</em></p>
 }
@@ -42,13 +42,20 @@ else
 
 @code {
     [Parameter]
-    public string gradeId { get ; set; }
+    public string? gradeId { get ; set; }
     public SH_Grade grade = new();
 
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(500);
-        grade = await dbLayer.GetGrade(Int32.Parse(gradeId));
+        if (int.TryParse(gradeId, out int parsedGradeId))
+        {
+            grade = await dbLayer.GetGrade(parsedGradeId);
+        }
+        else
+        {
+            NavigationManager.NavigateTo("/grades");
+        }
     }
     
     private async Task CallEditGrade(SH_Grade grade)

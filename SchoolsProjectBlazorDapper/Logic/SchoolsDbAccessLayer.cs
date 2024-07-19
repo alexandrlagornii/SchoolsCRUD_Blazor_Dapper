@@ -16,6 +16,8 @@ namespace SchoolsProjectBlazorDapper.Logic
         private const string GET_PERSONS = "select * from SH_Persons;";
 
         // Procedures
+        private const string PROCEDURE_GET_SH_GRADES = "GetSH_Grades";
+        private const string PROCEDURE_GET_SH_PERSONS = "GetSH_Persons";
         private const string PROCEDURE_GET_PERSONS_WITH_TYPE_SCHOOL_NAMES = "GetPersonsWithTypeSchoolsNames";
         private const string PROCEDURE_GET_SCHOOLS_WITH_CITY_COUNTRY_NAMES = "GetSchoolsWithCityCountryNames";
         private const string PROCEDURE_GET_GRADES_WITH_NAMES = "GetGradesWithNames";
@@ -35,7 +37,7 @@ namespace SchoolsProjectBlazorDapper.Logic
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
-                IEnumerable<SH_Person> result = await db.QueryAsync<SH_Person>(GET_PERSONS);
+                IEnumerable<SH_Person> result = await db.QueryAsync<SH_Person>(PROCEDURE_GET_SH_PERSONS, commandType: CommandType.StoredProcedure);
                 return result.ToList();
             }
         }
@@ -64,7 +66,7 @@ namespace SchoolsProjectBlazorDapper.Logic
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
-                IEnumerable<SH_Grade> result = await db.QueryAsync<SH_Grade>(GET_GRADES);
+                IEnumerable<SH_Grade> result = await db.QueryAsync<SH_Grade>(PROCEDURE_GET_SH_GRADES, commandType: CommandType.StoredProcedure);
                 return result.ToList();
             }
         }
