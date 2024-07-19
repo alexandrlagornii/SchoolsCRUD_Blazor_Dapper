@@ -8,7 +8,7 @@
 
 <h3>Schools</h3>
 
-@if (SchoolsWithCityCountryNames.Count == 0)
+@if (SH_Schools.Count == 0)
 {
     <p><em>Loading Schools...</em></p>
 }
@@ -27,7 +27,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var school in SchoolsWithCityCountryNames)
+            @foreach (var school in SH_Schools)
             {
                 <tr>
                     <td>@school.Id</td>
@@ -44,11 +44,11 @@ else
 }
 
 @code {
-    List<SchoolWithCityCountryNames> SchoolsWithCityCountryNames = new();
+    List<SH_School> SH_Schools = new();
 
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(500);
-        SchoolsWithCityCountryNames = await dbLayer.GetSchoolsWithCityCountryNames();
+        SH_Schools = await dbLayer.();
     }
 }

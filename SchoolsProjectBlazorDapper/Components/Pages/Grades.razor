@@ -58,23 +58,25 @@ else
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(500);
-        GradesWithNames = await dbLayer.GetGradesWithNames();
+        throw new NotImplementedException();
     }
 
     private async Task DeleteGradeRefresh(GradeWithNames grade)
     {
-        await dbLayer.DeleteGrade(grade);
+        throw new NotImplementedException();
         NavigationManager.NavigateTo(NavigationManager.Uri, true);
     }
 
     private async Task EditGradeRedirect(GradeWithNames grade)
     {
+        throw new NotImplementedException();
         await Task.Delay(50);
         NavigationManager.NavigateTo($"/edit-grade/{grade.Id}");
     }
 
     private async Task AddGradeRedirect()
     {
+        throw new NotImplementedException();
         await Task.Delay(50);
         NavigationManager.NavigateTo("/insert-grade");
     }

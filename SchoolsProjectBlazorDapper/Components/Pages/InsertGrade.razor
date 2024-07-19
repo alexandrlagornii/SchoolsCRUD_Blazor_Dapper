@@ -1,4 +1,4 @@
-﻿@page "/insert-grade"
+﻿@*@page "/insert-grade"
 @inject Logic.SchoolsDbAccessLayer dbLayer
 @inject NavigationManager NavigationManager
 @attribute [StreamRendering]
@@ -41,4 +41,4 @@
         await dbLayer.InsertGrade(grade);
         NavigationManager.NavigateTo("/grades");
     }
-}
+}*@

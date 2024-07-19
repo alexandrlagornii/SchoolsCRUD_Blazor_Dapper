@@ -1,4 +1,4 @@
-﻿@page "/edit-grade/{gradeId}"
+﻿@*@page "/edit-grade/{gradeId}"
 @inject Logic.SchoolsDbAccessLayer dbLayer
 @inject NavigationManager NavigationManager
 @attribute [StreamRendering]
@@ -63,4 +63,4 @@ else
         await dbLayer.EditGrade(grade);
         NavigationManager.NavigateTo("/grades");
     }
-}
+}*@
