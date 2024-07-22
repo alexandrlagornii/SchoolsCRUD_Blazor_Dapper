@@ -1,0 +1,24 @@
+﻿@page "/edit-grade/{gradeId}"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using MudBlazor;
+
+<h3>EditGrade</h3>
+<p>@selectedGrade.Grade</p>
+
+@code {
+    [Parameter]
+    public string? gradeId { get; set; }
+
+    private SH_Grade selectedGrade = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        selectedGrade.Id = int.Parse(gradeId);
+        selectedGrade = await dbLayer.SH_GradesSelectById(selectedGrade);
+    }
+}

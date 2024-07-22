@@ -1,5 +1,6 @@
 ﻿@page "/grades"
 @inject Logic.SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
 @attribute [StreamRendering]
 @rendermode @(new InteractiveServerRenderMode(prerender: false))
 
@@ -28,10 +29,8 @@
 }
 else
 {
-    <h5>Select Row for Actions</h5>
-
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary">Add</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@disableEditDelete">Edit</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@disableEditDelete" @onclick="(() => EditGradePageRedirect(selectedGrade))">Edit</MudButton>
     <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@disableEditDelete" @onclick="DeleteGrade">Delete</MudButton>
 
     <MudTable Items="@GradesTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
@@ -68,22 +67,27 @@ else
 
 
 @code {
-
+    // Data models
     List<SH_Grade> GradesTable = new();
     private SH_Grade selectedGrade = new();
 
+    // Reference to table
     private MudTable<SH_Grade>? mudTable;
 
+    // Display or no edit/delete buttons
     bool disableEditDelete = true;
 
+    // String for filtering
     private string searchString1 = "";
 
+    // Load table
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(500);
         GradesTable = await dbLayer.SH_GradesSelectAll();
     }
 
+    // Filtering
     private string SelectedRowClassFunc(SH_Grade grade, int rowNumber)
     {
         if (mudTable.SelectedItem != null && mudTable.SelectedItem.Equals(grade))
@@ -93,13 +97,14 @@ else
         return string.Empty;
     }
 
+    // If pressed on row activate edit/delete buttons
     private void RowClickFunc(TableRowClickEventArgs<SH_Grade> tableRowClickEventArgs)
     {
         disableEditDelete = false;
     }
 
+    // Search in table functions
     private bool FilterFunc1(SH_Grade grade) => FilterFunc(grade, searchString1);
-
     private bool FilterFunc(SH_Grade grade, string searchString)
     {
         if (string.IsNullOrWhiteSpace(searchString))
@@ -109,8 +114,21 @@ else
         return false;
     }
 
+    // Delete grade if selected and pressed delete
     private async Task DeleteGrade()
     {
-        throw new NotImplementedException();
+        await dbLayer.SH_GradesDeleteById(selectedGrade);
+        navigationManager.NavigateTo(navigationManager.Uri, true);
+    }
+
+    // Redirect to page for editing grade
+    private async Task EditGradePageRedirect(SH_Grade grade)
+    {
+        navigationManager.NavigateTo($"/edit-grade/{grade.Id}");
+    }
+
+    private async Task AddGradePageRedirect()
+    {
+        navigationManager.NavigateTo("/add-grade");
     }
 }

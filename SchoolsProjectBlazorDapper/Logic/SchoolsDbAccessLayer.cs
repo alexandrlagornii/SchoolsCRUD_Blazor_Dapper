@@ -97,6 +97,36 @@ namespace SchoolsProjectBlazorDapper.Logic
             }
         }
 
+        public async Task<SH_Grade> SH_GradesSelectById(SH_Grade grade)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get single grade
+                var p = new DynamicParameters();
+                p.Add("@Id", grade.Id);
+                var result = await db.QuerySingleOrDefaultAsync<SH_Grade>(PRC_SH_GRADES_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
+
+                // Get SH_Person for Student
+                var pps = new DynamicParameters();
+                pps.Add("@Id", result.StudentId);
+                result.SH_PersonStudent = await db.QuerySingleOrDefaultAsync<SH_Person>(PRC_SH_PERSONS_SELECT_BY_ID, pps, commandType: CommandType.StoredProcedure);
+
+                // Get SH_Person for Teacher
+                var ppt = new DynamicParameters();
+                ppt.Add("@Id", result.TeacherId);
+                result.SH_PersonTeacher = await db.QuerySingleOrDefaultAsync<SH_Person>(PRC_SH_PERSONS_SELECT_BY_ID, ppt, commandType: CommandType.StoredProcedure);
+
+                // Get SH_d_Subject
+                var ps = new DynamicParameters();
+                ps.Add("@Id", result.SubjectId);
+                result.SH_d_Subject = await db.QuerySingleOrDefaultAsync<SH_d_Subject>(PRC_SH_D_SUBJECTS_SELECT_BY_ID, ps, commandType: CommandType.StoredProcedure);
+
+                return result;
+            }
+        }
+
         public async Task SH_GradesDeleteById(SH_Grade grade)
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
