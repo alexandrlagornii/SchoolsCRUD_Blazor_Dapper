@@ -7,14 +7,37 @@
 @using SchoolsProjectBlazorDapper.Models;
 @using MudBlazor;
 
-<h3>EditGrade</h3>
+<h3>Edit Grade</h3>
 <p>@selectedGrade.Grade</p>
+
+
+<thead>
+    <tr>
+        <th>Grade</th>
+        <th>Teacher Id</th>
+        <th>Teacher First Name</th>
+        <th>Teacher Last Name</th>
+        <th>Student Id</th>
+        <th>Student First Name</th>
+        <th>Student Last Name</th>
+        <th>Subject Name</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>@selectedGrade.Id</td>
+        <td>@selectedGrade.TeacherId</td>
+        <td>@selectedGrade.StudentId</td>
+        <td>@selectedGrade.SubjectId</td>
+        <td>@selectedGrade.SH_PersonTeacher.FirstName</td>
+    </tr>
+</tbody>
 
 @code {
     [Parameter]
     public string? gradeId { get; set; }
 
-    private SH_Grade selectedGrade = new();
+    private SH_Grade? selectedGrade = new();
 
     protected override async Task OnInitializedAsync()
     {
