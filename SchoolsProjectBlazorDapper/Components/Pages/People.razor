@@ -1,6 +1,7 @@
 ﻿@page "/people"
 @inject Logic.SchoolsDbAccessLayer dbLayer
 @attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 @using SchoolsProjectBlazorDapper.Models;
 
@@ -47,6 +48,6 @@ else
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(500);
-        SH_Persons = await dbLayer.SH_PersonsSelect();
+        SH_Persons = await dbLayer.SH_PersonsSelectAll();
     }
 }

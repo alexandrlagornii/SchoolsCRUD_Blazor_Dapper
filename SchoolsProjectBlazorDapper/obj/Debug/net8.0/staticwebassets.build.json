@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nHD/34cUJziQU2Co5lFZz0yuJw2Zxp62d9FElhVrD50=",
+  "Hash": "zciYdnsk07oAPEzEQAkeBaB6YhHihDhvxOmzzGVonQY=",
   "Source": "SchoolsProjectBlazorDapper",
   "BasePath": "_content/SchoolsProjectBlazorDapper",
   "Mode": "Default",
@@ -16,6 +16,44 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\UserPC\\.nuget\\packages\\mudblazor\\7.3.0\\staticwebassets\\MudBlazor.min.css",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\UserPC\\.nuget\\packages\\mudblazor\\7.3.0\\staticwebassets\\",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\UserPC\\.nuget\\packages\\mudblazor\\7.3.0\\staticwebassets\\MudBlazor.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\UserPC\\.nuget\\packages\\mudblazor\\7.3.0\\staticwebassets\\MudBlazor.min.js",
+      "SourceId": "MudBlazor",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\UserPC\\.nuget\\packages\\mudblazor\\7.3.0\\staticwebassets\\",
+      "BasePath": "_content/MudBlazor",
+      "RelativePath": "MudBlazor.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\UserPC\\.nuget\\packages\\mudblazor\\7.3.0\\staticwebassets\\MudBlazor.min.js"
+    },
     {
       "Identity": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SchoolsProjectBlazorDapper.styles.css",
       "SourceId": "SchoolsProjectBlazorDapper",

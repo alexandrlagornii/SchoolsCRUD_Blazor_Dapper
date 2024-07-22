@@ -1,5 +1,6 @@
 using SchoolsProjectBlazorDapper.Components;
 using SchoolsProjectBlazorDapper.Logic;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddScoped<SchoolsDbAccessLayer>();
+builder.Services.AddMudServices();
 
 var app = builder.Build();
 

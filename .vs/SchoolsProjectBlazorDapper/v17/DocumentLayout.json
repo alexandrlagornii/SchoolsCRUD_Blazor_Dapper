@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\pages\\grades.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\logic\\schoolsdbaccesslayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\logic\\schoolsdbaccesslayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,72 +19,64 @@
       "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\pages\\people.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\pages\\schools.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\pages\\schools.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\pages\\insertgrade.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\pages\\insertgrade.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\pages\\editgrade.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\pages\\editgrade.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_take.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_take.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_d_city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_d_city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_d_class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_d_class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_d_country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_d_country.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_d_type.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_d_type.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_d_subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_d_subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_school.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_school.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_d_class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_d_class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_school.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_school.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_grade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_schedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_d_type.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_d_type.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_d_city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_d_city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\models\\sh_take.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\models\\sh_take.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper\\schoolsprojectblazordapper\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -90,58 +86,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SchoolsDbAccessLayer.cs",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Logic\\SchoolsDbAccessLayer.cs",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Logic\\SchoolsDbAccessLayer.cs",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Logic\\SchoolsDbAccessLayer.cs",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Logic\\SchoolsDbAccessLayer.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAowGwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T07:52:11.305Z",
+              "Title": "MainLayout.razor.css",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Layout\\MainLayout.razor.css",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Layout\\MainLayout.razor.css",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Layout\\MainLayout.razor.css",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Layout\\MainLayout.razor.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-07-22T10:00:09.534Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SH_Person.cs",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Person.cs",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_Person.cs",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Person.cs",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_Person.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T07:33:29.891Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SH_Grade.cs",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Grade.cs",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_Grade.cs",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Grade.cs",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_Grade.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T07:34:55.491Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SH_Take.cs",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Take.cs",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_Take.cs",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Take.cs",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_Take.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T07:34:00.062Z",
+              "DocumentIndex": 0,
+              "Title": "Grades.razor",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\Grades.razor",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Pages\\Grades.razor",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\Grades.razor",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Pages\\Grades.razor",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACkAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-18T15:06:11.436Z",
               "EditorCaption": ""
             },
             {
@@ -159,7 +129,111 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SchoolsDbAccessLayer.cs",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Logic\\SchoolsDbAccessLayer.cs",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Logic\\SchoolsDbAccessLayer.cs",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Logic\\SchoolsDbAccessLayer.cs",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Logic\\SchoolsDbAccessLayer.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwF8AAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T07:52:11.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\_Imports.razor",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\_Imports.razor",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\_Imports.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-19T10:22:02.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\App.razor",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\App.razor",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\App.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-19T10:22:01.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Program.cs",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Program.cs",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Program.cs",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-22T09:15:35.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "People.razor",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\People.razor",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Pages\\People.razor",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\People.razor",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Pages\\People.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-19T07:25:17.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-22T09:16:25.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Routes.razor",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Routes.razor",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Routes.razor",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Routes.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-19T10:22:00.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Pages\\Home.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-19T07:39:16.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "SH_d_City.cs",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_d_City.cs",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_d_City.cs",
@@ -172,111 +246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Grades.razor",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\Grades.razor",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Pages\\Grades.razor",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\Grades.razor",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Pages\\Grades.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-18T15:06:11.436Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "InsertGrade.razor",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\InsertGrade.razor",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Pages\\InsertGrade.razor",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\InsertGrade.razor",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Pages\\InsertGrade.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-19T07:39:21.527Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EditGrade.razor",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\EditGrade.razor",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Pages\\EditGrade.razor",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\EditGrade.razor",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Pages\\EditGrade.razor",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAEEAAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-19T07:37:04.411Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Schools.razor",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\Schools.razor",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Pages\\Schools.razor",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\Schools.razor",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Pages\\Schools.razor",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAADMAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-19T07:34:57.515Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "People.razor",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\People.razor",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Pages\\People.razor",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\People.razor",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Pages\\People.razor",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAAC8AAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-19T07:25:17.519Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "SH_d_Country.cs",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_d_Country.cs",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_d_Country.cs",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_d_Country.cs",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_d_Country.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T07:32:39.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "SH_d_Type.cs",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_d_Type.cs",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_d_Type.cs",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_d_Type.cs",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_d_Type.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T07:33:11.202Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "SH_d_Subject.cs",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_d_Subject.cs",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_d_Subject.cs",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_d_Subject.cs",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_d_Subject.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-19T14:10:10.858Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
               "Title": "SH_School.cs",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_School.cs",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_School.cs",
@@ -289,64 +259,81 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
+              "Title": "SH_Person.cs",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Person.cs",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_Person.cs",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Person.cs",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_Person.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T07:33:29.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SH_Grade.cs",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Grade.cs",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_Grade.cs",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Grade.cs",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_Grade.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T07:34:55.491Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "SH_Schedule.cs",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Schedule.cs",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_Schedule.cs",
               "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Schedule.cs",
               "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_Schedule.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAATAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-19T07:33:40.575Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "_Imports.razor",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\_Imports.razor",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\_Imports.razor",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\_Imports.razor",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\_Imports.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-19T10:22:02.144Z"
+              "DocumentIndex": 14,
+              "Title": "SH_d_Type.cs",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_d_Type.cs",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_d_Type.cs",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_d_Type.cs",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_d_Type.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T07:33:11.202Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "App.razor",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\App.razor",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\App.razor",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\App.razor",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\App.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-19T10:22:01.019Z"
+              "Title": "SH_Take.cs",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Take.cs",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Models\\SH_Take.cs",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Models\\SH_Take.cs",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Models\\SH_Take.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T07:34:00.062Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "Routes.razor",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Routes.razor",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Routes.razor",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Routes.razor",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Routes.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-19T10:22:00.032Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Home.razor",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\Home.razor",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Pages\\Home.razor",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper\\SchoolsProjectBlazorDapper\\Components\\Pages\\Home.razor",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Pages\\Home.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-19T07:39:16.955Z"
+              "WhenOpened": "2024-07-22T07:47:38.15Z",
+              "EditorCaption": ""
             }
           ]
         }

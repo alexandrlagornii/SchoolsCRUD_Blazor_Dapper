@@ -9,12 +9,7 @@
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="Components\Pages\InsertGrade.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
+    <PackageReference Include="MudBlazor" Version="7.3.0" />
   </ItemGroup>
 
 </Project>

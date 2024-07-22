@@ -14,18 +14,19 @@ namespace SchoolsProjectBlazorDapper.Logic
 
 
         // Procedures
-        private const string PRC_SH_PERSONS_SELECT = "prc_SH_PersonsSelect";
+        private const string PRC_SH_PERSONS_SELECT_ALL = "prc_SH_PersonsSelectAll";
         private const string PRC_SH_PERSONS_SELECT_BY_ID = "prc_SH_PersonsSelectById";
 
-        private const string PRC_SH_SCHOOLS_SELECT = "prc_SH_SchoolsSelect";
+        private const string PRC_SH_SCHOOLS_SELECT_ALL = "prc_SH_SchoolsSelectAll";
+        private const string PRC_SH_SCHOOLS_SELECT_BY_ID = "prc_SH_SchoolsSelectById";
 
         private const string PRC_SH_D_TYPES_SELECT_BY_ID = "prc_SH_d_TypesSelectById";
 
         private const string PRC_SH_GRADES_INSERT = "prc_SH_GradesInsert";
-        private const string PRC_SH_GRADES_SELECT = "prc_SH_GradesSelect";
+        private const string PRC_SH_GRADES_SELECT_ALL = "prc_SH_GradesSelectAll";
         private const string PRC_SH_GRADES_SELECT_BY_ID = "prc_SH_GradesSelectById";
         private const string PRC_SH_GRADES_UPDATE = "prc_SH_GradesUpdate";
-        private const string PRC_SH_GRADES_DELETE = "prc_SH_GradesDelete";
+        private const string PRC_SH_GRADES_DELETE_BY_ID = "prc_SH_GradesDeleteById";
 
         private const string PRC_SH_D_SUBJECTS_SELECT_BY_ID = "prc_SH_d_SubjectsSelectById";
 
@@ -38,14 +39,14 @@ namespace SchoolsProjectBlazorDapper.Logic
 
 
         // Function Queries
-        public async Task<List<SH_Person>> SH_PersonsSelect()
+        public async Task<List<SH_Person>> SH_PersonsSelectAll()
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
 
                 // Get SH_Persons
-                var result = await db.QueryAsync<SH_Person>(PRC_SH_PERSONS_SELECT, commandType: CommandType.StoredProcedure);
+                var result = await db.QueryAsync<SH_Person>(PRC_SH_PERSONS_SELECT_ALL, commandType: CommandType.StoredProcedure);
 
                 // For each row get the relations SH_School and SH_d_Type
                 foreach (SH_Person person in result)
@@ -53,7 +54,7 @@ namespace SchoolsProjectBlazorDapper.Logic
                     // Get SH_School in the SH_Person datatype instance
                     var ps = new DynamicParameters();
                     ps.Add("@Id", person.SchoolId);
-                    person.SH_School = await db.QuerySingleOrDefaultAsync<SH_School>(PRC_SH_SCHOOLS_SELECT, ps, commandType: CommandType.StoredProcedure);
+                    person.SH_School = await db.QuerySingleOrDefaultAsync<SH_School>(PRC_SH_SCHOOLS_SELECT_BY_ID, ps, commandType: CommandType.StoredProcedure);
 
                     // Get Sh_d_Type in the SH_Person datatype instance
                     var pt = new DynamicParameters();
@@ -64,14 +65,14 @@ namespace SchoolsProjectBlazorDapper.Logic
             }
         }
 
-        public async Task<List<SH_Grade>> SH_GradesSelect()
+        public async Task<List<SH_Grade>> SH_GradesSelectAll()
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
 
                 // Get SH_Grades
-                var result = await db.QueryAsync<SH_Grade>(PRC_SH_GRADES_SELECT, commandType: CommandType.StoredProcedure);
+                var result = await db.QueryAsync<SH_Grade>(PRC_SH_GRADES_SELECT_ALL, commandType: CommandType.StoredProcedure);
 
                 // For each row get the relations SH_Person (Student), SH_Person (Teacher), SH_d_Subject
                 foreach (SH_Grade grade in result)
@@ -96,14 +97,14 @@ namespace SchoolsProjectBlazorDapper.Logic
             }
         }
 
-        public async Task SH_GradesDelete(SH_Grade grade)
+        public async Task SH_GradesDeleteById(SH_Grade grade)
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
                 var p = new DynamicParameters();
                 p.Add("@Id", grade.Id);
-                await db.QueryAsync(PRC_SH_GRADES_DELETE, p, commandType: CommandType.StoredProcedure);
+                await db.QueryAsync(PRC_SH_GRADES_DELETE_BY_ID, p, commandType: CommandType.StoredProcedure);
             }
         }
 

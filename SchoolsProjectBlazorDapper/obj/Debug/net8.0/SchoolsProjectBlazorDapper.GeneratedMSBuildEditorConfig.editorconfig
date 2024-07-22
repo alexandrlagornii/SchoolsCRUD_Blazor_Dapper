@@ -1,4 +1,7 @@
 is_global = true
+build_property.MudDebugAnalyzer = 
+build_property.MudAllowedAttributePattern = 
+build_property.MudIllegalParameters = 
 build_property.TargetFramework = net8.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
@@ -22,10 +25,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/EditGrade.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFZGl0R3JhZGUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/Grades.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHcmFkZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -34,16 +33,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/InsertGrade.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbnNlcnRHcmFkZS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/People.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQZW9wbGUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/Schools.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTY2hvb2xzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Routes.razor]

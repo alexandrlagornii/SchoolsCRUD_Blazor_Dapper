@@ -273,3 +273,15 @@ A:\Studying\JOB\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\n
 A:\Studying\JOB\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsP.B85FD7ED.Up2Date
 A:\Studying\JOB\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.genruntimeconfig.cache
 A:\Studying\JOB\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\ref\SchoolsProjectBlazorDapper.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.AspNetCore.Components.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.JSInterop.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.Extensions.Localization.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\MudBlazor.dll
