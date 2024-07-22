@@ -19,23 +19,25 @@
 </style>
 
 <PageTitle>Grades</PageTitle>
-<h5>Select Row for Actions</h5>
-
 <MudThemeProvider />
 <MudPopoverProvider />
 
 @if (GradesTable.Count == 0)
 {
-    <p><em>Loading People...</em></p>
+    <p><em>Loading Grades...</em></p>
 }
 else
 {
+    <h5>Select Row for Actions</h5>
+
     <MudButton Variant="Variant.Outlined" Color="Color.Primary">Add</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary">Edit</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Secondary">Delete</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@disableEditDelete">Edit</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@disableEditDelete" @onclick="DeleteGrade">Delete</MudButton>
 
     <MudTable Items="@GradesTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
               @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="selectedGrade"
+              T="SH_Grade"
+              OnRowClick="RowClickFunc"
               Filter="new Func<SH_Grade,bool>(FilterFunc1)">
         <ToolBarContent>
             <MudText Typo="Typo.h6">Grades</MudText>
@@ -62,7 +64,6 @@ else
             <MudTablePager PageSizeOptions="new int[] {10, 25, 50, 100}" />
         </PagerContent>
     </MudTable>
-    <p>@selectedGrade.Grade</p>
 }
 
 
@@ -73,7 +74,7 @@ else
 
     private MudTable<SH_Grade>? mudTable;
 
-    bool disableEditDelete;
+    bool disableEditDelete = true;
 
     private string searchString1 = "";
 
@@ -81,8 +82,6 @@ else
     {
         await Task.Delay(500);
         GradesTable = await dbLayer.SH_GradesSelectAll();
-
-        disableEditDelete = true;
     }
 
     private string SelectedRowClassFunc(SH_Grade grade, int rowNumber)
@@ -94,7 +93,7 @@ else
         return string.Empty;
     }
 
-    private void RowClickEvent(TableRowClickEventArgs<SH_Grade> tableRowClickEventArgs)
+    private void RowClickFunc(TableRowClickEventArgs<SH_Grade> tableRowClickEventArgs)
     {
         disableEditDelete = false;
     }
@@ -105,8 +104,13 @@ else
     {
         if (string.IsNullOrWhiteSpace(searchString))
             return true;
-        if ($"{grade.Grade} {grade.SH_PersonTeacher.FirstName} {grade.SH_PersonTeacher.LastName} {grade.SH_PersonStudent.FirstName} {grade.SH_PersonStudent.LastName} {grade.SH_d_Subject.Name}".Contains(searchString))
+        if ($"{grade.Grade} {grade.SH_PersonTeacher.FirstName} {grade.SH_PersonTeacher.LastName} {grade.SH_PersonStudent.FirstName} {grade.SH_PersonStudent.LastName} {grade.SH_d_Subject.Name}".ToLower().Contains(searchString.ToLower()))
             return true;
         return false;
+    }
+
+    private async Task DeleteGrade()
+    {
+        throw new NotImplementedException();
     }
 }
