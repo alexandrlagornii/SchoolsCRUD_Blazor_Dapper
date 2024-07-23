@@ -28,7 +28,8 @@
 
 @if (GradesTable.Count == 0)
 {
-    <p><em>Loading Grades...</em></p>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
+    <p style="padding-top: 10px;"><em>Loading Grades...</em></p>
 }
 else
 {
