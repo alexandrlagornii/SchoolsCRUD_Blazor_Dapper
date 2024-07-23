@@ -1,0 +1,269 @@
+﻿@page "/grade-add"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using MudBlazor;
+
+<style>
+    .selected {
+        background-color: #1E88E5 !important;
+    }
+
+        .selected > td {
+            color: white !important;
+        }
+
+            .selected > td .mud-input {
+                color: white !important;
+            }
+</style>
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@*Wait for last object in SH_Grade to load for display*@
+@if (selectedGrade.SH_d_Subject == null 
+     || SH_PersonTeacherTable.Count == 0 || SH_PersonStudentTable.Count == 0 || SH_d_SubjectTable.Count == 0)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h5>Adding Grade</h5>
+    <MudPaper Class="border-solid border-2 mud-border-primary pa-4 ma-4" Elevation="0">
+        <h6><em>Selected Grade</em></h6>
+        <MudSimpleTable Style="overflow-x: auto;">
+            <thead>
+                <tr>
+                    <th>Grade</th>
+                    <th>Teacher Id</th>
+                    <th>Teacher First Name</th>
+                    <th>Teacher Last Name</th>
+                    <th>Student Id</th>
+                    <th>Student First Name</th>
+                    <th>Student Last Name</th>
+                    <th>Subject Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@selectedGrade.Grade</td>
+                    <td>@selectedGrade.SH_PersonTeacher.Id</td>
+                    <td>@selectedGrade.SH_PersonTeacher.FirstName</td>
+                    <td>@selectedGrade.SH_PersonTeacher.LastName</td>
+                    <td>@selectedGrade.SH_PersonStudent.Id</td>
+                    <td>@selectedGrade.SH_PersonStudent.FirstName</td>
+                    <td>@selectedGrade.SH_PersonStudent.LastName</td>
+                    <td>@selectedGrade.SH_d_Subject.Name</td>
+                </tr>
+            </tbody>
+        </MudSimpleTable>
+        <MudButton Class="mt-4" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(selectedGrade.Grade == null || selectedGrade.TeacherId == null || selectedGrade.StudentId == null || selectedGrade.SubjectId == null)" @onclick="GradeInsert">Submit</MudButton>
+    </MudPaper>
+
+    <MudPaper Class="border-solid border-2 mud-border-primary pa-4" Elevation="0">
+        <h6><em>Select to Edit</em></h6>
+        <div class="grade-edit-table" style="margin:30px">
+            <MudTextField @bind-Value="selectedGrade.Grade" Label="Grade" Variant="Variant.Text"></MudTextField>
+        </div>
+
+        <MudSimpleTable>
+            <thead>
+                <tr>
+                    <th>Teacher</th>
+                    <th>Student</th>
+                    <th>Subject</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <MudTable Items="@SH_PersonTeacherTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
+                                  @ref="SH_PersonTeacherMudTable" RowClassFunc="@SelectedRowClassFuncTeacher" @bind-SelectedItem="selectedGrade.SH_PersonTeacher"
+                                  T="SH_Person" Dense="true" OnRowClick="RowClickFuncTeacher"
+                                  Filter="new Func<SH_Person, bool>(FilterFuncTeacher1)">
+                            <ToolBarContent>
+                                <MudText Typo="Typo.h6">Teacher</MudText>
+                                <MudSpacer />
+                                <MudTextField @bind-Value="searchStringTeacher1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                            </ToolBarContent>
+                            <HeaderContent>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id)">Id</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.FirstName)">Teacher First Name</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.LastName)">Teacher Last Name</MudTableSortLabel></MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Id">@context.Id</MudTd>
+                                <MudTd DataLabel="TeacherFirstName">@context.FirstName</MudTd>
+                                <MudTd DataLabel="TeacherLastName">@context.LastName</MudTd>
+                            </RowTemplate>
+                            <PagerContent>
+                                <MudTablePager PageSizeOptions="new int[] {5, 10}" />
+                            </PagerContent>
+                        </MudTable>
+                    </td>
+                    <td>
+                        <MudTable Items="@SH_PersonStudentTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
+                                  @ref="SH_PersonStudentMudTable" RowClassFunc="@SelectedRowClassFuncStudent" @bind-SelectedItem="selectedGrade.SH_PersonStudent"
+                                  T="SH_Person" Dense="true" OnRowClick="RowClickFuncStudent"
+                                  Filter="new Func<SH_Person, bool>(FilterFuncStudent1)">
+                            <ToolBarContent>
+                                <MudText Typo="Typo.h6">Student</MudText>
+                                <MudSpacer />
+                                <MudTextField @bind-Value="searchStringStudent1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                            </ToolBarContent>
+                            <HeaderContent>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id)">Id</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.FirstName)">Student First Name</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.LastName)">Student Last Name</MudTableSortLabel></MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Id">@context.Id</MudTd>
+                                <MudTd DataLabel="StudentFirstName">@context.FirstName</MudTd>
+                                <MudTd DataLabel="StudentLastName">@context.LastName</MudTd>
+                            </RowTemplate>
+                            <PagerContent>
+                                <MudTablePager PageSizeOptions="new int[] {5, 10}" />
+                            </PagerContent>
+                        </MudTable>
+                    </td>
+                    <td>
+                        <MudTable Items="@SH_d_SubjectTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
+                                  @ref="SH_d_SubjectMudTable" RowClassFunc="@SelectedRowClassFuncSubject" @bind-SelectedItem="selectedGrade.SH_d_Subject"
+                                  T="SH_d_Subject" Dense="true" OnRowClick="RowClickFuncSubject"
+                                  Filter="new Func<SH_d_Subject, bool>(FilterFuncSubject1)">
+                            <ToolBarContent>
+                                <MudText Typo="Typo.h6">Subject</MudText>
+                                <MudSpacer />
+                                <MudTextField @bind-Value="searchStringSubject1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                            </ToolBarContent>
+                            <HeaderContent>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_d_Subject, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Name">@context.Name</MudTd>
+                            </RowTemplate>
+                            <PagerContent>
+                                <MudTablePager PageSizeOptions="new int[] {5, 10}" />
+                            </PagerContent>
+                        </MudTable>
+                    </td>
+                </tr>
+            </tbody>
+        </MudSimpleTable>
+    </MudPaper>
+}
+
+@code {
+    public SH_Grade? selectedGrade = new();
+
+    // Teacher table
+    List<SH_Person>? SH_PersonTeacherTable = new();
+    private MudTable<SH_Person>? SH_PersonTeacherMudTable;
+    private string searchStringTeacher1 = "";
+
+    // Student Table
+    List<SH_Person>? SH_PersonStudentTable = new();
+    private MudTable<SH_Person>? SH_PersonStudentMudTable;
+    private string searchStringStudent1 = "";
+
+    // Subject Table
+    List<SH_d_Subject>? SH_d_SubjectTable = new();
+    private MudTable<SH_d_Subject>? SH_d_SubjectMudTable;
+    private string searchStringSubject1 = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Initialize empty grade
+        selectedGrade.SH_PersonStudent = new();
+        selectedGrade.SH_PersonTeacher = new();
+        selectedGrade.SH_d_Subject = new();
+
+        // Get persons for Teachers Table
+        SH_Person teacherType = new SH_Person { TypeId = 2 };
+        SH_PersonTeacherTable = await dbLayer.SH_PersonsSelectAllByType(teacherType);
+
+        // Get persons for Student Table
+        SH_Person studentType = new SH_Person { TypeId = 1 };
+        SH_PersonStudentTable = await dbLayer.SH_PersonsSelectAllByType(studentType);
+
+        // Get subjects for Subject Table
+        SH_d_SubjectTable = await dbLayer.SH_d_SubjectsSelectAll();
+    }
+
+    private string SelectedRowClassFuncTeacher(SH_Person person, int rowNumber)
+    {
+        if (SH_PersonTeacherMudTable.SelectedItem != null && SH_PersonTeacherMudTable.SelectedItem.Equals(person))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+    private string SelectedRowClassFuncStudent(SH_Person person, int rowNumber)
+    {
+        if (SH_PersonStudentMudTable.SelectedItem != null && SH_PersonStudentMudTable.SelectedItem.Equals(person))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+
+    private string SelectedRowClassFuncSubject(SH_d_Subject subject, int rowNumber)
+    {
+        if (SH_d_SubjectMudTable.SelectedItem != null && SH_d_SubjectMudTable.SelectedItem.Equals(subject))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+    private void RowClickFuncTeacher(TableRowClickEventArgs<SH_Person> tableRowClickEventArgs)
+    {
+        selectedGrade.TeacherId = selectedGrade.SH_PersonTeacher.Id;
+    }
+
+    private void RowClickFuncStudent(TableRowClickEventArgs<SH_Person> tableRowClickEventArgs)
+    {
+        selectedGrade.StudentId = selectedGrade.SH_PersonStudent.Id;
+    }
+
+    private void RowClickFuncSubject(TableRowClickEventArgs<SH_d_Subject> tableRowClickEventArgs)
+    {
+        selectedGrade.SubjectId = selectedGrade.SH_d_Subject.Id;
+    }
+
+    // Search in table Person
+    private bool FilterFuncTeacher1(SH_Person person) => FilterFuncPerson(person, searchStringTeacher1);
+    private bool FilterFuncStudent1(SH_Person person) => FilterFuncPerson(person, searchStringStudent1);
+    private bool FilterFuncPerson(SH_Person person, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if ($"{person.Id} {person.FirstName} {person.LastName}".ToLower().Contains(searchString.ToLower()))
+            return true;
+        return false;
+    }
+
+    private bool FilterFuncSubject1(SH_d_Subject subject) => FilterFuncSubject(subject, searchStringSubject1);
+    private bool FilterFuncSubject(SH_d_Subject subject, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if ($"{subject.Name}".ToLower().Contains(searchString.ToLower()))
+            return true;
+        return false;
+    }
+
+    private async Task GradeInsert()
+    {
+        await dbLayer.SH_GradesInsert(selectedGrade);
+        navigationManager.NavigateTo("/grades");
+    }
+}
