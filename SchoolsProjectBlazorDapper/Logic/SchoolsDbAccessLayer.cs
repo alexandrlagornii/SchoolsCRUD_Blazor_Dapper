@@ -17,6 +17,8 @@ namespace SchoolsProjectBlazorDapper.Logic
         private const string PRC_SH_PERSONS_SELECT_ALL = "prc_SH_PersonsSelectAll";
         private const string PRC_SH_PERSONS_SELECT_BY_ID = "prc_SH_PersonsSelectById";
         private const string PRC_SH_PERSONS_SELECT_ALL_BY_TYPE = "prc_SH_PersonsSelectAllByType";
+        private const string PRC_SH_PERSONS_INSERT = "prc_SH_PersonsInsert";
+        private const string PRC_SH_PERSONS_DELETE_BY_ID = "prc_SH_PersonsDeleteById";
 
         private const string PRC_SH_SCHOOLS_SELECT_ALL = "prc_SH_SchoolsSelectAll";
         private const string PRC_SH_SCHOOLS_SELECT_BY_ID = "prc_SH_SchoolsSelectById";
@@ -92,6 +94,35 @@ namespace SchoolsProjectBlazorDapper.Logic
                     person.SH_d_Type = await db.QuerySingleOrDefaultAsync<SH_d_Type>(PRC_SH_D_TYPES_SELECT_BY_ID, pt, commandType: CommandType.StoredProcedure);
                 }
                 return result.ToList();
+            }
+        }
+
+        public async Task SH_PersonsInsert(SH_Person selectedPerson)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get SH_Persons by type
+                var p = new DynamicParameters();
+                p.Add("@SchoolId", selectedPerson.SchoolId);
+                p.Add("@TypeId", selectedPerson.TypeId);
+                p.Add("@FirstName", selectedPerson.FirstName);
+                p.Add("@LastName", selectedPerson.LastName);
+                p.Add("@DateOfBirth", selectedPerson.DateOfBirth);
+
+                await db.QueryAsync<SH_Person>(PRC_SH_PERSONS_INSERT, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task SH_PersonsDeleteById(SH_Person person)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+                var p = new DynamicParameters();
+                p.Add("@Id", person.Id);
+                await db.QueryAsync(PRC_SH_PERSONS_DELETE_BY_ID, p, commandType: CommandType.StoredProcedure);
             }
         }
 

@@ -36,7 +36,7 @@ else
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@disableEditDelete" @onclick="(() => EditGradePageRedirect(selectedGrade))">Edit</MudButton>
     <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@disableEditDelete" @onclick="DeleteGrade">Delete</MudButton>
-    <p><b>Select row for edit/delete</b></p>
+    <p><em>Select row for edit/delete</em></p>
     <MudTable Items="@GradesTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
               @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="selectedGrade"
               T="SH_Grade"
@@ -48,20 +48,20 @@ else
             <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
         </ToolBarContent>
         <HeaderContent>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.Grade)">Grade</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonTeacher.FirstName)">Teacher First Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonTeacher.LastName)">Teacher Last Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonStudent.FirstName)">Student First Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonStudent.LastName)">Student Last Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_d_Subject.Name)">Subject Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.Grade ?? int.MaxValue)">Grade</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonTeacher?.FirstName ?? string.Empty)">Teacher First Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonTeacher?.LastName ?? string.Empty)">Teacher Last Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonStudent?.FirstName ?? string.Empty)">Student First Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonStudent?.LastName ?? string.Empty)">Student Last Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_d_Subject?.Name ?? string.Empty)">Subject Name</MudTableSortLabel></MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="Grade">@context.Grade</MudTd>
-            <MudTd DataLabel="TeacherFirstName">@context.SH_PersonTeacher.FirstName</MudTd>
-            <MudTd DataLabel="TeacherLastName">@context.SH_PersonTeacher.LastName</MudTd>
-            <MudTd DataLabel="StudentFirstName">@context.SH_PersonStudent.FirstName</MudTd>
-            <MudTd DataLabel="StudentLastName">@context.SH_PersonStudent.LastName</MudTd>
-            <MudTd DataLabel="SubjectName">@context.SH_d_Subject.Name</MudTd>
+            <MudTd DataLabel="TeacherFirstName">@context.SH_PersonTeacher?.FirstName</MudTd>
+            <MudTd DataLabel="TeacherLastName">@context.SH_PersonTeacher?.LastName</MudTd>
+            <MudTd DataLabel="StudentFirstName">@context.SH_PersonStudent?.FirstName</MudTd>
+            <MudTd DataLabel="StudentLastName">@context.SH_PersonStudent?.LastName</MudTd>
+            <MudTd DataLabel="SubjectName">@context.SH_d_Subject?.Name</MudTd>
         </RowTemplate>
         <PagerContent>
             <MudTablePager PageSizeOptions="new int[] {10, 25, 50, 100}" />
@@ -94,7 +94,7 @@ else
     // Filtering
     private string SelectedRowClassFunc(SH_Grade grade, int rowNumber)
     {
-        if (mudTable.SelectedItem != null && mudTable.SelectedItem.Equals(grade))
+        if (mudTable?.SelectedItem != null && mudTable.SelectedItem.Equals(grade))
         {
             return "selected";
         }
@@ -113,7 +113,7 @@ else
     {
         if (string.IsNullOrWhiteSpace(searchString))
             return true;
-        if ($"{grade.Grade} {grade.SH_PersonTeacher.FirstName} {grade.SH_PersonTeacher.LastName} {grade.SH_PersonStudent.FirstName} {grade.SH_PersonStudent.LastName} {grade.SH_d_Subject.Name}".ToLower().Contains(searchString.ToLower()))
+        if ($"{grade.Grade} {grade.SH_PersonTeacher?.FirstName} {grade.SH_PersonTeacher?.LastName} {grade.SH_PersonStudent?.FirstName} {grade.SH_PersonStudent?.LastName} {grade.SH_d_Subject?.Name}".ToLower().Contains(searchString.ToLower()))
             return true;
         return false;
     }

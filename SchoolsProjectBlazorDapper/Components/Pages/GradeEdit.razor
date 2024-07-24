@@ -27,8 +27,8 @@
 <MudSnackbarProvider />
 
 @*Wait for last object in SH_Grade to load for display*@
-@if (selectedGrade.SH_d_Subject == null || SH_PersonTeacherTable.Count == 0
-     || SH_PersonStudentTable.Count == 0 || SH_d_SubjectTable.Count == 0)
+@if (selectedGrade?.SH_d_Subject == null || SH_PersonTeacherTable?.Count == 0
+     || SH_PersonStudentTable?.Count == 0 || SH_d_SubjectTable?.Count == 0)
 {
     <p><em>Loading Grade...</em></p>
 }
@@ -53,13 +53,13 @@ else
             <tbody>
                 <tr>
                     <td>@selectedGrade.Grade</td>
-                    <td>@selectedGrade.SH_PersonTeacher.Id</td>
-                    <td>@selectedGrade.SH_PersonTeacher.FirstName</td>
-                    <td>@selectedGrade.SH_PersonTeacher.LastName</td>
-                    <td>@selectedGrade.SH_PersonStudent.Id</td>
-                    <td>@selectedGrade.SH_PersonStudent.FirstName</td>
-                    <td>@selectedGrade.SH_PersonStudent.LastName</td>
-                    <td>@selectedGrade.SH_d_Subject.Name</td>
+                    <td>@selectedGrade?.SH_PersonTeacher?.Id</td>
+                    <td>@selectedGrade?.SH_PersonTeacher?.FirstName</td>
+                    <td>@selectedGrade?.SH_PersonTeacher?.LastName</td>
+                    <td>@selectedGrade?.SH_PersonStudent?.Id</td>
+                    <td>@selectedGrade?.SH_PersonStudent?.FirstName</td>
+                    <td>@selectedGrade?.SH_PersonStudent?.LastName</td>
+                    <td>@selectedGrade?.SH_d_Subject.Name</td>
                 </tr>
             </tbody>
         </MudSimpleTable>
@@ -85,9 +85,9 @@ else
                                 <MudTextField @bind-Value="searchStringTeacher1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
                             </ToolBarContent>
                             <HeaderContent>
-                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id)">Id</MudTableSortLabel></MudTh>
-                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.FirstName)">Teacher First Name</MudTableSortLabel></MudTh>
-                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.LastName)">Teacher Last Name</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id ?? int.MaxValue)">Id</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.FirstName ?? string.Empty)">Teacher First Name</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.LastName ?? string.Empty)">Teacher Last Name</MudTableSortLabel></MudTh>
                             </HeaderContent>
                             <RowTemplate>
                                 <MudTd DataLabel="Id">@context.Id</MudTd>
@@ -110,9 +110,9 @@ else
                                 <MudTextField @bind-Value="searchStringStudent1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
                             </ToolBarContent>
                             <HeaderContent>
-                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id)">Id</MudTableSortLabel></MudTh>
-                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.FirstName)">Student First Name</MudTableSortLabel></MudTh>
-                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.LastName)">Student Last Name</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id ?? int.MaxValue)">Id</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.FirstName ?? string.Empty)">Student First Name</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.LastName ?? string.Empty)">Student Last Name</MudTableSortLabel></MudTh>
                             </HeaderContent>
                             <RowTemplate>
                                 <MudTd DataLabel="Id">@context.Id</MudTd>
@@ -135,7 +135,7 @@ else
                                 <MudTextField @bind-Value="searchStringSubject1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
                             </ToolBarContent>
                             <HeaderContent>
-                                <MudTh><MudTableSortLabel SortBy="new Func<SH_d_Subject, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_d_Subject, object>(x=>x.Name ?? string.Empty)">Name</MudTableSortLabel></MudTh>
                             </HeaderContent>
                             <RowTemplate>
                                 <MudTd DataLabel="Name">@context.Name</MudTd>
