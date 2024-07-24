@@ -1,0 +1,84 @@
+﻿@page "/person-edit/{personId}"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using MudBlazor;
+
+<style>
+    .selected {
+        background-color: #1E88E5 !important;
+    }
+
+        .selected > td {
+            color: white !important;
+        }
+
+            .selected > td .mud-input {
+                color: white !important;
+            }
+</style>
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@*Wait for everything to load*@
+@if (selectedPerson?.SH_School == null)
+{
+    <p><em>Loading Person...</em></p>
+}
+else
+{
+    <h5>Editing Person</h5>
+    <MudPaper Class="border-solid border-2 mud-border-primary pa-4 ma-4" Elevation="0">
+        <h6><em>Selected Person</em></h6>
+        <MudSimpleTable Style="overflow-x: auto;">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>School Name</th>
+                    <th>Type</th>
+                    <th>Date Of Birth</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@selectedPerson?.Id</td>
+                    <td>@selectedPerson?.FirstName</td>
+                    <td>@selectedPerson?.LastName</td>
+                    <td>@selectedPerson?.Age</td>
+                    <td>@selectedPerson?.SH_School?.Name</td>
+                    <td>@selectedPerson?.SH_d_Type?.Name</td>
+                    <td>@DateOnly.FromDateTime(selectedPerson.DateOfBirth)</td>
+                </tr>
+            </tbody>
+        </MudSimpleTable>
+        <MudButton Class="mt-4" Variant="Variant.Outlined" Color="Color.Primary" @onclick="UpdateGrade">Submit</MudButton>
+    </MudPaper>
+}
+@code {
+    [Parameter] public string? personId { get; set; }
+
+    public SH_Person? selectedPerson = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Get selected person
+        selectedPerson.Id = int.Parse(personId);
+        selectedPerson = await dbLayer.SH_PersonSelectById(selectedPerson);
+    }
+
+    private async Task UpdateGrade()
+    {
+        throw new NotImplementedException();
+        //await dbLayer.SH_GradesUpdate(selectedGrade);
+        navigationManager.NavigateTo("/grades");
+    }
+}

@@ -97,6 +97,31 @@ namespace SchoolsProjectBlazorDapper.Logic
             }
         }
 
+        public async Task<SH_Person> SH_PersonSelectById(SH_Person selectedPerson)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get single grade
+                var p = new DynamicParameters();
+                p.Add("@Id", selectedPerson.Id);
+                var result = await db.QuerySingleOrDefaultAsync<SH_Person>(PRC_SH_PERSONS_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
+
+                // Get SH_School for Person
+                var ps = new DynamicParameters();
+                ps.Add("@Id", result.SchoolId);
+                result.SH_School = await db.QuerySingleOrDefaultAsync<SH_School>(PRC_SH_SCHOOLS_SELECT_BY_ID, ps, commandType: CommandType.StoredProcedure);
+
+                // Get SH_d_Type for Person
+                var pt = new DynamicParameters();
+                pt.Add("@Id", result.TypeId);
+                result.SH_d_Type = await db.QuerySingleOrDefaultAsync<SH_d_Type>(PRC_SH_D_TYPES_SELECT_BY_ID, pt, commandType: CommandType.StoredProcedure);
+
+                return result;
+            }
+        }
+
         public async Task SH_PersonsInsert(SH_Person selectedPerson)
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))

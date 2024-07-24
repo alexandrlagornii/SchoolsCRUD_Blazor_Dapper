@@ -50,12 +50,12 @@ else
             <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
         </ToolBarContent>
         <HeaderContent>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id)">Id</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.FirstName)">First Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.LastName)">Last Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Age)">Age</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.SH_School.Name)">School Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.SH_d_Type.Name)">Type</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id ?? int.MaxValue)">Id</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.FirstName ?? string.Empty)">First Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.LastName ?? string.Empty)">Last Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Age ?? int.MaxValue)">Age</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.SH_School?.Name ?? string.Empty)">School Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.SH_d_Type?.Name ?? string.Empty)">Type</MudTableSortLabel></MudTh>
             <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.DateOfBirth)">Date of Birth</MudTableSortLabel></MudTh>
         </HeaderContent>
         <RowTemplate>
@@ -63,8 +63,8 @@ else
             <MudTd DataLabel="First Name">@context.FirstName</MudTd>
             <MudTd DataLabel="Last Name">@context.LastName</MudTd>
             <MudTd DataLabel="Age">@context.Age</MudTd>
-            <MudTd DataLabel="School Name">@context.SH_School.Name</MudTd>
-            <MudTd DataLabel="Type">@context.SH_d_Type.Name</MudTd>
+            <MudTd DataLabel="School Name">@context.SH_School?.Name</MudTd>
+            <MudTd DataLabel="Type">@context.SH_d_Type?.Name</MudTd>
             <MudTd DataLabel="DateOfBirth">@DateOnly.FromDateTime(context.DateOfBirth)</MudTd>
         </RowTemplate>
         <PagerContent>
@@ -98,7 +98,7 @@ else
     // Filtering
     private string SelectedRowClassFunc(SH_Person person, int rowNumber)
     {
-        if (mudTable.SelectedItem != null && mudTable.SelectedItem.Equals(person))
+        if (mudTable?.SelectedItem != null && mudTable.SelectedItem.Equals(person))
         {
             return "selected";
         }
@@ -117,7 +117,7 @@ else
     {
         if (string.IsNullOrWhiteSpace(searchString))
             return true;
-        if ($"".ToLower().Contains(searchString.ToLower()))
+        if ($"{person.Id} {person.FirstName} {person.LastName} {person.Age} {person.SH_School?.Name} {person.SH_d_Type?.Name} {person.DateOfBirth}".ToLower().Contains(searchString.ToLower()))
             return true;
         return false;
     }
