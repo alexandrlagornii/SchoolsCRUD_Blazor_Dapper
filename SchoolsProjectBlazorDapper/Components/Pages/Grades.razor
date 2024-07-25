@@ -6,10 +6,15 @@
 
 @using SchoolsProjectBlazorDapper.Models;
 @using SchoolsProjectBlazorDapper.Components.Pages.Reusable;
+@using MudBlazor
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
 @if (GradesTable.Count == 0)
 {
-    <MudThemeProvider />
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
     <p style="padding-top: 10px;"><em>Loading Grades...</em></p>
 }
@@ -18,7 +23,7 @@ else
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedGrade.Id == null)" @onclick="(() => EditGradePageRedirect(SelectedGrade))">Edit</MudButton>
     <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedGrade.Id == null)" @onclick="DeleteGrade">Delete</MudButton>
-    <SH_GradeTable GradesTable="@GradesTable" @bind-selectedGrade="@SelectedGrade" @bind-selectedGrade:event="SelectedGradeChanged" />
+    <SH_GradesTable GradesTable="@GradesTable" @bind-SelectedGrade="@SelectedGrade" @bind-SelectedGrade:event="SelectedGradeChanged" />
 }
 
 @code {
@@ -46,6 +51,7 @@ else
         navigationManager.NavigateTo($"/grade-edit/{grade.Id}");
     }
 
+    // Redirect to page for adding grade
     private async Task AddGradePageRedirect()
     {
         navigationManager.NavigateTo("/grade-add");

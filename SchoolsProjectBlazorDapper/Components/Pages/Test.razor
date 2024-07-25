@@ -6,50 +6,107 @@
 
 @using SchoolsProjectBlazorDapper.Models;
 @using SchoolsProjectBlazorDapper.Components.Pages.Reusable;
+@using MudBlazor;
 
-@if (GradesTable.Count == 0)
+<style>
+    .selected {
+        background-color: #1E88E5 !important;
+    }
+
+        .selected > td {
+            color: white !important;
+        }
+
+            .selected > td .mud-input {
+                color: white !important;
+            }
+</style>
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<PageTitle>Persons</PageTitle>
+
+@if (PersonsTable.Count == 0)
 {
-    <MudThemeProvider />
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
-    <p style="padding-top: 10px;"><em>Loading Grades...</em></p>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
+    <p style="padding-top: 10px;"><em>Loading Persons...</em></p>
 }
 else
 {
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedGrade.Id == null)" @onclick="(() => EditGradePageRedirect(SelectedGrade))">Edit</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedGrade.Id == null)" @onclick="DeleteGrade">Delete</MudButton>
-    <SH_GradeTable GradesTable="@GradesTable" @bind-selectedGrade="@SelectedGrade" @bind-selectedGrade:event="SelectedGradeChanged"/>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedPerson.Id == null)" @onclick="(() => EditPersonPageRedirect(SelectedPerson))">Edit</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedPerson.Id == null)" @onclick="DeletePerson">Delete</MudButton>
+    <SH_PersonsTable PersonsTable="@PersonsTable" @bind-SelectedPerson="@SelectedPerson" @bind-SelectedPerson:event="SelectedPersonChanged" />
 }
 
-<h5>@SelectedGrade.Grade</h5>
 
 @code {
     // Data models
-    List<SH_Grade> GradesTable = new();
-    private SH_Grade SelectedGrade = new();
+    List<SH_Person> PersonsTable = new();
+    private SH_Person SelectedPerson = new();
+
+    // Reference to table
+    private MudTable<SH_Person>? mudTable;
+
+    // Display or no edit/delete buttons
+    bool disableEditDelete = true;
+
+    // String for filtering
+    private string searchString1 = "";
 
     // Load table
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(500);
-        GradesTable = await dbLayer.SH_GradesSelectAll();
+        PersonsTable = await dbLayer.SH_PersonsSelectAll();
     }
 
-    // Delete grade if selected and pressed delete
-    private async Task DeleteGrade()
+    // Filtering
+    private string SelectedRowClassFunc(SH_Person person, int rowNumber)
     {
-        await dbLayer.SH_GradesDeleteById(SelectedGrade);
+        if (mudTable?.SelectedItem != null && mudTable.SelectedItem.Equals(person))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+    // If pressed on row activate edit/delete buttons
+    private void RowClickFunc(TableRowClickEventArgs<SH_Person> tableRowClickEventArgs)
+    {
+        disableEditDelete = false;
+    }
+
+    // Search in table functions
+    private bool FilterFunc1(SH_Person person) => FilterFunc(person, searchString1);
+    private bool FilterFunc(SH_Person person, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if ($"{person.Id} {person.FirstName} {person.LastName} {person.Age} {person.SH_School?.Name} {person.SH_d_Type?.Name} {person.DateOfBirth}".ToLower().Contains(searchString.ToLower()))
+            return true;
+        return false;
+    }
+
+    // Delete person if selected and pressed delete
+    private async Task DeletePerson()
+    {
+        await dbLayer.SH_PersonsDeleteById(SelectedPerson);
         navigationManager.NavigateTo(navigationManager.Uri, true);
     }
 
-    // Redirect to page for editing grade
-    private async Task EditGradePageRedirect(SH_Grade grade)
+    // Redirect to page for editing person
+    private async Task EditPersonPageRedirect(SH_Person person)
     {
-        navigationManager.NavigateTo($"/grade-edit/{grade.Id}");
+        navigationManager.NavigateTo($"/person-edit/{person.Id}");
     }
 
-    private async Task AddGradePageRedirect()
+    // Redirect to page for editing person
+    private async Task AddPersonPageRedirect()
     {
-        navigationManager.NavigateTo("/grade-add");
+        navigationManager.NavigateTo("/person-add");
     }
 }

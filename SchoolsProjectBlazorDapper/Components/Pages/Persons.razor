@@ -5,28 +5,13 @@
 @rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 @using SchoolsProjectBlazorDapper.Models;
+@using SchoolsProjectBlazorDapper.Components.Pages.Reusable;
 @using MudBlazor;
-
-<style>
-    .selected {
-        background-color: #1E88E5 !important;
-    }
-
-        .selected > td {
-            color: white !important;
-        }
-
-            .selected > td .mud-input {
-                color: white !important;
-            }
-</style>
 
 <MudThemeProvider />
 <MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
-
-<PageTitle>Persons</PageTitle>
 
 @if (PersonsTable.Count == 0)
 {
@@ -36,57 +21,15 @@
 else
 {
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@disableEditDelete" @onclick="(() => EditPersonPageRedirect(selectedPerson))">Edit</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@disableEditDelete" @onclick="DeletePerson">Delete</MudButton>
-    <p><em>Select row for edit/delete</em></p>
-    <MudTable Items="@PersonsTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
-              @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="selectedPerson"
-              T="SH_Person"
-              OnRowClick="RowClickFunc"
-              Filter="new Func<SH_Person,bool>(FilterFunc1)">
-        <ToolBarContent>
-            <MudText Typo="Typo.h6">Persons</MudText>
-            <MudSpacer />
-            <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
-        </ToolBarContent>
-        <HeaderContent>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id ?? int.MaxValue)">Id</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.FirstName ?? string.Empty)">First Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.LastName ?? string.Empty)">Last Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Age ?? int.MaxValue)">Age</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.SH_School?.Name ?? string.Empty)">School Name</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.SH_d_Type?.Name ?? string.Empty)">Type</MudTableSortLabel></MudTh>
-            <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.DateOfBirth)">Date of Birth</MudTableSortLabel></MudTh>
-        </HeaderContent>
-        <RowTemplate>
-            <MudTd DataLabel="Id">@context.Id</MudTd>
-            <MudTd DataLabel="First Name">@context.FirstName</MudTd>
-            <MudTd DataLabel="Last Name">@context.LastName</MudTd>
-            <MudTd DataLabel="Age">@context.Age</MudTd>
-            <MudTd DataLabel="School Name">@context.SH_School?.Name</MudTd>
-            <MudTd DataLabel="Type">@context.SH_d_Type?.Name</MudTd>
-            <MudTd DataLabel="DateOfBirth">@DateOnly.FromDateTime(context.DateOfBirth)</MudTd>
-        </RowTemplate>
-        <PagerContent>
-            <MudTablePager PageSizeOptions="new int[] {10, 25, 50, 100}" />
-        </PagerContent>
-    </MudTable>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedPerson.Id == null)" @onclick="(() => EditPersonPageRedirect(SelectedPerson))">Edit</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedPerson.Id == null)" @onclick="DeletePerson">Delete</MudButton>
+    <SH_PersonsTable PersonsTable="@PersonsTable" @bind-SelectedPerson="@SelectedPerson" @bind-SelectedPerson:event="SelectedPersonChanged" />
 }
-
 
 @code {
     // Data models
     List<SH_Person> PersonsTable = new();
-    private SH_Person selectedPerson = new();
-
-    // Reference to table
-    private MudTable<SH_Person>? mudTable;
-
-    // Display or no edit/delete buttons
-    bool disableEditDelete = true;
-
-    // String for filtering
-    private string searchString1 = "";
+    private SH_Person SelectedPerson = new();
 
     // Load table
     protected override async Task OnInitializedAsync()
@@ -95,37 +38,10 @@ else
         PersonsTable = await dbLayer.SH_PersonsSelectAll();
     }
 
-    // Filtering
-    private string SelectedRowClassFunc(SH_Person person, int rowNumber)
-    {
-        if (mudTable?.SelectedItem != null && mudTable.SelectedItem.Equals(person))
-        {
-            return "selected";
-        }
-        return string.Empty;
-    }
-
-    // If pressed on row activate edit/delete buttons
-    private void RowClickFunc(TableRowClickEventArgs<SH_Person> tableRowClickEventArgs)
-    {
-        disableEditDelete = false;
-    }
-
-    // Search in table functions
-    private bool FilterFunc1(SH_Person person) => FilterFunc(person, searchString1);
-    private bool FilterFunc(SH_Person person, string searchString)
-    {
-        if (string.IsNullOrWhiteSpace(searchString))
-            return true;
-        if ($"{person.Id} {person.FirstName} {person.LastName} {person.Age} {person.SH_School?.Name} {person.SH_d_Type?.Name} {person.DateOfBirth}".ToLower().Contains(searchString.ToLower()))
-            return true;
-        return false;
-    }
-
     // Delete person if selected and pressed delete
     private async Task DeletePerson()
     {
-        await dbLayer.SH_PersonsDeleteById(selectedPerson);
+        await dbLayer.SH_PersonsDeleteById(SelectedPerson);
         navigationManager.NavigateTo(navigationManager.Uri, true);
     }
 
@@ -135,7 +51,7 @@ else
         navigationManager.NavigateTo($"/person-edit/{person.Id}");
     }
 
-    // Redirect to page for editing person
+    // Redirect to page for adding person
     private async Task AddPersonPageRedirect()
     {
         navigationManager.NavigateTo("/person-add");

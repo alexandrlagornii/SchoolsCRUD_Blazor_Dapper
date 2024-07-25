@@ -18,9 +18,6 @@
             }
 </style>
 
-<MudThemeProvider />
-<MudPopoverProvider />
-
 <MudTable Items="@GradesTable" Hover="true" Bordered="true" Dense="true" SortLabel="Sort By" AllowUnsorted="true"
           @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="SelectedGrade"
           T="SH_Grade"
