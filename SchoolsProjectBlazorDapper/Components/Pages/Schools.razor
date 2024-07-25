@@ -1,0 +1,140 @@
+﻿@page "/schools"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using MudBlazor;
+
+
+<style>
+    .selected {
+        background-color: #1E88E5 !important;
+    }
+
+        .selected > td {
+            color: white !important;
+        }
+
+            .selected > td .mud-input {
+                color: white !important;
+            }
+</style>
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<PageTitle>Grades</PageTitle>
+
+@if (SchoolsTable.Count == 0)
+{
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchoolPageRedirect">Add</MudButton>
+    <p style="padding-top: 10px;"><em>Loading Schools...</em></p>
+}
+else
+{
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchoolPageRedirect">Add</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@disableEditDelete" @onclick="(() => EditSchoolPageRedirect(selectedSchool))">Edit</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@disableEditDelete" @onclick="DeleteSchool">Delete</MudButton>
+    <p><em>Select row for edit/delete</em></p>
+    <MudTable Items="@SchoolsTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
+              @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="selectedSchool"
+              T="SH_School"
+              OnRowClick="RowClickFunc"
+              Filter="new Func<SH_School,bool>(FilterFunc1)">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Schools</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.Name ?? string.Empty)">Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.NumStudents ?? int.MaxValue)">Num Students</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.NumTeachers ?? int.MaxValue)">Num Teachers</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.SH_d_Country?.Name ?? string.Empty)">Country Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.SH_d_City?.Name ?? string.Empty)">City Name</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.Address ?? string.Empty)">Address</MudTableSortLabel></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Name">@context.Name</MudTd>
+            <MudTd DataLabel="NumStudents">@context.NumStudents</MudTd>
+            <MudTd DataLabel="NumTeachers">@context.NumTeachers</MudTd>
+            <MudTd DataLabel="CountryName">@context.SH_d_Country?.Name</MudTd>
+            <MudTd DataLabel="CityName">@context.SH_d_City?.Name</MudTd>
+            <MudTd DataLabel="Address">@context.Address</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager PageSizeOptions="new int[] {10, 25, 50, 100}" />
+        </PagerContent>
+    </MudTable>
+}
+
+@code {
+    // Data models
+    List <SH_School> SchoolsTable = new();
+    private SH_School selectedSchool = new();
+
+    // Reference to table
+    private MudTable<SH_School>? mudTable;
+
+    // Display or no edit/delete buttons
+    bool disableEditDelete = true;
+
+    // String for filtering
+    private string searchString1 = "";
+
+    // Load table
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        SchoolsTable = await dbLayer.SH_SchoolsSelectAll();
+    }
+
+    // Filtering
+    private string SelectedRowClassFunc(SH_School school, int rowNumber)
+    {
+        if (mudTable?.SelectedItem != null && mudTable.SelectedItem.Equals(school))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+    // If pressed on row activate edit/delete buttons
+    private void RowClickFunc(TableRowClickEventArgs<SH_School> tableRowClickEventArgs)
+    {
+        disableEditDelete = false;
+    }
+
+    // Search in table functions
+    private bool FilterFunc1(SH_School school) => FilterFunc(school, searchString1);
+    private bool FilterFunc(SH_School school, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if ($"".ToLower().Contains(searchString.ToLower()))
+            return true;
+        return false;
+    }
+
+    // Delete grade if selected and pressed delete
+    private async Task DeleteSchool()
+    {
+        await dbLayer.SH_SchoolsDeleteById(selectedSchool);
+        navigationManager.NavigateTo(navigationManager.Uri, true);
+    }
+
+    // Redirect to page for editing grade
+    private async Task EditSchoolPageRedirect(SH_School school)
+    {
+        navigationManager.NavigateTo($"/school-edit/{school.Id}");
+    }
+
+    private async Task AddSchoolPageRedirect()
+    {
+        navigationManager.NavigateTo("/school-add");
+    }
+}

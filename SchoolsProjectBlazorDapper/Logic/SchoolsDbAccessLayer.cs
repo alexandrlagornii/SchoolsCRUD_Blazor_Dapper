@@ -23,6 +23,7 @@ namespace SchoolsProjectBlazorDapper.Logic
 
         private const string PRC_SH_SCHOOLS_SELECT_ALL = "prc_SH_SchoolsSelectAll";
         private const string PRC_SH_SCHOOLS_SELECT_BY_ID = "prc_SH_SchoolsSelectById";
+        private const string PRC_SH_SCHOOLS_DELETE_BY_ID = "prc_SH_SchoolsDeleteById";
 
         private const string PRC_SH_D_TYPES_SELECT_ALL = "prc_SH_d_TypesSelectAll";
         private const string PRC_SH_D_TYPES_SELECT_BY_ID = "prc_SH_d_TypesSelectById";
@@ -196,6 +197,17 @@ namespace SchoolsProjectBlazorDapper.Logic
                     school.SH_d_City = await db.QuerySingleOrDefaultAsync<SH_d_City>(PRC_SH_D_CITY_SELECT_BY_ID, pcc, commandType: CommandType.StoredProcedure);
                 }
                 return result.ToList();
+            }
+        }
+
+        public async Task SH_SchoolsDeleteById(SH_School school)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+                var p = new DynamicParameters();
+                p.Add("@Id", school.Id);
+                await db.QueryAsync(PRC_SH_SCHOOLS_DELETE_BY_ID, p, commandType: CommandType.StoredProcedure);
             }
         }
 
