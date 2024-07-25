@@ -53,12 +53,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQZXJzb25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/Reusable/SH_GradeTable.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXVzYWJsZVxTSF9HcmFkZVRhYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/SchoolAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTY2hvb2xBZGQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/Schools.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTY2hvb2xzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/Test.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUZXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Routes.razor]

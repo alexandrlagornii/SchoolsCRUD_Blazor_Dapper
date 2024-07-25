@@ -1,4 +1,4 @@
-﻿@page "/grades"
+﻿@page "/test"
 @inject Logic.SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 @attribute [StreamRendering]
@@ -18,8 +18,10 @@ else
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedGrade.Id == null)" @onclick="(() => EditGradePageRedirect(SelectedGrade))">Edit</MudButton>
     <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedGrade.Id == null)" @onclick="DeleteGrade">Delete</MudButton>
-    <SH_GradeTable GradesTable="@GradesTable" @bind-selectedGrade="@SelectedGrade" @bind-selectedGrade:event="SelectedGradeChanged" />
+    <SH_GradeTable GradesTable="@GradesTable" @bind-selectedGrade="@SelectedGrade" @bind-selectedGrade:event="SelectedGradeChanged"/>
 }
+
+<h5>@SelectedGrade.Grade</h5>
 
 @code {
     // Data models
