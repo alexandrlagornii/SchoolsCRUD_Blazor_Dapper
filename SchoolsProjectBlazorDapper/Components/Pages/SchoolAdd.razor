@@ -1,0 +1,194 @@
+﻿@page "/school-add"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using MudBlazor;
+
+<style>
+    .selected {
+        background-color: #1E88E5 !important;
+    }
+
+        .selected > td {
+            color: white !important;
+        }
+
+            .selected > td .mud-input {
+                color: white !important;
+            }
+</style>
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@*Wait for everything to load*@
+@if (selectedSchool?.SH_d_City == null)
+{
+    <p><em>Loading School...</em></p>
+}
+else
+{
+    <h5>Editing School</h5>
+    <MudPaper Class="border-solid border-2 mud-border-primary pa-4 ma-4" Elevation="0">
+        <h6><em>Selected School</em></h6>
+        <MudSimpleTable Style="overflow-x: auto;">
+            <thead>
+                <tr>
+                    <th>School Name</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@selectedSchool?.Name</td>
+                    <td>@selectedSchool?.SH_d_Country?.Name</td>
+                    <td>@selectedSchool?.SH_d_City?.Name</td>
+                    <td>@selectedSchool?.Address</td>
+                </tr>
+            </tbody>
+        </MudSimpleTable>
+        <MudButton Class="mt-4" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(selectedSchool.Name == null || selectedSchool.CountryId == null || selectedSchool.CityId == null || selectedSchool.Address == null)" @onclick="InsertSchool">Submit</MudButton>
+    </MudPaper>
+    <MudPaper Class="border-solid border-2 mud-border-primary pa-4" Elevation="0">
+        <h6><em>Select to Edit</em></h6>
+        <div class="person-edit-table" style="margin:30px">
+            <MudTextField @bind-Value="selectedSchool.Name" Label="Name" Variant="Variant.Text"></MudTextField>
+            <MudTextField @bind-Value="selectedSchool.Address" Label="Adderss" Variant="Variant.Text"></MudTextField>
+        </div>
+        <MudSimpleTable>
+            <tbody>
+                <tr>
+                    <td>
+                        <MudTable Items="@SH_d_CountryTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
+                                  @ref="SH_d_CountryMudTable" RowClassFunc="@SelectedRowClassFuncCountry" @bind-SelectedItem="selectedSchool.SH_d_Country"
+                                  T="SH_d_Country" Dense="true" OnRowClick="RowClickFuncCountry"
+                                  Filter="new Func<SH_d_Country, bool>(FilterFuncCountry1)">
+                            <ToolBarContent>
+                                <MudText Typo="Typo.h6">Schools</MudText>
+                                <MudSpacer />
+                                <MudTextField @bind-Value="searchStringCountry1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                            </ToolBarContent>
+                            <HeaderContent>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_d_Country, object>(x=>x.Name ?? string.Empty)">Country</MudTableSortLabel></MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="Country">@context.Name</MudTd>
+                            </RowTemplate>
+                            <PagerContent>
+                                <MudTablePager PageSizeOptions="new int[] {5, 10}" />
+                            </PagerContent>
+                        </MudTable>
+                    </td>
+                    <td>
+                        <MudTable Items="@SH_d_CityTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
+                                  @ref="SH_d_CityMudTable" RowClassFunc="@SelectedRowClassFuncCity" @bind-SelectedItem="selectedSchool.SH_d_City"
+                                  T="SH_d_City" Dense="true" OnRowClick="RowClickFuncType"
+                                  Filter="new Func<SH_d_City, bool>(FilterFuncCity1)">
+                            <ToolBarContent>
+                                <MudText Typo="Typo.h6">City</MudText>
+                                <MudSpacer />
+                                <MudTextField @bind-Value="searchStringCity1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                            </ToolBarContent>
+                            <HeaderContent>
+                                <MudTh><MudTableSortLabel SortBy="new Func<SH_d_City, object>(x=>x.Name ?? string.Empty)">City</MudTableSortLabel></MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd DataLabel="City">@context.Name</MudTd>
+                            </RowTemplate>
+                            <PagerContent>
+                                <MudTablePager PageSizeOptions="new int[] {5, 10}" />
+                            </PagerContent>
+                        </MudTable>
+                    </td>
+                </tr>
+            </tbody>
+        </MudSimpleTable>
+    </MudPaper>
+}
+@code {
+    public SH_School? selectedSchool = new();
+
+    // School Table
+    List<SH_d_Country>? SH_d_CountryTable = new();
+    private MudTable<SH_d_Country>? SH_d_CountryMudTable;
+    private string searchStringCountry1 = "";
+
+    // Type Table
+    List<SH_d_City>? SH_d_CityTable = new();
+    private MudTable<SH_d_City>? SH_d_CityMudTable;
+    private string searchStringCity1 = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Initialize empty person
+        selectedSchool.SH_d_Country = new();
+        selectedSchool.SH_d_City = new();
+
+        // Get schools for Schools table
+        SH_d_CountryTable = await dbLayer.SH_d_CountriesSelectAll();
+
+        // Get type for Type table
+        SH_d_CityTable = await dbLayer.SH_d_CitiesSelectAll();
+    }
+
+    private async Task InsertSchool()
+    {
+        await dbLayer.SH_SchoolInsert(selectedSchool);
+        navigationManager.NavigateTo("/persons");
+    }
+
+    private string SelectedRowClassFuncCountry(SH_d_Country country, int rowNumer)
+    {
+        if (SH_d_CountryMudTable.SelectedItem != null && SH_d_CountryMudTable.SelectedItem.Equals(country))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+    private string SelectedRowClassFuncCity(SH_d_City city, int rowNumber)
+    {
+        if (SH_d_CityMudTable.SelectedItem != null && SH_d_CityMudTable.SelectedItem.Equals(city))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+    private void RowClickFuncCountry(TableRowClickEventArgs<SH_d_Country> tableRowClickEventArgs)
+    {
+        selectedSchool.CountryId = selectedSchool.SH_d_Country.Id;
+    }
+
+    private void RowClickFuncType(TableRowClickEventArgs<SH_d_City> tableRowClickEventArgs)
+    {
+        selectedSchool.CityId = selectedSchool.SH_d_City.Id;
+    }
+
+    private bool FilterFuncCountry1(SH_d_Country country) => FilterFuncCountry(country, searchStringCountry1);
+    private bool FilterFuncCountry(SH_d_Country country, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if ($"{country.Name}".ToLower().Contains(searchString.ToLower()))
+            return true;
+        return false;
+    }
+
+    private bool FilterFuncCity1(SH_d_City city) => FilterFuncCity(city, searchStringCity1);
+    private bool FilterFuncCity(SH_d_City city, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if ($"{city.Name}".ToLower().Contains(searchString.ToLower()))
+            return true;
+        return false;
+    }
+}
