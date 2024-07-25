@@ -11,7 +11,7 @@
         public SH_d_Country? SH_d_Country { get; set; }
 
         public int? CityId { get; set; }
-        public SH_d_City? SH_D_City { get; set; }
+        public SH_d_City? SH_d_City { get; set; }
 
         public string? Address {  get; set; }
     }

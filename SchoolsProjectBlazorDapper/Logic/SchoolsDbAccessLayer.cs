@@ -19,10 +19,12 @@ namespace SchoolsProjectBlazorDapper.Logic
         private const string PRC_SH_PERSONS_SELECT_ALL_BY_TYPE = "prc_SH_PersonsSelectAllByType";
         private const string PRC_SH_PERSONS_INSERT = "prc_SH_PersonsInsert";
         private const string PRC_SH_PERSONS_DELETE_BY_ID = "prc_SH_PersonsDeleteById";
+        private const string PRC_SH_PERSONS_UPDATE = "prc_SH_PersonsUpdate";
 
         private const string PRC_SH_SCHOOLS_SELECT_ALL = "prc_SH_SchoolsSelectAll";
         private const string PRC_SH_SCHOOLS_SELECT_BY_ID = "prc_SH_SchoolsSelectById";
 
+        private const string PRC_SH_D_TYPES_SELECT_ALL = "prc_SH_d_TypesSelectAll";
         private const string PRC_SH_D_TYPES_SELECT_BY_ID = "prc_SH_d_TypesSelectById";
 
         private const string PRC_SH_GRADES_INSERT = "prc_SH_GradesInsert";
@@ -33,6 +35,10 @@ namespace SchoolsProjectBlazorDapper.Logic
 
         private const string PRC_SH_D_SUBJECTS_SELECT_ALL = "prc_SH_d_SubjectsSelectAll";
         private const string PRC_SH_D_SUBJECTS_SELECT_BY_ID = "prc_SH_d_SubjectsSelectById";
+
+        private const string PRC_SH_D_COUNTRY_SELECT_BY_ID = "prc_SH_d_CountrySelectById";
+
+        private const string PRC_SH_D_CITY_SELECT_BY_ID = "prc_SH_d_CitySelectById";
 
 
         // Constructor
@@ -151,6 +157,48 @@ namespace SchoolsProjectBlazorDapper.Logic
             }
         }
 
+        public async Task SH_PersonsUpdate(SH_Person person)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+                var p = new DynamicParameters();
+                p.Add("@Id", person.Id);
+                p.Add("@SchoolId", person.SchoolId);
+                p.Add("@TypeId", person.TypeId);
+                p.Add("@FirstName", person.FirstName);
+                p.Add("@LastName", person.LastName);
+                p.Add("@DateOfBirth", person.DateOfBirth);
+                await db.QueryAsync(PRC_SH_PERSONS_UPDATE, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task<List<SH_School>> SH_SchoolsSelectAll()
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get SH_Persons
+                var result = await db.QueryAsync<SH_School>(PRC_SH_SCHOOLS_SELECT_ALL, commandType: CommandType.StoredProcedure);
+
+                // For each row get the relations SH_School and SH_d_Type
+                foreach (SH_School school in result)
+                {
+                    // Get SH_School in the SH_Person datatype instance
+                    var pc = new DynamicParameters();
+                    pc.Add("@Id", school.CountryId);
+                    school.SH_d_Country = await db.QuerySingleOrDefaultAsync<SH_d_Country>(PRC_SH_D_COUNTRY_SELECT_BY_ID, pc, commandType: CommandType.StoredProcedure);
+
+                    // Get Sh_d_Type in the SH_Person datatype instance
+                    var pcc = new DynamicParameters();
+                    pcc.Add("@Id", school.CityId);
+                    school.SH_d_City = await db.QuerySingleOrDefaultAsync<SH_d_City>(PRC_SH_D_CITY_SELECT_BY_ID, pcc, commandType: CommandType.StoredProcedure);
+                }
+                return result.ToList();
+            }
+        }
+
         public async Task<List<SH_Grade>> SH_GradesSelectAll()
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
@@ -259,6 +307,18 @@ namespace SchoolsProjectBlazorDapper.Logic
 
                 // Get SH_Persons
                 var result = await db.QueryAsync<SH_d_Subject>(PRC_SH_D_SUBJECTS_SELECT_ALL, commandType: CommandType.StoredProcedure);
+                return result.ToList();
+            }
+        }
+
+        public async Task<List<SH_d_Type>> SH_d_TypesSelectAll()
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get SH_d_Types
+                var result = await db.QueryAsync<SH_d_Type>(PRC_SH_D_TYPES_SELECT_ALL, commandType: CommandType.StoredProcedure);
                 return result.ToList();
             }
         }

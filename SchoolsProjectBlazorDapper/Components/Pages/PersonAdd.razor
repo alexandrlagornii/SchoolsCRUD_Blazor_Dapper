@@ -1,4 +1,4 @@
-﻿@page "/person-edit/{personId}"
+﻿@page "/person-add"
 @inject Logic.SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 @attribute [StreamRendering]
@@ -39,10 +39,8 @@ else
         <MudSimpleTable Style="overflow-x: auto;">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Age</th>
                     <th>School Name</th>
                     <th>Type</th>
                     <th>Date Of Birth</th>
@@ -50,17 +48,15 @@ else
             </thead>
             <tbody>
                 <tr>
-                    <td>@selectedPerson?.Id</td>
                     <td>@selectedPerson?.FirstName</td>
                     <td>@selectedPerson?.LastName</td>
-                    <td>@selectedPerson?.Age</td>
                     <td>@selectedPerson?.SH_School?.Name</td>
                     <td>@selectedPerson?.SH_d_Type?.Name</td>
                     <td>@DateOnly.FromDateTime(selectedPerson.DateOfBirth)</td>
                 </tr>
             </tbody>
         </MudSimpleTable>
-        <MudButton Class="mt-4" Variant="Variant.Outlined" Color="Color.Primary" @onclick="UpdatePerson">Submit</MudButton>
+        <MudButton Class="mt-4" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(selectedPerson.FirstName == null || selectedPerson.LastName == null || selectedPerson.SchoolId == null || selectedPerson.TypeId == null || selectedPerson.DateOfBirth == null)" @onclick="InsertPerson">Submit</MudButton>
     </MudPaper>
     <MudPaper Class="border-solid border-2 mud-border-primary pa-4" Elevation="0">
         <h6><em>Select to Edit</em></h6>
@@ -120,7 +116,6 @@ else
     </MudPaper>
 }
 @code {
-    [Parameter] public string? personId { get; set; }
     public SH_Person? selectedPerson = new();
 
     // School Table
@@ -135,9 +130,9 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        // Get selected person
-        selectedPerson.Id = int.Parse(personId);
-        selectedPerson = await dbLayer.SH_PersonSelectById(selectedPerson);
+        // Initialize empty person
+        selectedPerson.SH_School = new();
+        selectedPerson.SH_d_Type = new();
 
         // Get schools for Schools table
         SH_SchoolTable = await dbLayer.SH_SchoolsSelectAll();
@@ -146,9 +141,9 @@ else
         SH_d_TypeTable = await dbLayer.SH_d_TypesSelectAll();
     }
 
-    private async Task UpdatePerson()
+    private async Task InsertPerson()
     {
-        await dbLayer.SH_PersonsUpdate(selectedPerson);
+        await dbLayer.SH_PersonsInsert(selectedPerson);
         navigationManager.NavigateTo("/persons");
     }
 
