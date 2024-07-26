@@ -1,0 +1,692 @@
+USE [master]
+GO
+/****** Object:  Database [SchoolsDatabase]    Script Date: 7/26/2024 5:06:25 PM ******/
+CREATE DATABASE [SchoolsDatabase]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'SchoolsDatabase', FILENAME = N'C:\Users\UserPC\SchoolsDatabase.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'SchoolsDatabase_log', FILENAME = N'C:\Users\UserPC\SchoolsDatabase_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [SchoolsDatabase] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [SchoolsDatabase].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [SchoolsDatabase] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [SchoolsDatabase] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [SchoolsDatabase] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [SchoolsDatabase] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [SchoolsDatabase] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [SchoolsDatabase] SET  MULTI_USER 
+GO
+ALTER DATABASE [SchoolsDatabase] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [SchoolsDatabase] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [SchoolsDatabase] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [SchoolsDatabase] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [SchoolsDatabase] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [SchoolsDatabase] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [SchoolsDatabase] SET QUERY_STORE = OFF
+GO
+USE [SchoolsDatabase]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SH_d_Cities]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SH_d_Cities](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_SH_d_City] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SH_d_Classes]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SH_d_Classes](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_SH_d_Class] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SH_d_Country]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SH_d_Country](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_SH_d_Country] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SH_d_Subjects]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SH_d_Subjects](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Subject] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SH_d_Types]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SH_d_Types](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_SH_d_Type] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SH_Grades]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SH_Grades](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Grade] [int] NOT NULL,
+	[StudentId] [int] NOT NULL,
+	[TeacherId] [int] NULL,
+	[SubjectId] [int] NULL,
+ CONSTRAINT [PK_SH_Grades] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SH_Persons]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SH_Persons](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[SchoolId] [int] NULL,
+	[TypeId] [int] NOT NULL,
+	[FirstName] [nvarchar](50) NULL,
+	[LastName] [nvarchar](50) NULL,
+	[Age] [tinyint] NULL,
+	[DateOfBirth] [date] NULL,
+ CONSTRAINT [PK_Student] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SH_Schedules]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SH_Schedules](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Time] [time](7) NOT NULL,
+	[TeacherId] [int] NOT NULL,
+	[ClassId] [int] NOT NULL,
+	[SubjectId] [int] NOT NULL,
+ CONSTRAINT [PK_Schedule] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SH_Schools]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SH_Schools](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[NumStudents] [int] NULL,
+	[NumTeachers] [int] NULL,
+	[CountryId] [int] NOT NULL,
+	[CityId] [int] NOT NULL,
+	[Address] [nvarchar](50) NULL,
+ CONSTRAINT [PK_School] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[SH_Takes]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SH_Takes](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ClassId] [int] NOT NULL,
+	[StudentId] [int] NOT NULL,
+ CONSTRAINT [PK_SH_Takes] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[SH_Grades]  WITH CHECK ADD  CONSTRAINT [FK_Grade_Person] FOREIGN KEY([StudentId])
+REFERENCES [dbo].[SH_Persons] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Grades] CHECK CONSTRAINT [FK_Grade_Person]
+GO
+ALTER TABLE [dbo].[SH_Grades]  WITH CHECK ADD  CONSTRAINT [FK_Grade_Person1] FOREIGN KEY([TeacherId])
+REFERENCES [dbo].[SH_Persons] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Grades] CHECK CONSTRAINT [FK_Grade_Person1]
+GO
+ALTER TABLE [dbo].[SH_Grades]  WITH CHECK ADD  CONSTRAINT [FK_Grade_Subject] FOREIGN KEY([SubjectId])
+REFERENCES [dbo].[SH_d_Subjects] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Grades] CHECK CONSTRAINT [FK_Grade_Subject]
+GO
+ALTER TABLE [dbo].[SH_Persons]  WITH CHECK ADD  CONSTRAINT [FK_Person_School] FOREIGN KEY([SchoolId])
+REFERENCES [dbo].[SH_Schools] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Persons] CHECK CONSTRAINT [FK_Person_School]
+GO
+ALTER TABLE [dbo].[SH_Persons]  WITH CHECK ADD  CONSTRAINT [FK_SH_Person_SH_d_Type] FOREIGN KEY([TypeId])
+REFERENCES [dbo].[SH_d_Types] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Persons] CHECK CONSTRAINT [FK_SH_Person_SH_d_Type]
+GO
+ALTER TABLE [dbo].[SH_Schedules]  WITH CHECK ADD  CONSTRAINT [FK_Schedule_Person] FOREIGN KEY([ClassId])
+REFERENCES [dbo].[SH_d_Classes] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Schedules] CHECK CONSTRAINT [FK_Schedule_Person]
+GO
+ALTER TABLE [dbo].[SH_Schedules]  WITH CHECK ADD  CONSTRAINT [FK_Schedule_Subject] FOREIGN KEY([SubjectId])
+REFERENCES [dbo].[SH_d_Subjects] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Schedules] CHECK CONSTRAINT [FK_Schedule_Subject]
+GO
+ALTER TABLE [dbo].[SH_Schedules]  WITH CHECK ADD  CONSTRAINT [FK_SH_Schedule_SH_Person] FOREIGN KEY([TeacherId])
+REFERENCES [dbo].[SH_Persons] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Schedules] CHECK CONSTRAINT [FK_SH_Schedule_SH_Person]
+GO
+ALTER TABLE [dbo].[SH_Schools]  WITH CHECK ADD  CONSTRAINT [FK_SH_School_SH_d_City] FOREIGN KEY([CityId])
+REFERENCES [dbo].[SH_d_Cities] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Schools] CHECK CONSTRAINT [FK_SH_School_SH_d_City]
+GO
+ALTER TABLE [dbo].[SH_Schools]  WITH CHECK ADD  CONSTRAINT [FK_SH_School_SH_d_Country] FOREIGN KEY([CountryId])
+REFERENCES [dbo].[SH_d_Country] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Schools] CHECK CONSTRAINT [FK_SH_School_SH_d_Country]
+GO
+ALTER TABLE [dbo].[SH_Takes]  WITH CHECK ADD  CONSTRAINT [FK_SH_Takes_SH_d_Class] FOREIGN KEY([ClassId])
+REFERENCES [dbo].[SH_d_Classes] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Takes] CHECK CONSTRAINT [FK_SH_Takes_SH_d_Class]
+GO
+ALTER TABLE [dbo].[SH_Takes]  WITH CHECK ADD  CONSTRAINT [FK_SH_Takes_SH_Person] FOREIGN KEY([StudentId])
+REFERENCES [dbo].[SH_Persons] ([Id])
+GO
+ALTER TABLE [dbo].[SH_Takes] CHECK CONSTRAINT [FK_SH_Takes_SH_Person]
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_CitiesSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_CitiesSelectAll]
+as
+select * from SH_d_Cities;
+
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_CitySelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[prc_SH_d_CitySelectById] @Id int
+as
+select * from SH_d_Cities where Id = @Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesDeleteById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_ClassesDeleteById] @Id int
+as
+begin
+delete SH_Schedules where ClassId = @Id
+delete SH_Takes where ClassId = @Id
+delete SH_d_Classes where Id = @Id
+end
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesInsert]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_ClassesInsert] @Name nvarchar(50)
+as
+insert into SH_d_Classes (Name) values (@Name);
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_ClassesSelectAll]
+as
+select * from SH_d_Classes;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_ClassesSelectById] @Id int
+as
+select * from SH_d_Classes where Id=@Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesUpdate]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_ClassesUpdate] @Id int, @Name nvarchar(50)
+as
+update SH_d_Classes set Name=@Name where Id=@Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_CountriesSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_CountriesSelectAll]
+as
+select * from SH_d_Country;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_CountrySelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_CountrySelectById] @Id int
+as
+select * from SH_d_Country where Id = @Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsDeleteById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_SubjectsDeleteById] @Id int
+as
+begin
+delete from SH_Schedules where SubjectId = @Id
+update SH_Grades set SubjectId = null where SubjectId = @Id
+delete from SH_d_Subjects where Id = @Id
+end
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsInsert]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_SubjectsInsert] @Name nvarchar(50)
+as
+insert into SH_d_Subjects (Name) values (@Name);
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_SubjectsSelectAll]
+as
+select * from SH_d_Subjects;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_SubjectsSelectById] @Id int
+as
+select * from SH_d_Subjects where Id = @Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsUpdate]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_SubjectsUpdate] @Id int, @Name nvarchar(50)
+as
+update SH_d_Subjects set Name = @Name where Id = @Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_TypesSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_TypesSelectAll]
+as
+select * from SH_d_Types;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_TypesSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_d_TypesSelectById] @Id int
+as
+SELECT * FROM SH_d_Types WHERE Id = @Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_GradesDeleteById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[prc_SH_GradesDeleteById] @Id int
+AS
+DELETE FROM SH_Grades WHERE Id = @Id;  
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_GradesInsert]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[prc_SH_GradesInsert] @Grade int, @StudentId int, @TeacherId int, @SubjectId int
+AS
+    IF EXISTS (SELECT 1 FROM SH_Persons WHERE Id = @StudentId AND TypeId = 1)
+       AND EXISTS (SELECT 1 FROM SH_Persons WHERE Id = @TeacherId AND TypeId = 2)
+       AND EXISTS (SELECT 1 FROM SH_d_Subjects WHERE Id = @SubjectId)
+    BEGIN
+        INSERT INTO SH_Grades (Grade, StudentId, TeacherId, SubjectId)
+        VALUES (@Grade, @StudentId, @TeacherId, @SubjectId)
+ END;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_GradesSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[prc_SH_GradesSelectAll]
+AS
+select * from SH_Grades;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_GradesSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_GradesSelectById] @Id int
+as
+select * from SH_Grades where Id = @Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_GradesUpdate]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[prc_SH_GradesUpdate] @Id int, @Grade int, @StudentId int, @TeacherId int, @SubjectId int
+AS
+UPDATE SH_Grades
+SET SH_Grades.Grade = @Grade, SH_Grades.StudentId = @StudentId, SH_Grades.TeacherId = @TeacherId, SH_Grades.SubjectId = @SubjectId
+WHERE
+SH_Grades.Id = @Id
+AND EXISTS (SELECT p.Id FROM SH_Persons p WHERE p.Id = @StudentId)
+AND EXISTS (SELECT p.Id FROM SH_Persons p WHERE p.Id = @TeacherId)
+AND EXISTS (SELECT s.Id FROM SH_d_Subjects s WHERE s.Id = @SubjectId);
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsDeleteById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[prc_SH_PersonsDeleteById]
+@Id int
+as
+begin
+declare @TypeId int = (select TypeId from SH_Persons where Id = @Id)
+declare @SchoolId int = (select SchoolId From SH_Persons where Id=@Id)
+
+if(@TypeId = 1)
+	update SH_Schools set NumStudents  = NumStudents - 1 where Id = @SchoolId
+
+if(@TypeId = 2)
+	update SH_Schools set NumTeachers = NumTeachers - 1 where Id = @SchoolId
+
+delete from SH_Schedules where TeacherId = @Id
+update SH_Grades set TeacherId = null where TeacherId = @Id
+delete from SH_Grades where StudentId = @Id
+delete from SH_Persons where Id = @Id;
+
+end
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsInsert]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[prc_SH_PersonsInsert] @SchoolId int, @TypeId int, @FirstName nvarchar(50),
+@LastName nvarchar(50), @DateOfBirth Date
+as
+begin
+declare @Age int
+SET @Age = DATEDIFF(YEAR, @DateOfBirth, GETDATE())
+insert into SH_Persons (SchoolId, TypeId, FirstName, LastName, Age, DateOfBirth)
+values
+(@SchoolId,
+ @TypeId,
+ @FirstName,
+ @LastName,
+ @Age,
+ @DateOfBirth
+ )
+
+if(@TypeId = 1)
+	update SH_Schools set NumStudents  = NumStudents + 1 where Id = @SchoolId
+
+if(@TypeId = 2)
+	update SH_Schools set NumTeachers = NumTeachers + 1 where Id = @SchoolId
+
+ END
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[prc_SH_PersonsSelectAll]
+AS
+select * from SH_Persons;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsSelectAllByType]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_PersonsSelectAllByType] @TypeId int
+as
+select * from SH_Persons WHERE TypeId = @TypeId;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_PersonsSelectById] @Id int
+as
+select * from SH_Persons where Id = @Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsUpdate]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[prc_SH_PersonsUpdate] @Id int, @SchoolId int, @TypeId int, @FirstName nvarchar(50), @LastName nvarchar(50), @DateOfBirth date
+as
+begin
+declare @SchoolIdBefore int = (select SchoolId From SH_Persons where Id=@Id)
+declare @TypeIdBefore int = (select TypeId from SH_Persons where Id = @Id)
+declare @Age int
+
+if(@SchoolIdBefore <> @SchoolId or @TypeIdBefore <> @TypeId)
+begin
+if(@TypeIdBefore = 1)
+	update SH_Schools set NumStudents  = NumStudents - 1 where Id = @SchoolIdBefore
+
+if(@TypeIdBefore = 2)
+	update SH_Schools set NumTeachers = NumTeachers - 1 where Id = @SchoolIdBefore
+end
+
+
+set @Age = DATEDIFF(YEAR, @DateOfBirth, GETDATE())
+update SH_Persons set SchoolId = @SchoolId, TypeId = @TypeId, FirstName = @FirstName, LastName = @LastName, Age = @Age, DateOfBirth = @DateOfBirth
+where Id = @Id
+
+if(@TypeId = 1)
+	update SH_Schools set NumStudents  = NumStudents + 1 where Id = @SchoolId
+
+if(@TypeId = 2)
+	update SH_Schools set NumTeachers = NumTeachers + 1 where Id = @SchoolId
+
+end
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsDeleteById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[prc_SH_SchoolsDeleteById] @Id int
+as
+begin
+update SH_Persons set SchoolId = null where SchoolId = @Id
+delete SH_Schools where Id = @Id
+end
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsInsert]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[prc_SH_SchoolsInsert] @Name nvarchar(50), @CountryId int, @CityId int, @Address nvarchar(50)
+as
+insert into SH_Schools (Name, NumStudents, NumTeachers, CountryId, CityId, Address)
+values (@Name, 0, 0, @CountryId, @CityId, @Address);
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_SchoolsSelectAll]
+as
+select * from SH_Schools;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_SchoolsSelectById] @Id int
+as
+select * from SH_Schools where Id = @Id
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsUpdate]    Script Date: 7/26/2024 5:06:25 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_SchoolsUpdate] @Id int, @Name nvarchar(50), @CountryId int, @CityId int, @Address nvarchar(50)
+as
+update SH_Schools set Name = @Name, CountryId = @CountryId, CityId = @CityId, Address = @Address
+where Id = @Id;
+GO
+USE [master]
+GO
+ALTER DATABASE [SchoolsDatabase] SET  READ_WRITE 
+GO
