@@ -1,0 +1,32 @@
+﻿@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using MudBlazor;
+
+<MudSimpleTable Style="overflow-x: auto;">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>School Name</th>
+            <th>Type</th>
+            <th>Date Of Birth</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@SelectedPerson?.FirstName</td>
+            <td>@SelectedPerson?.LastName</td>
+            <td>@SelectedPerson?.Age</td>
+            <td>@SelectedPerson?.SH_School?.Name</td>
+            <td>@SelectedPerson?.SH_d_Type?.Name</td>
+            <td>@DateOnly.FromDateTime(SelectedPerson.DateOfBirth)</td>
+        </tr>
+    </tbody>
+</MudSimpleTable>
+
+@code {
+    [Parameter] public SH_Person? SelectedPerson { get; set; }
+}

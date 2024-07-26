@@ -13,6 +13,7 @@
 <MudDialogProvider />
 <MudSnackbarProvider />
 
+@*Wait for everything to load*@
 @if (GradesTable.Count == 0)
 {
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>

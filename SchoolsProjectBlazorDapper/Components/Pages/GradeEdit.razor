@@ -24,11 +24,12 @@ else
     <SH_GradesSimpleTable SelectedGrade="SelectedGrade" />
     <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" @onclick="UpdateGrade">Submit</MudButton>
 
-    <MudTextField @bind-Value="SelectedGrade.Grade" Label="Grade" Variant="Variant.Text"></MudTextField>
-
-    <SH_PersonsTable PersonsTable="SH_PersonTeacherTable" @bind-SelectedPerson="@SelectedGrade.SH_PersonTeacher" @bind-SelectedPerson:event="SelectedPersonChanged" />
-    <SH_PersonsTable PersonsTable="SH_PersonStudentTable" @bind-SelectedPerson="@SelectedGrade.SH_PersonStudent" @bind-SelectedPerson:event="SelectedPersonChanged" />
-    <SH_d_SubjectTable SubjectTable="SH_d_SubjectTable" @bind-SelectedSubject="@SelectedGrade.SH_d_Subject" @bind-SelectedSubject:event="SelectedSubjectChanged" />
+    <div class="edit-add-container">
+        <MudTextField @bind-Value="SelectedGrade.Grade" Label="Grade" Variant="Variant.Text"></MudTextField>
+        <SH_PersonsTable NameTable="Teachers" PersonsTable="SH_PersonTeacherTable" @bind-SelectedPerson="@SelectedGrade.SH_PersonTeacher" @bind-SelectedPerson:event="SelectedPersonChanged" />
+        <SH_PersonsTable NameTable="Students" PersonsTable="SH_PersonStudentTable" @bind-SelectedPerson="@SelectedGrade.SH_PersonStudent" @bind-SelectedPerson:event="SelectedPersonChanged" />
+        <SH_d_SubjectTable SubjectTable="SH_d_SubjectTable" @bind-SelectedSubject="@SelectedGrade.SH_d_Subject" @bind-SelectedSubject:event="SelectedSubjectChanged" />
+    </div>
 }
 
 @code {
@@ -65,9 +66,9 @@ else
     private async Task UpdateGrade()
     {
         // Update Ids
-        SelectedGrade.TeacherId = SelectedGrade.SH_PersonTeacher.Id;
-        SelectedGrade.StudentId = SelectedGrade.SH_PersonStudent.Id;
-        SelectedGrade.SubjectId = SelectedGrade.SH_d_Subject.Id;
+        SelectedGrade.TeacherId = SelectedGrade.SH_PersonTeacher?.Id;
+        SelectedGrade.StudentId = SelectedGrade.SH_PersonStudent?.Id;
+        SelectedGrade.SubjectId = SelectedGrade.SH_d_Subject?.Id;
 
         // Update Grade
         await dbLayer.SH_GradesUpdate(SelectedGrade);

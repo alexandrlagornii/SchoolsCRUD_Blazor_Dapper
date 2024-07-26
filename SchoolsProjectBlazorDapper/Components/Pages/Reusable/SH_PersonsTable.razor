@@ -4,27 +4,13 @@
 @using SchoolsProjectBlazorDapper.Models;
 @using MudBlazor;
 
-<style>
-    .selected {
-        background-color: #1E88E5 !important;
-    }
-
-        .selected > td {
-            color: white !important;
-        }
-
-            .selected > td .mud-input {
-                color: white !important;
-            }
-</style>
-
-<MudTable Items="@PersonsTable" Dense="true" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
+<MudTable Items="@PersonsTable" Hover="true" Bordered="true" Dense="true" SortLabel="Sort By" AllowUnsorted="true"
           @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="SelectedPerson"
           T="SH_Person"
           OnRowClick="RowClickFunc"
           Filter="new Func<SH_Person,bool>(FilterFunc1)">
     <ToolBarContent>
-        <MudText Typo="Typo.h6">Persons</MudText>
+        <MudText Typo="Typo.h6">@NameTable</MudText>
         <MudSpacer />
         <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
     </ToolBarContent>
@@ -56,6 +42,7 @@
     [Parameter] public List<SH_Person>? PersonsTable { get; set; }
     [Parameter] public SH_Person? SelectedPerson { get; set; }
     [Parameter] public EventCallback<SH_Person> SelectedPersonChanged { get; set; }
+    [Parameter] public string? NameTable { get; set; }
 
     // Reference to table
     private MudTable<SH_Person>? mudTable;

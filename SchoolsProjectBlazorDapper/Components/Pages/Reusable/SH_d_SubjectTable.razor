@@ -4,12 +4,12 @@
 @using SchoolsProjectBlazorDapper.Models;
 @using MudBlazor;
 
-<MudTable Items="@SubjectTable" Hover="true" Bordered="true" SortLabel="Sort By" AllowUnsorted="true"
+<MudTable Items="@SubjectTable" Hover="true" Bordered="true" Dense="true" SortLabel="Sort By" AllowUnsorted="true"
           @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="SelectedSubject"
-          T="SH_d_Subject" Dense="true" OnRowClick="RowClickFunc"
+          T="SH_d_Subject" OnRowClick="RowClickFunc"
           Filter="new Func<SH_d_Subject, bool>(FilterFunc1)">
     <ToolBarContent>
-        <MudText Typo="Typo.h6">Subject</MudText>
+        <MudText Typo="Typo.h6">Subjects</MudText>
         <MudSpacer />
         <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
     </ToolBarContent>
@@ -20,7 +20,7 @@
         <MudTd DataLabel="Name">@context.Name</MudTd>
     </RowTemplate>
     <PagerContent>
-        <MudTablePager PageSizeOptions="new int[] {5, 10}" />
+        <MudTablePager PageSizeOptions="new int[] {10, 25, 50, 100}" />
     </PagerContent>
 </MudTable>
 

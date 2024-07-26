@@ -1,5 +1,26 @@
 ﻿@inherits LayoutComponentBase
 
+<MudThemeProvider />
+
+<style>
+    .edit-add-container {
+      display: grid;
+      gap: 20px; /* Space between items */
+    }
+
+    .selected {
+        background-color: #1E88E5 !important;
+    }
+
+    .selected > td {
+        color: white !important;
+    }
+
+        .selected > td .mud-input {
+            color: white !important;
+        }
+</style>
+
 <div class="page">
     <div class="sidebar">
         <NavMenu />
