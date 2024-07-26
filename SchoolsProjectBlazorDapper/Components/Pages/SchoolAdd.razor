@@ -14,7 +14,7 @@
 <MudSnackbarProvider />
 
 @*Wait for everything to load*@
-@if (SelectedSchool?.SH_d_City == null)
+@if (SelectedSchool?.SH_d_City == null || SH_d_CityTable?.Count == 0)
 {
     <p><em>Loading School...</em></p>
 }
@@ -59,7 +59,7 @@ else
         SelectedSchool.CountryId = SelectedSchool.SH_d_Country?.Id;
         SelectedSchool.CityId = SelectedSchool.SH_d_City?.Id;
 
-        await dbLayer.SH_SchoolInsert(SelectedSchool);
+        await dbLayer.SH_SchoolsInsert(SelectedSchool);
         navigationManager.NavigateTo("/schools");
     }
 }

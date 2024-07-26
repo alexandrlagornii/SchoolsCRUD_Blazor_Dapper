@@ -14,14 +14,14 @@
 <MudSnackbarProvider />
 
 @*Wait for everything to load*@
-@if (SelectedPerson?.SH_d_Type == null || SH_SchoolTable?.Count == 0 || SH_d_TypeTable?.Count == 0)
+@if (SelectedPerson?.SH_d_Type == null || SH_d_TypeTable?.Count == 0)
 {
     <p><em>Loading Person...</em></p>
 }
 else
 {
     <SH_PersonSimpleTable SelectedPerson="SelectedPerson" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" @onclick="UpdatePerson">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled = "@(SelectedPerson.FirstName == null || SelectedPerson.LastName == null || SelectedPerson.SH_School?.Id == null || SelectedPerson.SH_d_Type == null || SelectedPerson.DateOfBirth == null)" @onclick="UpdatePerson">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTextField @bind-Value="SelectedPerson.FirstName" Label="FirstName" Variant="Variant.Text"></MudTextField>

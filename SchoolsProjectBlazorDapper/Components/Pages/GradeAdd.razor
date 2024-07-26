@@ -14,8 +14,7 @@
 <MudSnackbarProvider />
 
 @*Wait for everything to load*@
-@if (SelectedGrade?.SH_d_Subject == null || SH_PersonTeacherTable?.Count == 0
-   || SH_PersonStudentTable?.Count == 0 || SH_d_SubjectTable?.Count == 0)
+@if (SelectedGrade?.SH_d_Subject == null || SH_d_SubjectTable?.Count == 0)
 {
     <p><em>Loading Grade...</em></p>
 }

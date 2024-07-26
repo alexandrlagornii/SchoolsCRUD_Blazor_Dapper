@@ -25,6 +25,7 @@ namespace SchoolsProjectBlazorDapper.Logic
         private const string PRC_SH_SCHOOLS_SELECT_BY_ID = "prc_SH_SchoolsSelectById";
         private const string PRC_SH_SCHOOLS_DELETE_BY_ID = "prc_SH_SchoolsDeleteById";
         private const string PRC_SH_SCHOOLS_INSERT = "prc_SH_SchoolsInsert";
+        private const string PRC_SH_SCHOOLS_UPDATE = "prc_SH_SchoolsUpdate";
 
         private const string PRC_SH_D_TYPES_SELECT_ALL = "prc_SH_d_TypesSelectAll";
         private const string PRC_SH_D_TYPES_SELECT_BY_ID = "prc_SH_d_TypesSelectById";
@@ -203,7 +204,32 @@ namespace SchoolsProjectBlazorDapper.Logic
             }
         }
 
-        public async Task SH_SchoolInsert(SH_School school)
+        public async Task<SH_School> SH_SchoolsSelectById(SH_School school)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get SH_Schools
+                var p = new DynamicParameters();
+                p.Add("@Id", school.Id);
+                var result = await db.QueryFirstOrDefaultAsync<SH_School>(PRC_SH_SCHOOLS_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
+
+                // Get countries
+                var pc = new DynamicParameters();
+                p.Add("@Id", result.CountryId);
+                result.SH_d_Country = await db.QueryFirstOrDefaultAsync<SH_d_Country>(PRC_SH_D_COUNTRIES_SELECT_ALL, pc, commandType: CommandType.StoredProcedure);
+
+                // Get Cities
+                var pcc = new DynamicParameters();
+                pcc.Add("@Id", result.CityId);
+                result.SH_d_City = await db.QueryFirstOrDefaultAsync<SH_d_City>(PRC_SH_D_CITY_SELECT_BY_ID, pcc, commandType: CommandType.StoredProcedure);
+
+                return result;
+            }
+        }
+
+        public async Task SH_SchoolsInsert(SH_School school)
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
@@ -214,6 +240,20 @@ namespace SchoolsProjectBlazorDapper.Logic
                 p.Add("@CityId", school.CityId);
                 p.Add("@Address", school.Address);
                 await db.QueryAsync(PRC_SH_SCHOOLS_INSERT, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+        public async Task SH_SchoolsUpdate(SH_School school)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+                var p = new DynamicParameters();
+                p.Add("@Id", school.Id);
+                p.Add("@Name", school.Name);
+                p.Add("@CountryId", school.CountryId);
+                p.Add("@CityId", school.CityId);
+                p.Add("@Address", school.Address);
+                await db.QueryAsync(PRC_SH_SCHOOLS_UPDATE, p, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -364,6 +404,20 @@ namespace SchoolsProjectBlazorDapper.Logic
             }
         }
 
+        public async Task<SH_d_Country> SH_d_CountrySelectById(SH_d_Country country)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get single country
+                var p = new DynamicParameters();
+                p.Add("@Id", country.Id);
+                var result = await db.QuerySingleOrDefaultAsync<SH_d_Country>(PRC_SH_D_COUNTRY_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
+                return result;
+            }
+        }
+
         public async Task<List<SH_d_City>> SH_d_CitiesSelectAll()
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
@@ -373,6 +427,20 @@ namespace SchoolsProjectBlazorDapper.Logic
                 // Get SH_d_Cities
                 var result = await db.QueryAsync<SH_d_City>(PRC_SH_D_CITIES_SELECT_ALL, commandType: CommandType.StoredProcedure);
                 return result.ToList();
+            }
+        }
+
+        public async Task<SH_d_City> SH_d_CitySelectById(SH_d_City city)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get single country
+                var p = new DynamicParameters();
+                p.Add("@Id", city.Id);
+                var result = await db.QuerySingleOrDefaultAsync<SH_d_City>(PRC_SH_D_CITY_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
+                return result;
             }
         }
     }
