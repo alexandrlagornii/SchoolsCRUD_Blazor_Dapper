@@ -1,0 +1,39 @@
+﻿@page "/subject-add"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using SchoolsProjectBlazorDapper.Components.Pages.Reusable;
+@using MudBlazor;
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@*Wait for everything to load*@
+@if (SelectedSubject == null)
+{
+    <p><em>Loading Subjects...</em></p>
+}
+else
+{
+    <SH_d_SubjectSimpleTable SelectedSubject="SelectedSubject" />
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSubject.Name == null)" @onclick="InsertSubject">Submit</MudButton>
+
+    <div class="edit-add-container">
+        <MudTextField @bind-Value="SelectedSubject.Name" Label="Name" Variant="Variant.Text"></MudTextField>
+    </div>
+}
+
+@code {
+    public SH_d_Subject SelectedSubject = new();
+
+    private async Task InsertSubject()
+    {
+        await dbLayer.SH_d_SubjectsInsert(SelectedSubject);
+        navigationManager.NavigateTo("/subjects");
+    }
+}
