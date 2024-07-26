@@ -48,6 +48,11 @@ namespace SchoolsProjectBlazorDapper.Logic
         private const string PRC_SH_D_CITY_SELECT_BY_ID = "prc_SH_d_CitySelectById";
         private const string PRC_SH_D_CITIES_SELECT_ALL = "prc_SH_d_CitiesSelectAll";
 
+        private const string PRC_SH_D_CLASSES_SELECT_ALL = "prc_SH_d_ClassesSelectAll";
+        private const string PRC_SH_D_CLASSES_SELECT_BY_ID = "prc_SH_d_ClassesSelectById";
+        private const string PRC_SH_D_CLASSES_INSERT = "prc_SH_d_ClassesInsert";
+        private const string PRC_SH_D_CLASSES_DELETE_BY_ID = "prc_SH_d_ClassesDeleteById";
+        private const string PRC_SH_D_CLASSES_UPDATE = "prc_SH_d_ClassesUpdate";
 
         // Constructor
         public SchoolsDbAccessLayer(IConfiguration configuration)
@@ -498,6 +503,73 @@ namespace SchoolsProjectBlazorDapper.Logic
                 p.Add("@Id", city.Id);
                 var result = await db.QuerySingleOrDefaultAsync<SH_d_City>(PRC_SH_D_CITY_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
                 return result;
+            }
+        }
+
+        public async Task<List<SH_d_Class>> SH_d_ClassesSelectAll()
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get all classes
+                var result = await db.QueryAsync<SH_d_Class>(PRC_SH_D_CLASSES_SELECT_ALL, commandType: CommandType.StoredProcedure);
+                return result.ToList();
+            }
+        }
+
+        public async Task<SH_d_Class> SH_d_ClassesSelectById(SH_d_Class _class)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get selected class
+                var p = new DynamicParameters();
+                p.Add("@Id", _class.Id);
+                var result = await db.QuerySingleOrDefaultAsync<SH_d_Class>(PRC_SH_D_CLASSES_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
+
+                return result;
+            }
+        }
+
+        public async Task SH_d_ClassesInsert(SH_d_Class _class)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Insert class
+                var p = new DynamicParameters();
+                p.Add("@Name", _class.Name);
+                await db.QueryAsync(PRC_SH_D_CLASSES_INSERT, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+        
+        public async Task SH_d_ClassesUpdate(SH_d_Class _class)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Update class
+                var p = new DynamicParameters();
+                p.Add("@Id", _class.Id);
+                p.Add("@Name", _class.Name);
+                await db.QueryAsync(PRC_SH_D_CLASSES_UPDATE, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task SH_d_ClassesDeleteById(SH_d_Class _class)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Delete by id
+                var p = new DynamicParameters();
+                p.Add("@Id", _class.Id);
+                await db.QueryAsync(PRC_SH_D_CLASSES_DELETE_BY_ID, p, commandType: CommandType.StoredProcedure);
             }
         }
     }

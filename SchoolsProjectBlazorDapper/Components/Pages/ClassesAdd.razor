@@ -1,0 +1,39 @@
+﻿@page "/class-add"
+@inject Logic.SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using SchoolsProjectBlazorDapper.Components.Pages.Reusable;
+@using MudBlazor;
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@*Wait for everything to load*@
+@if (SelectedClass == null)
+{
+    <p><em>Loading Class...</em></p>
+}
+else
+{
+    <SH_d_ClassesSimpleTable SelectedClass="SelectedClass" />
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedClass.Name == null)" @onclick="InsertClass">Submit</MudButton>
+
+    <div class="edit-add-container">
+        <MudTextField @bind-Value="SelectedClass.Name" Label="Name" Variant="Variant.Text"></MudTextField>
+    </div>
+}
+
+@code {
+    public SH_d_Class SelectedClass = new();
+
+    private async Task InsertClass()
+    {
+        await dbLayer.SH_d_ClassesInsert(SelectedClass);
+        navigationManager.NavigateTo("/classes");
+    }
+}

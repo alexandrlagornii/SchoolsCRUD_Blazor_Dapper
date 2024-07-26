@@ -13,27 +13,7 @@
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-<SH_d_CityTable CitiesTable="SH_d_CityTable" />
 
 @code {
-    public SH_School? SelectedSchool = new();
 
-    // School Table
-    List<SH_d_Country>? SH_d_CountryTable = new();
-
-    // Type Table
-    List<SH_d_City>? SH_d_CityTable = new();
-
-    protected override async Task OnInitializedAsync()
-    {
-        // Initialize empty person
-        SelectedSchool.SH_d_Country = new();
-        SelectedSchool.SH_d_City = new();
-
-        // Get schools for Schools table
-        SH_d_CountryTable = await dbLayer.SH_d_CountriesSelectAll();
-
-        // Get type for Type table
-        SH_d_CityTable = await dbLayer.SH_d_CitiesSelectAll();
-    }
 }
