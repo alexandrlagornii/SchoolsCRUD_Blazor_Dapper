@@ -14,7 +14,7 @@
 <MudSnackbarProvider />
 
 @*Wait for everything to load*@
-@if (SelectedSchool?.SH_d_City == null || SH_d_CityTable?.Count == 0)
+@if (SH_d_CityTable?.Count == 0)
 {
     <p><em>Loading School...</em></p>
 }

@@ -14,7 +14,7 @@
 <MudSnackbarProvider />
 
 @*Wait for everything to load*@
-@if (SelectedPerson?.SH_d_Type == null || SH_d_TypeTable?.Count == 0)
+@if (SH_d_TypeTable?.Count == 0)
 {
     <p><em>Loading Person...</em></p>
 }

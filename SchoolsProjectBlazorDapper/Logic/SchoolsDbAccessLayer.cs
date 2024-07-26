@@ -38,6 +38,9 @@ namespace SchoolsProjectBlazorDapper.Logic
 
         private const string PRC_SH_D_SUBJECTS_SELECT_ALL = "prc_SH_d_SubjectsSelectAll";
         private const string PRC_SH_D_SUBJECTS_SELECT_BY_ID = "prc_SH_d_SubjectsSelectById";
+        private const string PRC_SH_D_SUBJECTS_INSERT = "prc_SH_d_SubjectsInsert";
+        private const string PRC_SH_D_SUBJECTS_DELETE_BY_ID = "prc_SH_d_SubjectsDeleteById";
+        private const string PRC_SH_D_SUBJECTS_UPDATE = "prc_SH_d_SubjectsUpdate";
 
         private const string PRC_SH_D_COUNTRY_SELECT_BY_ID = "prc_SH_d_CountrySelectById";
         private const string PRC_SH_D_COUNTRIES_SELECT_ALL = "prc_SH_d_CountriesSelectAll";
@@ -377,6 +380,60 @@ namespace SchoolsProjectBlazorDapper.Logic
                 // Get SH_Persons
                 var result = await db.QueryAsync<SH_d_Subject>(PRC_SH_D_SUBJECTS_SELECT_ALL, commandType: CommandType.StoredProcedure);
                 return result.ToList();
+            }
+        }
+
+        public async Task<SH_d_Subject> SH_d_SubjectsSelectById(SH_d_Subject subject)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get SH_d_Subject
+                var p = new DynamicParameters();
+                p.Add("@Id", subject.Id);
+                var result = await db.QuerySingleOrDefaultAsync<SH_d_Subject>(PRC_SH_D_SUBJECTS_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
+                return result;
+            }
+        }
+
+        public async Task SH_d_SubjectsInsert(SH_d_Subject subject)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Insert
+                var p = new DynamicParameters();
+                p.Add("@Name", subject.Name);
+                await db.QueryAsync(PRC_SH_D_SUBJECTS_INSERT, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task SH_d_SubjectsDeleteById(SH_d_Subject subject)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Delete
+                var p = new DynamicParameters();
+                p.Add("@Id", subject.Id);
+                await db.QueryAsync(PRC_SH_D_SUBJECTS_DELETE_BY_ID, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task SH_d_SubjectsUpdate(SH_d_Subject subject)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Update
+                var p = new DynamicParameters();
+                p.Add("@Id", subject.Id);
+                p.Add("@Name", subject.Name);
+                await db.QueryAsync(PRC_SH_D_SUBJECTS_UPDATE, p, commandType: CommandType.StoredProcedure);
             }
         }
 

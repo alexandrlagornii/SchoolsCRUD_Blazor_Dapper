@@ -14,14 +14,14 @@
 <MudSnackbarProvider />
 
 @*Wait for everything to load*@
-@if (SelectedGrade?.SH_d_Subject == null || SH_d_SubjectTable?.Count == 0)
+@if (SH_d_SubjectTable?.Count == 0)
 {
     <p><em>Loading Grade...</em></p>
 }
 else
 {
     <SH_GradesSimpleTable SelectedGrade="SelectedGrade" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedGrade.Grade == null || SelectedGrade.SH_PersonTeacher?.Id == null || SelectedGrade.SH_PersonStudent?.Id == null || SelectedGrade.SH_d_Subject.Id == null)" @onclick="UpdateGrade">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedGrade.Grade == null || SelectedGrade.SH_PersonTeacher?.Id == null || SelectedGrade.SH_PersonStudent?.Id == null || SelectedGrade.SH_d_Subject?.Id == null)" @onclick="UpdateGrade">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTextField @bind-Value="SelectedGrade.Grade" Label="Grade" Variant="Variant.Text"></MudTextField>
