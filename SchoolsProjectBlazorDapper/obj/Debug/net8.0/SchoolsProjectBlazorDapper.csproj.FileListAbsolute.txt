@@ -204,6 +204,13 @@ A:\Studying\JOB\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\n
 A:\Studying\JOB\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsP.B85FD7ED.Up2Date
 A:\Studying\JOB\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.genruntimeconfig.cache
 A:\Studying\JOB\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\ref\SchoolsProjectBlazorDapper.dll
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.csproj.AssemblyReference.cache
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.AssemblyInfoInputs.cache
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.AssemblyInfo.cs
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.csproj.CoreCompileInputs.cache
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.sourcelink.json
 C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\appsettings.json
 C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\SchoolsProjectBlazorDapper.staticwebassets.runtime.json
@@ -261,13 +268,6 @@ C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper
 C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
-C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.csproj.AssemblyReference.cache
-C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.AssemblyInfoInputs.cache
-C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.AssemblyInfo.cs
-C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.csproj.CoreCompileInputs.cache
-C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\SchoolsProjectBlazorDapper.sourcelink.json
 C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper\SchoolsProjectBlazorDapper\obj\Debug\net8.0\staticwebassets\msbuild.SchoolsProjectBlazorDapper.Microsoft.AspNetCore.StaticWebAssets.props

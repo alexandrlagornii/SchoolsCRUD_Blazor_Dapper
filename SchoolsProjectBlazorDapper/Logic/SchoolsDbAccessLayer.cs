@@ -60,6 +60,13 @@ namespace SchoolsProjectBlazorDapper.Logic
         private const string PRC_SH_D_CLASSES_DELETE_BY_ID = "prc_SH_d_ClassesDeleteById";
         private const string PRC_SH_D_CLASSES_UPDATE = "prc_SH_d_ClassesUpdate";
 
+        private const string PRC_SH_SCHEDULES_SELECT_ALL = "prc_SH_SchedulesSelectAll";
+        private const string PRC_SH_SCHEDULES_INSERT = "prc_SH_SchedulesInsert";
+        private const string PRC_SH_SCHEDULES_DELETE_BY_ID = "prc_SH_SchedulesDeleteById";
+        private const string PRC_SH_SCHEDULES_SELECT_BY_ID = "prc_SH_SchedulesSelectById";
+        private const string PRC_SH_SCHEDULES_UPDATE = "prc_SH_SchedulesUpdate";
+
+
         // Constructor
         public SchoolsDbAccessLayer(IConfiguration configuration)
         {
@@ -471,6 +478,112 @@ namespace SchoolsProjectBlazorDapper.Logic
                 p.Add("@ClassId", take.ClassId);
                 p.Add("@StudentId", take.StudentId);
                 await db.QueryAsync(PRC_SH_TAKES_UPDATE, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task<List<SH_Schedule>> SH_SchedulesSelectAll()
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get schedules
+                var result = await db.QueryAsync<SH_Schedule>(PRC_SH_SCHEDULES_SELECT_ALL, commandType: CommandType.StoredProcedure);
+
+                foreach (var schedule in result)
+                {
+                    // Get teacher
+                    var pt = new DynamicParameters();
+                    pt.Add("@Id", schedule.TeacherId);
+                    schedule.SH_PersonTeacher = await db.QuerySingleOrDefaultAsync<SH_Person>(PRC_SH_PERSONS_SELECT_BY_ID, pt, commandType: CommandType.StoredProcedure);
+
+                    // Get class
+                    var pc = new DynamicParameters();
+                    pc.Add("@Id", schedule.ClassId);
+                    schedule.SH_d_Class = await db.QuerySingleOrDefaultAsync<SH_d_Class>(PRC_SH_D_CLASSES_SELECT_BY_ID, pc, commandType: CommandType.StoredProcedure);
+
+                    // Get Subject
+                    var ps = new DynamicParameters();
+                    ps.Add("@Id", schedule.SubjectId);
+                    schedule.SH_d_Subject = await db.QuerySingleOrDefaultAsync<SH_d_Subject>(PRC_SH_D_SUBJECTS_SELECT_BY_ID, ps, commandType: CommandType.StoredProcedure);
+                }
+
+                return result.ToList();
+            }
+        }
+
+        public async Task SH_SchedulesInsert(SH_Schedule schedule)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                var p = new DynamicParameters();
+                p.Add("@ClassId", schedule.ClassId);
+                p.Add("@SubjectId", schedule.SubjectId);
+                p.Add("@TeacherId", schedule.TeacherId);
+                p.Add("@TimeStart", schedule.TimeStart);
+                p.Add("@TimeEnd", schedule.TimeEnd);
+                await db.QueryAsync(PRC_SH_SCHEDULES_INSERT, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task SH_SchedulesDeleteById(SH_Schedule schedule)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                var p = new DynamicParameters();
+                p.Add("@Id", schedule.Id);
+                await db.QueryAsync(PRC_SH_SCHEDULES_DELETE_BY_ID, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task<SH_Schedule> SH_SchedulesSelectById(SH_Schedule schedule)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get schedules
+                var p = new DynamicParameters();
+                p.Add("@Id", schedule.Id);
+                var result = await db.QuerySingleOrDefaultAsync<SH_Schedule>(PRC_SH_SCHEDULES_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
+
+                // Get teacher
+                var pt = new DynamicParameters();
+                pt.Add("@Id", result.TeacherId);
+                result.SH_PersonTeacher = await db.QuerySingleOrDefaultAsync<SH_Person>(PRC_SH_PERSONS_SELECT_BY_ID, pt, commandType: CommandType.StoredProcedure);
+
+                // Get class
+                var pc = new DynamicParameters();
+                pc.Add("@Id", result.ClassId);
+                result.SH_d_Class = await db.QuerySingleOrDefaultAsync<SH_d_Class>(PRC_SH_D_CLASSES_SELECT_BY_ID, pc, commandType: CommandType.StoredProcedure);
+
+                // Get Subject
+                var ps = new DynamicParameters();
+                ps.Add("@Id", result.SubjectId);
+                result.SH_d_Subject = await db.QuerySingleOrDefaultAsync<SH_d_Subject>(PRC_SH_D_SUBJECTS_SELECT_BY_ID, ps, commandType: CommandType.StoredProcedure);
+
+                return result;
+            }
+        }
+
+        public async Task SH_SchedulesUpdate(SH_Schedule schedule)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                var p = new DynamicParameters();
+                p.Add("@Id", schedule.Id);
+                p.Add("@TimeStart", schedule.TimeStart);
+                p.Add("@TimeEnd", schedule.TimeEnd);
+                p.Add("@TeacherId", schedule.TeacherId);
+                p.Add("@ClassId", schedule.ClassId);
+                p.Add("@SubjectId", schedule.SubjectId);
+                await db.QueryAsync(PRC_SH_SCHEDULES_UPDATE, p, commandType: CommandType.StoredProcedure);
             }
         }
 

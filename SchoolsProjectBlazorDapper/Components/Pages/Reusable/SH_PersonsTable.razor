@@ -21,7 +21,7 @@
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Age ?? int.MaxValue)">Age</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.SH_School?.Name ?? string.Empty)">School Name</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.SH_d_Type?.Name ?? string.Empty)">Type</MudTableSortLabel></MudTh>
-        <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.DateOfBirth)">Date of Birth</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.DateOfBirth ?? DateTime.Now)">Date of Birth</MudTableSortLabel></MudTh>
     </HeaderContent>
     <RowTemplate>
         <MudTd DataLabel="Id">@context.Id</MudTd>
@@ -30,7 +30,7 @@
         <MudTd DataLabel="Age">@context.Age</MudTd>
         <MudTd DataLabel="School Name">@context.SH_School?.Name</MudTd>
         <MudTd DataLabel="Type">@context.SH_d_Type?.Name</MudTd>
-        <MudTd DataLabel="DateOfBirth">@DateOnly.FromDateTime(context.DateOfBirth)</MudTd>
+        <MudTd DataLabel="DateOfBirth">@DateOnly.FromDateTime(context.DateOfBirth ?? DateTime.Now)</MudTd>
     </RowTemplate>
     <PagerContent>
         <MudTablePager PageSizeOptions="new int[] {10, 25, 50, 100}" />

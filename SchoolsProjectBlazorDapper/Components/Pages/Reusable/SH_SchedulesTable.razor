@@ -1,0 +1,75 @@
+﻿@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using MudBlazor;
+
+<MudTable Items="@ScheduleTable" Hover="true" Bordered="true" Dense="true" SortLabel="Sort By" AllowUnsorted="true"
+          @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="SelectedSchedule"
+          T="SH_Schedule" OnRowClick="RowClickFunc"
+          Filter="new Func<SH_Schedule, bool>(FilterFunc1)">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Schedule</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Schedule, object>(x=>x.SH_d_Class?.Name ?? string.Empty)">Class</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Schedule, object>(x=>x.SH_d_Subject?.Name ?? string.Empty)">Subject</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Schedule, object>(x=>x.SH_PersonTeacher?.FirstName ?? string.Empty)">Teacher Last Name</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Schedule, object>(x=>x.SH_PersonTeacher?.LastName ?? string.Empty)">Teacher Last Name</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Schedule, object>(x=>x.TimeStart ?? TimeSpan.MinValue)">Time Start</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Schedule, object>(x=>x.TimeEnd ?? TimeSpan.MaxValue)">Time End</MudTableSortLabel></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Class">@context.SH_d_Class?.Name</MudTd>
+        <MudTd DataLabel="Subject">@context.SH_d_Subject?.Name</MudTd>
+        <MudTd DataLabel="Teacher First Name">@context.SH_PersonTeacher?.FirstName</MudTd>
+        <MudTd DataLabel="Teacher Last Name">@context.SH_PersonTeacher?.LastName</MudTd>
+        <MudTd DataLabel="Time Start">@context.TimeStart</MudTd>
+        <MudTd DataLabel="Time End">@context.TimeEnd</MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager PageSizeOptions="new int[] {10, 25, 50, 100}" />
+    </PagerContent>
+</MudTable>
+
+@code {
+    // Data Models
+    [Parameter] public List<SH_Schedule>? ScheduleTable { get; set; }
+    [Parameter] public SH_Schedule? SelectedSchedule { get; set; }
+    [Parameter] public EventCallback<SH_Schedule> SelectedScheduleChanged { get; set; }
+
+    // Reference to table
+    private MudTable<SH_Schedule>? mudTable;
+
+    // String for filtering
+    private string searchString1 = "";
+
+    // Search in table functions
+    private bool FilterFunc1(SH_Schedule schedule) => FilterFunc(schedule, searchString1);
+    private bool FilterFunc(SH_Schedule schedule, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if ($"{schedule.SH_d_Class?.Name} {schedule.SH_d_Subject?.Name} {schedule.SH_PersonTeacher?.FirstName} {schedule.SH_PersonTeacher?.LastName} {schedule.TimeStart} {schedule.TimeEnd}".ToLower().Contains(searchString.ToLower()))
+            return true;
+        return false;
+    }
+
+    // Filtering
+    private string SelectedRowClassFunc(SH_Schedule schedule, int rowNumber)
+    {
+        if (mudTable?.SelectedItem != null && mudTable.SelectedItem.Equals(schedule))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+    // If pressed on row call invoke changed
+    private void RowClickFunc(TableRowClickEventArgs<SH_Schedule> tableRowClickEventArgs)
+    {
+        SelectedScheduleChanged.InvokeAsync(SelectedSchedule);
+    }
+}

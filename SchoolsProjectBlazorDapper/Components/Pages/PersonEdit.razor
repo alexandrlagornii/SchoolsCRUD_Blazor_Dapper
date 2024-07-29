@@ -21,12 +21,12 @@
 else
 {
     <SH_PersonSimpleTable SelectedPerson="SelectedPerson" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled = "@(SelectedPerson.FirstName == null || SelectedPerson.LastName == null || SelectedPerson.SH_School?.Id == null || SelectedPerson.SH_d_Type == null || SelectedPerson.DateOfBirth == null)" @onclick="UpdatePerson">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedPerson.FirstName == null || SelectedPerson.LastName == null || SelectedPerson.SH_School?.Id == null || SelectedPerson.SH_d_Type == null || SelectedPerson.DateOfBirth < new DateTime(1900, 1, 1) || SelectedPerson.DateOfBirth > DateTime.Today)" @onclick="UpdatePerson">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTextField @bind-Value="SelectedPerson.FirstName" Label="FirstName" Variant="Variant.Text"></MudTextField>
         <MudTextField @bind-Value="SelectedPerson.LastName" Label="LastName" Variant="Variant.Text"></MudTextField>
-        <MudTextField @bind-Value="SelectedPerson.DateOfBirth" Label="DateOfBirth" Variant="Variant.Text"></MudTextField>
+        <MudDatePicker Label="Date of Birth" Editable="true" Placeholder="Select Date" @bind-Date="SelectedPerson.DateOfBirth" DateFormat="dd.MM.yyyy" />
         <SH_SchoolsTable SchoolsTable="SH_SchoolTable" @bind-SelectedSchool="@SelectedPerson.SH_School" @bind-SelectedSchool:event="SelectedSchoolChanged" />
         <SH_d_TypeTable TypeTable="SH_d_TypeTable" @bind-SelectedType="@SelectedPerson.SH_d_Type" @bind-SelectedType:event="SelectedTypeChanged" />
     </div>

@@ -3,7 +3,8 @@
     public class SH_Schedule
     {
         public int? Id { get; set; }
-        public TimeOnly? Time { get; set; }
+        public TimeSpan? TimeStart { get; set; }
+        public TimeSpan? TimeEnd { get; set; }
 
         public int? TeacherId { get; set; }
         public SH_Person? SH_PersonTeacher { get; set; }

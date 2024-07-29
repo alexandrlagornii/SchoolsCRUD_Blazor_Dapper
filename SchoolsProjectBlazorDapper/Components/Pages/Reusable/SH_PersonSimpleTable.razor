@@ -22,7 +22,7 @@
             <td>@SelectedPerson?.Age</td>
             <td>@SelectedPerson?.SH_School?.Name</td>
             <td>@SelectedPerson?.SH_d_Type?.Name</td>
-            <td>@DateOnly.FromDateTime(SelectedPerson.DateOfBirth)</td>
+            <td>@DateOnly.FromDateTime(SelectedPerson?.DateOfBirth ?? DateTime.Now)</td>
         </tr>
     </tbody>
 </MudSimpleTable>
