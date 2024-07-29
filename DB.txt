@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [SchoolsDatabase]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Database [SchoolsDatabase]    Script Date: 7/29/2024 5:30:40 PM ******/
 CREATE DATABASE [SchoolsDatabase]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [SchoolsDatabase] SET QUERY_STORE = OFF
 GO
 USE [SchoolsDatabase]
 GO
-/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +94,7 @@ CREATE TABLE [dbo].[__EFMigrationsHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SH_d_Cities]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[SH_d_Cities]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -108,7 +108,7 @@ CREATE TABLE [dbo].[SH_d_Cities](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SH_d_Classes]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[SH_d_Classes]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -122,7 +122,7 @@ CREATE TABLE [dbo].[SH_d_Classes](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SH_d_Country]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[SH_d_Country]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -136,7 +136,7 @@ CREATE TABLE [dbo].[SH_d_Country](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SH_d_Subjects]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[SH_d_Subjects]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,7 +150,7 @@ CREATE TABLE [dbo].[SH_d_Subjects](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SH_d_Types]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[SH_d_Types]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -164,7 +164,7 @@ CREATE TABLE [dbo].[SH_d_Types](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SH_Grades]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[SH_Grades]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -181,7 +181,7 @@ CREATE TABLE [dbo].[SH_Grades](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SH_Persons]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[SH_Persons]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -200,14 +200,15 @@ CREATE TABLE [dbo].[SH_Persons](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SH_Schedules]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[SH_Schedules]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[SH_Schedules](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Time] [time](7) NOT NULL,
+	[TimeStart] [time](7) NOT NULL,
+	[TimeEnd] [time](7) NOT NULL,
 	[TeacherId] [int] NOT NULL,
 	[ClassId] [int] NOT NULL,
 	[SubjectId] [int] NOT NULL,
@@ -217,7 +218,7 @@ CREATE TABLE [dbo].[SH_Schedules](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SH_Schools]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[SH_Schools]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -236,7 +237,7 @@ CREATE TABLE [dbo].[SH_Schools](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SH_Takes]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  Table [dbo].[SH_Takes]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -311,7 +312,7 @@ REFERENCES [dbo].[SH_Persons] ([Id])
 GO
 ALTER TABLE [dbo].[SH_Takes] CHECK CONSTRAINT [FK_SH_Takes_SH_Person]
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_CitiesSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_CitiesSelectAll]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -321,7 +322,7 @@ as
 select * from SH_d_Cities;
 
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_CitySelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_CitySelectById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -330,7 +331,7 @@ CREATE procedure [dbo].[prc_SH_d_CitySelectById] @Id int
 as
 select * from SH_d_Cities where Id = @Id;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesDeleteById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesDeleteById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -343,7 +344,7 @@ delete SH_Takes where ClassId = @Id
 delete SH_d_Classes where Id = @Id
 end
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesInsert]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesInsert]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -352,7 +353,7 @@ create procedure [dbo].[prc_SH_d_ClassesInsert] @Name nvarchar(50)
 as
 insert into SH_d_Classes (Name) values (@Name);
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesSelectAll]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -361,16 +362,16 @@ create procedure [dbo].[prc_SH_d_ClassesSelectAll]
 as
 select * from SH_d_Classes;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesSelectById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create procedure [dbo].[prc_SH_d_ClassesSelectById] @Id int
+CREATE procedure [dbo].[prc_SH_d_ClassesSelectById] @Id int
 as
 select * from SH_d_Classes where Id=@Id;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesUpdate]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_ClassesUpdate]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -379,7 +380,7 @@ create procedure [dbo].[prc_SH_d_ClassesUpdate] @Id int, @Name nvarchar(50)
 as
 update SH_d_Classes set Name=@Name where Id=@Id;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_CountriesSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_CountriesSelectAll]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -388,7 +389,7 @@ create procedure [dbo].[prc_SH_d_CountriesSelectAll]
 as
 select * from SH_d_Country;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_CountrySelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_CountrySelectById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -397,7 +398,7 @@ create procedure [dbo].[prc_SH_d_CountrySelectById] @Id int
 as
 select * from SH_d_Country where Id = @Id;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsDeleteById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsDeleteById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -410,7 +411,7 @@ update SH_Grades set SubjectId = null where SubjectId = @Id
 delete from SH_d_Subjects where Id = @Id
 end
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsInsert]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsInsert]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -419,7 +420,7 @@ create procedure [dbo].[prc_SH_d_SubjectsInsert] @Name nvarchar(50)
 as
 insert into SH_d_Subjects (Name) values (@Name);
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsSelectAll]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -428,7 +429,7 @@ create procedure [dbo].[prc_SH_d_SubjectsSelectAll]
 as
 select * from SH_d_Subjects;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsSelectById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -437,7 +438,7 @@ create procedure [dbo].[prc_SH_d_SubjectsSelectById] @Id int
 as
 select * from SH_d_Subjects where Id = @Id;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsUpdate]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_SubjectsUpdate]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -446,7 +447,7 @@ create procedure [dbo].[prc_SH_d_SubjectsUpdate] @Id int, @Name nvarchar(50)
 as
 update SH_d_Subjects set Name = @Name where Id = @Id;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_TypesSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_TypesSelectAll]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -455,7 +456,7 @@ create procedure [dbo].[prc_SH_d_TypesSelectAll]
 as
 select * from SH_d_Types;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_d_TypesSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_d_TypesSelectById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -464,7 +465,7 @@ create procedure [dbo].[prc_SH_d_TypesSelectById] @Id int
 as
 SELECT * FROM SH_d_Types WHERE Id = @Id;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_GradesDeleteById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_GradesDeleteById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -473,7 +474,7 @@ CREATE PROCEDURE [dbo].[prc_SH_GradesDeleteById] @Id int
 AS
 DELETE FROM SH_Grades WHERE Id = @Id;  
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_GradesInsert]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_GradesInsert]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -488,7 +489,7 @@ AS
         VALUES (@Grade, @StudentId, @TeacherId, @SubjectId)
  END;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_GradesSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_GradesSelectAll]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -497,7 +498,7 @@ CREATE PROCEDURE [dbo].[prc_SH_GradesSelectAll]
 AS
 select * from SH_Grades;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_GradesSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_GradesSelectById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -506,7 +507,7 @@ create procedure [dbo].[prc_SH_GradesSelectById] @Id int
 as
 select * from SH_Grades where Id = @Id;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_GradesUpdate]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_GradesUpdate]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -521,7 +522,7 @@ AND EXISTS (SELECT p.Id FROM SH_Persons p WHERE p.Id = @StudentId)
 AND EXISTS (SELECT p.Id FROM SH_Persons p WHERE p.Id = @TeacherId)
 AND EXISTS (SELECT s.Id FROM SH_d_Subjects s WHERE s.Id = @SubjectId);
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsDeleteById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsDeleteById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -546,7 +547,7 @@ delete from SH_Persons where Id = @Id;
 
 end
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsInsert]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsInsert]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -575,7 +576,7 @@ if(@TypeId = 2)
 
  END
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsSelectAll]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -584,7 +585,7 @@ CREATE PROCEDURE [dbo].[prc_SH_PersonsSelectAll]
 AS
 select * from SH_Persons;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsSelectAllByType]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsSelectAllByType]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -593,7 +594,7 @@ create procedure [dbo].[prc_SH_PersonsSelectAllByType] @TypeId int
 as
 select * from SH_Persons WHERE TypeId = @TypeId;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsSelectById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -602,7 +603,7 @@ create procedure [dbo].[prc_SH_PersonsSelectById] @Id int
 as
 select * from SH_Persons where Id = @Id;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsUpdate]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_PersonsUpdate]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -636,7 +637,53 @@ if(@TypeId = 2)
 
 end
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsDeleteById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchedulesDeleteById]    Script Date: 7/29/2024 5:30:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_SchedulesDeleteById] @Id int
+as
+delete from SH_Schedules where Id=@Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchedulesInsert]    Script Date: 7/29/2024 5:30:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_SchedulesInsert] @ClassId int, @SubjectId int, @TeacherId int, @TimeStart time(7), @TimeEnd time(7)
+as
+insert into SH_Schedules (ClassId, SubjectId, TeacherId, TimeStart, TimeEnd)
+values (@ClassId, @SubjectId, @TeacherId, @TimeStart, @TimeEnd);
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchedulesSelectAll]    Script Date: 7/29/2024 5:30:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_SchedulesSelectAll] as
+select * from SH_Schedules;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchedulesSelectById]    Script Date: 7/29/2024 5:30:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_SchedulesSelectById] @Id int
+as
+select * from SH_Schedules where Id=@Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchedulesUpdate]    Script Date: 7/29/2024 5:30:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_SchedulesUpdate] @Id int, @TimeStart time(7), @TimeEnd time(7), @TeacherId int, @ClassId int, @SubjectId int
+as
+update SH_Schedules set TimeStart=@TimeStart, TimeEnd=@TimeEnd, TeacherId=@TeacherId, ClassId=@ClassId, SubjectId=@SubjectId
+where Id=@Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsDeleteById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -648,7 +695,7 @@ update SH_Persons set SchoolId = null where SchoolId = @Id
 delete SH_Schools where Id = @Id
 end
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsInsert]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsInsert]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -658,7 +705,7 @@ as
 insert into SH_Schools (Name, NumStudents, NumTeachers, CountryId, CityId, Address)
 values (@Name, 0, 0, @CountryId, @CityId, @Address);
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsSelectAll]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsSelectAll]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -667,7 +714,7 @@ create procedure [dbo].[prc_SH_SchoolsSelectAll]
 as
 select * from SH_Schools;
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsSelectById]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsSelectById]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -676,7 +723,7 @@ create procedure [dbo].[prc_SH_SchoolsSelectById] @Id int
 as
 select * from SH_Schools where Id = @Id
 GO
-/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsUpdate]    Script Date: 7/26/2024 5:06:25 PM ******/
+/****** Object:  StoredProcedure [dbo].[prc_SH_SchoolsUpdate]    Script Date: 7/29/2024 5:30:40 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -685,6 +732,51 @@ create procedure [dbo].[prc_SH_SchoolsUpdate] @Id int, @Name nvarchar(50), @Coun
 as
 update SH_Schools set Name = @Name, CountryId = @CountryId, CityId = @CityId, Address = @Address
 where Id = @Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_TakesDeleteById]    Script Date: 7/29/2024 5:30:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_TakesDeleteById] @Id int
+as
+delete from SH_Takes where Id=@Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_TakesInsert]    Script Date: 7/29/2024 5:30:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_TakesInsert] @ClassId int, @StudentId int
+as
+insert into SH_Takes (ClassId, StudentId) values (@ClassId, @StudentId);
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_TakesSelectAll]    Script Date: 7/29/2024 5:30:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_TakesSelectAll]
+as
+select * from SH_Takes;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_TakesSelectById]    Script Date: 7/29/2024 5:30:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_TakesSelectById] @Id int
+as
+select * from SH_Takes where Id=@Id;
+GO
+/****** Object:  StoredProcedure [dbo].[prc_SH_TakesUpdate]    Script Date: 7/29/2024 5:30:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[prc_SH_TakesUpdate] @Id int, @ClassId int, @StudentId int
+as
+update SH_Takes set ClassId=@ClassId, StudentId=@StudentId where Id=@Id;
 GO
 USE [master]
 GO
