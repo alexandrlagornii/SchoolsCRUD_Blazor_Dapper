@@ -36,6 +36,12 @@ namespace SchoolsProjectBlazorDapper.Logic
         private const string PRC_SH_GRADES_UPDATE = "prc_SH_GradesUpdate";
         private const string PRC_SH_GRADES_DELETE_BY_ID = "prc_SH_GradesDeleteById";
 
+        private const string PRC_SH_TAKES_SELECT_ALL = "prc_SH_TakesSelectAll";
+        private const string PRC_SH_TAKES_SELECT_BY_ID = "prc_SH_TakesSelectById";
+        private const string PRC_SH_TAKES_DELETE_BY_ID = "prc_SH_TakesDeleteById";
+        private const string PRC_SH_TAKES_INSERT = "prc_SH_TakesInsert";
+        private const string PRC_SH_TAKES_UPDATE = "prc_SH_TakesUpdate";
+
         private const string PRC_SH_D_SUBJECTS_SELECT_ALL = "prc_SH_d_SubjectsSelectAll";
         private const string PRC_SH_D_SUBJECTS_SELECT_BY_ID = "prc_SH_d_SubjectsSelectById";
         private const string PRC_SH_D_SUBJECTS_INSERT = "prc_SH_d_SubjectsInsert";
@@ -376,6 +382,98 @@ namespace SchoolsProjectBlazorDapper.Logic
                 await db.QueryAsync(PRC_SH_GRADES_INSERT, p, commandType: CommandType.StoredProcedure);
             }
         }
+
+        public async Task<List<SH_Take>> SH_TakeSelectAll()
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get SH_Grades
+                var result = await db.QueryAsync<SH_Take>(PRC_SH_TAKES_SELECT_ALL, commandType: CommandType.StoredProcedure);
+
+                // For each row get the relations SH_Person (Student), SH_Person (Teacher), SH_d_Subject
+                foreach (SH_Take take in result)
+                {
+                    // Get SH_Class
+                    var pc = new DynamicParameters();
+                    pc.Add("@Id", take.ClassId);
+                    take.SH_d_Class = await db.QuerySingleOrDefaultAsync<SH_d_Class>(PRC_SH_D_CLASSES_SELECT_BY_ID, pc, commandType: CommandType.StoredProcedure);
+
+                    // Get SH_Person (Student)
+                    var ps = new DynamicParameters();
+                    ps.Add("@Id", take.StudentId);
+                    take.SH_Person = await db.QuerySingleOrDefaultAsync<SH_Person>(PRC_SH_PERSONS_SELECT_BY_ID, ps, commandType: CommandType.StoredProcedure);
+                }
+
+                return result.ToList();
+            }
+        }
+
+        public async Task<SH_Take> SH_TakeSelectById(SH_Take take)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                // Get selected take
+                var p = new DynamicParameters();
+                p.Add("@Id", take.Id);
+                var result = await db.QuerySingleOrDefaultAsync<SH_Take>(PRC_SH_TAKES_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
+
+                // Get classes
+                var pc = new DynamicParameters();
+                pc.Add("@Id", result.ClassId);
+                result.SH_d_Class = await db.QuerySingleOrDefaultAsync<SH_d_Class>(PRC_SH_D_CLASSES_SELECT_BY_ID, pc, commandType: CommandType.StoredProcedure);
+
+                // Get students
+                var ps = new DynamicParameters();
+                ps.Add("@Id", result.StudentId);
+                result.SH_Person = await db.QuerySingleOrDefaultAsync<SH_Person>(PRC_SH_PERSONS_SELECT_BY_ID, ps, commandType: CommandType.StoredProcedure);
+
+                return result;
+            }
+        }
+
+        public async Task SH_TakesInsert(SH_Take take)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                var p = new DynamicParameters();
+                p.Add("ClassId", take.ClassId);
+                p.Add("StudentId", take.StudentId);
+                await db.QueryAsync(PRC_SH_TAKES_INSERT, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task SH_TakeDeleteById(SH_Take take)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                var p = new DynamicParameters();
+                p.Add("@Id", take.Id);
+                await db.QueryAsync(PRC_SH_TAKES_DELETE_BY_ID, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public async Task SH_TakesUpdate(SH_Take take)
+        {
+            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            {
+                db.Open();
+
+                var p = new DynamicParameters();
+                p.Add("@Id", take.Id);
+                p.Add("@ClassId", take.ClassId);
+                p.Add("@StudentId", take.StudentId);
+                await db.QueryAsync(PRC_SH_TAKES_UPDATE, p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public async Task<List<SH_d_Subject>> SH_d_SubjectsSelectAll()
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))

@@ -1,0 +1,69 @@
+﻿@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using MudBlazor;
+
+<MudTable Items="@TakeTable" Hover="true" Bordered="true" Dense="true" SortLabel="Sort By" AllowUnsorted="true"
+          @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="SelectedTake"
+          T="SH_Take" OnRowClick="RowClickFunc"
+          Filter="new Func<SH_Take, bool>(FilterFunc1)">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Takes</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Take, object>(x=>x.SH_d_Class?.Name ?? string.Empty)">Class Name</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Take, object>(x=>x.SH_Person?.FirstName ?? string.Empty)">Student First Name</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Take, object>(x=>x.SH_Person?.LastName ?? string.Empty)">Student Last Name</MudTableSortLabel></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Class">@context.SH_d_Class?.Name</MudTd>
+        <MudTd DataLabel="Student First Name">@context.SH_Person?.FirstName</MudTd>
+        <MudTd DataLabel="Student Last Name">@context.SH_Person?.LastName</MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager PageSizeOptions="new int[] {10, 25, 50, 100}" />
+    </PagerContent>
+</MudTable>
+
+@code {
+    // Data Models
+    [Parameter] public List<SH_Take>? TakeTable { get; set; }
+    [Parameter] public SH_Take? SelectedTake { get; set; }
+    [Parameter] public EventCallback<SH_Take> SelectedTakeChanged { get; set; }
+
+    // Reference to table
+    private MudTable<SH_Take>? mudTable;
+
+    // String for filtering
+    private string searchString1 = "";
+
+    // Search in table functions
+    private bool FilterFunc1(SH_Take take) => FilterFunc(take, searchString1);
+    private bool FilterFunc(SH_Take take, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if ($"{take.SH_d_Class?.Name} {take.SH_Person?.FirstName} {take.SH_Person?.LastName}".ToLower().Contains(searchString.ToLower()))
+            return true;
+        return false;
+    }
+
+    // Filtering
+    private string SelectedRowClassFunc(SH_Take take, int rowNumber)
+    {
+        if (mudTable?.SelectedItem != null && mudTable.SelectedItem.Equals(take))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+    // If pressed on row call invoke changed
+    private void RowClickFunc(TableRowClickEventArgs<SH_Take> tableRowClickEventArgs)
+    {
+        SelectedTakeChanged.InvokeAsync(SelectedTake);
+    }
+}

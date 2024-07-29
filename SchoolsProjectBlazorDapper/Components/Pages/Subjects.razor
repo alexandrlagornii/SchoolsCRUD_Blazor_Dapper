@@ -42,18 +42,18 @@ else
     // Delete subject if selected and pressed delete
     private async Task DeleteSubject()
     {
-        dbLayer.SH_d_SubjectsDeleteById(SelectedSubject);
+        await dbLayer.SH_d_SubjectsDeleteById(SelectedSubject);
         navigationManager.NavigateTo(navigationManager.Uri, true);
     }
 
     // Redirect to page for editing subject
-    private async Task EditSubjectPageRedirect(SH_d_Subject subject)
+    private void EditSubjectPageRedirect(SH_d_Subject subject)
     {
         navigationManager.NavigateTo($"/subject-edit/{subject.Id}");
     }
 
     // Redirect to page for adding subject
-    private async Task AddSubjectPageRedirect()
+    private void AddSubjectPageRedirect()
     {
         navigationManager.NavigateTo("/subject-add");
     }

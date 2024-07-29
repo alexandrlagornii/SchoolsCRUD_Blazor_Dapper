@@ -1,4 +1,4 @@
-﻿@page "/grades"
+﻿@page "/take"
 @inject Logic.SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 @attribute [StreamRendering]
@@ -14,47 +14,47 @@
 <MudSnackbarProvider />
 
 @*Wait for everything to load*@
-@if (GradesTable.Count == 0)
+@if (TakesTable.Count == 0)
 {
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
-    <p style="padding-top: 10px;"><em>Loading Grades...</em></p>
+    <p style="padding-top: 10px;"><em>Loading Takes...</em></p>
 }
 else
 {
     <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedGrade.Id == null)" @onclick="(() => EditGradePageRedirect(SelectedGrade))">Edit</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedGrade.Id == null)" @onclick="DeleteGrade">Delete</MudButton>
-    <SH_GradesTable GradesTable="@GradesTable" @bind-SelectedGrade="@SelectedGrade" @bind-SelectedGrade:event="SelectedGradeChanged" />
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedTake.Id == null)" @onclick="(() => EditGradePageRedirect(SelectedTake))">Edit</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedTake.Id == null)" @onclick="DeleteGrade">Delete</MudButton>
+    <SH_TakesTable TakeTable="TakesTable" @bind-SelectedTake="@SelectedTake" @bind-SelectedTake:event="SelectedTakeChanged" />
 }
 
 @code {
     // Data models
-    List<SH_Grade> GradesTable = new();
-    private SH_Grade SelectedGrade = new();
+    List<SH_Take> TakesTable = new();
+    private SH_Take SelectedTake = new();
 
     // Load table
     protected override async Task OnInitializedAsync()
     {
         await Task.Delay(500);
-        GradesTable = await dbLayer.SH_GradesSelectAll();
+        TakesTable = await dbLayer.SH_TakeSelectAll();
     }
 
     // Delete grade if selected and pressed delete
     private async Task DeleteGrade()
     {
-        await dbLayer.SH_GradesDeleteById(SelectedGrade);
+        await dbLayer.SH_TakeDeleteById(SelectedTake);
         navigationManager.NavigateTo(navigationManager.Uri, true);
     }
 
     // Redirect to page for editing grade
-    private void EditGradePageRedirect(SH_Grade grade)
+    private void EditGradePageRedirect(SH_Take take)
     {
-        navigationManager.NavigateTo($"/grade-edit/{grade.Id}");
+        navigationManager.NavigateTo($"/take-edit/{take.Id}");
     }
 
     // Redirect to page for adding grade
     private void AddGradePageRedirect()
     {
-        navigationManager.NavigateTo("/grade-add");
+        navigationManager.NavigateTo("/take-add");
     }
 }

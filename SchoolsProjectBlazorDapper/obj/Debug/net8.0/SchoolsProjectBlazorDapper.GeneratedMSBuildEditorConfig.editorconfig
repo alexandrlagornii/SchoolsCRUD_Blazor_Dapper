@@ -117,6 +117,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXVzYWJsZVxTSF9TY2hvb2xzVGFibGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/Reusable/SH_TakesSimpleTable.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXVzYWJsZVxTSF9UYWtlc1NpbXBsZVRhYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/Reusable/SH_TakesTable.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXVzYWJsZVxTSF9UYWtlc1RhYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/SchoolAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTY2hvb2xBZGQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -139,6 +147,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/SubjectsEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdWJqZWN0c0VkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/Take.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYWtlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/TakeAdd.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYWtlQWRkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/TakeEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUYWtlRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper/SchoolsProjectBlazorDapper/Components/Pages/Test.razor]

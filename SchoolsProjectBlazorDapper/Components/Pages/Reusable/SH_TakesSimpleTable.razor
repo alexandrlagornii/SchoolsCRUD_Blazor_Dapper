@@ -1,0 +1,24 @@
+﻿@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Models;
+@using MudBlazor;
+
+<MudSimpleTable Style="overflow-x: auto;">
+    <thead>
+        <tr>
+            <th>Class</th>
+            <th>Student Name </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@SelectedTake?.SH_d_Class?.Name</td>
+            <td>@SelectedTake?.SH_Person?.FirstName @SelectedTake?.SH_Person?.LastName</td>
+        </tr>
+    </tbody>
+</MudSimpleTable>
+
+@code {
+    [Parameter] public SH_Take? SelectedTake { get; set; }
+}

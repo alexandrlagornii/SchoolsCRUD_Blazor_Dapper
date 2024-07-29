@@ -46,13 +46,13 @@ else
     }
 
     // Redirect to page for editing person
-    private async Task EditPersonPageRedirect(SH_Person person)
+    private void EditPersonPageRedirect(SH_Person person)
     {
         navigationManager.NavigateTo($"/person-edit/{person.Id}");
     }
 
     // Redirect to page for adding person
-    private async Task AddPersonPageRedirect()
+    private void AddPersonPageRedirect()
     {
         navigationManager.NavigateTo("/person-add");
     }

@@ -48,12 +48,12 @@ else
     }
 
     // Redirect to page for editing school
-    private async Task EditSchoolPageRedirect(SH_School school)
+    private void EditSchoolPageRedirect(SH_School school)
     {
         navigationManager.NavigateTo($"/school-edit/{school.Id}");
     }
 
-    private async Task AddSchoolPageRedirect()
+    private void AddSchoolPageRedirect()
     {
         navigationManager.NavigateTo("/school-add");
     }

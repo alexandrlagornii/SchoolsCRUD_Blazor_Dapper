@@ -47,13 +47,13 @@ else
     }
 
     // Redirect to page for editing class
-    private async Task EditClassPageRedirect(SH_d_Class _class)
+    private void EditClassPageRedirect(SH_d_Class _class)
     {
         navigationManager.NavigateTo($"/class-edit/{_class.Id}");
     }
 
     // Redirect to page for adding class
-    private async Task AddClassPageRedirect()
+    private void AddClassPageRedirect()
     {
         navigationManager.NavigateTo("/class-add");
     }
