@@ -1,0 +1,65 @@
+﻿@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Data.Schools;
+@using MudBlazor; 
+
+<MudTable Items="@ClassTable" Hover="true" Bordered="true" Dense="true" SortLabel="Sort By" AllowUnsorted="true"
+          @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="SelectedClass"
+          T="SH_d_Class" OnRowClick="RowClickFunc"
+          Filter="new Func<SH_d_Class, bool>(FilterFunc1)">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Classes</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_d_Class, object>(x=>x.Name ?? string.Empty)">Name</MudTableSortLabel></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager PageSizeOptions="new int[] {10, 25, 50, 100}" />
+    </PagerContent>
+</MudTable>
+
+@code {
+    // Data Models
+    [Parameter] public List<SH_d_Class>? ClassTable { get; set; }
+    [Parameter] public SH_d_Class? SelectedClass { get; set; }
+    [Parameter] public EventCallback<SH_d_Class> SelectedClassChanged { get; set; }
+
+    // Reference to table
+    private MudTable<SH_d_Class>? mudTable;
+
+    // String for filtering
+    private string searchString1 = "";
+
+    // Search in table functions
+    private bool FilterFunc1(SH_d_Class _class) => FilterFunc(_class, searchString1);
+    private bool FilterFunc(SH_d_Class _class, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if ($"{_class.Name}".ToLower().Contains(searchString.ToLower()))
+            return true;
+        return false;
+    }
+
+    // Filtering
+    private string SelectedRowClassFunc(SH_d_Class _class, int rowNumber)
+    {
+        if (mudTable?.SelectedItem != null && mudTable.SelectedItem.Equals(_class))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+    // If pressed on row call invoke changed
+    private void RowClickFunc(TableRowClickEventArgs<SH_d_Class> tableRowClickEventArgs)
+    {
+        SelectedClassChanged.InvokeAsync(SelectedClass);
+    }
+}

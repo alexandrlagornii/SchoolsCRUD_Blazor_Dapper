@@ -1,0 +1,60 @@
+﻿@page "/schedule"
+@inject SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Data.Schools;
+@using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
+@using MudBlazor
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@*Wait for everything to load*@
+@if (SchedulesTable.Count == 0)
+{
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchedulePageRedirect">Add</MudButton>
+    <p style="padding-top: 10px;"><em>Loading Schedules...</em></p>
+}
+else
+{
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchedulePageRedirect">Add</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchedule.Id == null)" @onclick="(() => EditSchedulePageRedirect(SelectedSchedule))">Edit</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSchedule.Id == null)" @onclick="DeleteSchedule">Delete</MudButton>
+    <SH_SchedulesTable ScheduleTable="@SchedulesTable" @bind-SelectedSchedule="@SelectedSchedule" @bind-SelectedSchedule:event="SelectedScheduleChanged" />
+}
+
+@code {
+    // Data models
+    List<SH_Schedule> SchedulesTable = new();
+    private SH_Schedule SelectedSchedule = new();
+
+    // Load table
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        SchedulesTable = await dbLayer.SH_SchedulesSelectAll();
+    }
+
+    // Delete grade if selected and pressed delete
+    private async Task DeleteSchedule()
+    {
+        await dbLayer.SH_SchedulesDeleteById(SelectedSchedule);
+        navigationManager.NavigateTo(navigationManager.Uri, true);
+    }
+
+    // Redirect to page for editing grade
+    private void EditSchedulePageRedirect(SH_Schedule schedule)
+    {
+        navigationManager.NavigateTo($"/schedule-edit/{schedule.Id}");
+    }
+
+    // Redirect to page for adding grade
+    private void AddSchedulePageRedirect()
+    {
+        navigationManager.NavigateTo("/schedule-add");
+    }
+}

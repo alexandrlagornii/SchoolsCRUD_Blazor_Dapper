@@ -1,0 +1,19 @@
+﻿@page "/test"
+@inject SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Data.Schools;
+@using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
+@using MudBlazor;
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+
+@code {
+
+}

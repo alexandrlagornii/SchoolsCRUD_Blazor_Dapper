@@ -1,0 +1,65 @@
+﻿@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Data.Schools;
+@using MudBlazor;
+
+<MudTable Items="@CountriesTable" Hover="true" Bordered="true" Dense="true" SortLabel="Sort By" AllowUnsorted="true"
+          @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" @bind-SelectedItem="SelectedCountry"
+          T="SH_d_Country" OnRowClick="RowClickFunc"
+          Filter="new Func<SH_d_Country, bool>(FilterFunc1)">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Country</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_d_Country, object>(x=>x.Name ?? string.Empty)">Country</MudTableSortLabel></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+    </RowTemplate>
+    <PagerContent>
+        <MudTablePager PageSizeOptions="new int[] {10, 25, 50, 100}" />
+    </PagerContent>
+</MudTable>
+
+@code {
+    // Data models
+    [Parameter] public List<SH_d_Country>? CountriesTable { get; set; }
+    [Parameter] public SH_d_Country? SelectedCountry { get; set; }
+    [Parameter] public EventCallback<SH_d_Country> SelectedCountryChanged { get; set; }
+
+    // Reference to table
+    private MudTable<SH_d_Country>? mudTable;
+
+    // String for filtering
+    private string searchString1 = "";
+
+    // Search in table functions
+    private bool FilterFunc1(SH_d_Country country) => FilterFunc(country, searchString1);
+    private bool FilterFunc(SH_d_Country country, string searchString)
+    {
+        if (string.IsNullOrWhiteSpace(searchString))
+            return true;
+        if ($"{country.Name}".ToLower().Contains(searchString.ToLower()))
+            return true;
+        return false;
+    }
+
+    // Filtering
+    private string SelectedRowClassFunc(SH_d_Country country, int rowNumber)
+    {
+        if (mudTable?.SelectedItem != null && mudTable.SelectedItem.Equals(country))
+        {
+            return "selected";
+        }
+        return string.Empty;
+    }
+
+    // If pressed on row activate edit/delete buttons
+    private void RowClickFunc(TableRowClickEventArgs<SH_d_Country> tableRowClickEventArgs)
+    {
+        SelectedCountryChanged.InvokeAsync(SelectedCountry);
+    }
+}

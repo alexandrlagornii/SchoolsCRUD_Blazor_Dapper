@@ -1,0 +1,47 @@
+﻿@page "/subject-edit/{subjectId}"
+@inject SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Data.Schools;
+@using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
+@using MudBlazor;
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@*Wait for everything to load*@
+@if (SelectedSubject == null)
+{
+    <p><em>Loading Subject...</em></p>
+}
+else
+{
+    <SH_d_SubjectSimpleTable SelectedSubject="SelectedSubject" />
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSubject.Name == null)" @onclick="UpdateSubject">Submit</MudButton>
+
+    <div class="edit-add-container">
+        <MudTextField @bind-Value="SelectedSubject.Name" Label="Name" Variant="Variant.Text"></MudTextField>
+    </div>
+}
+
+@code {
+    [Parameter] public string? subjectId { get; set; }
+    public SH_d_Subject SelectedSubject = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Get selected subject
+        SelectedSubject.Id = int.Parse(subjectId);
+        SelectedSubject = await dbLayer.SH_d_SubjectsSelectById(SelectedSubject);
+    }
+
+    private async Task UpdateSubject()
+    {
+        await dbLayer.SH_d_SubjectsUpdate(SelectedSubject);
+        navigationManager.NavigateTo("/subjects");
+    }
+}

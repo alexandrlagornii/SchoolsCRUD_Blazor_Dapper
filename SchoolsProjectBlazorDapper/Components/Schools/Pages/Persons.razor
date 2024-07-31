@@ -1,0 +1,59 @@
+﻿@page "/persons"
+@inject SchoolsDbAccessLayer dbLayer
+@inject NavigationManager navigationManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@using SchoolsProjectBlazorDapper.Data.Schools;
+@using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
+@using MudBlazor;
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@if (PersonsTable.Count == 0)
+{
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
+    <p style="padding-top: 10px;"><em>Loading Persons...</em></p>
+}
+else
+{
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedPerson.Id == null)" @onclick="(() => EditPersonPageRedirect(SelectedPerson))">Edit</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedPerson.Id == null)" @onclick="DeletePerson">Delete</MudButton>
+    <SH_PersonsTable NameTable="People" PersonsTable="@PersonsTable" @bind-SelectedPerson="@SelectedPerson" @bind-SelectedPerson:event="SelectedPersonChanged" />
+}
+
+@code {
+    // Data models
+    List<SH_Person> PersonsTable = new();
+    private SH_Person SelectedPerson = new();
+
+    // Load table
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        PersonsTable = await dbLayer.SH_PersonsSelectAll();
+    }
+
+    // Delete person if selected and pressed delete
+    private async Task DeletePerson()
+    {
+        await dbLayer.SH_PersonsDeleteById(SelectedPerson);
+        navigationManager.NavigateTo(navigationManager.Uri, true);
+    }
+
+    // Redirect to page for editing person
+    private void EditPersonPageRedirect(SH_Person person)
+    {
+        navigationManager.NavigateTo($"/person-edit/{person.Id}");
+    }
+
+    // Redirect to page for adding person
+    private void AddPersonPageRedirect()
+    {
+        navigationManager.NavigateTo("/person-add");
+    }
+}
