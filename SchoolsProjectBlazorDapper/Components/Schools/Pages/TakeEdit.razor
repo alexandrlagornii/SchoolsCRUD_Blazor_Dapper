@@ -7,6 +7,9 @@
 @using SchoolsProjectBlazorDapper.Data.Schools;
 @using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
 @using MudBlazor;
+@using Microsoft.AspNetCore.Authorization;
+
+@attribute [Authorize(Roles = "Admin, Teacher")]
 
 <MudThemeProvider />
 <MudPopoverProvider />

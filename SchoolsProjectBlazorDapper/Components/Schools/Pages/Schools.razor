@@ -8,6 +8,10 @@
 @using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
 @using MudBlazor;
 
+@using Microsoft.AspNetCore.Authorization;
+
+@attribute [Authorize(Roles = "Admin, Teacher")]
+
 <MudThemeProvider />
 <MudPopoverProvider />
 <MudDialogProvider />
@@ -17,14 +21,18 @@
 
 @if (SchoolsTable.Count == 0)
 {
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchoolPageRedirect">Add</MudButton>
+    <AuthorizeView Roles="Admin">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchoolPageRedirect">Add</MudButton>
+    </AuthorizeView>
     <p style="padding-top: 10px;"><em>Loading Schools...</em></p>
 }
 else
 {
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchoolPageRedirect">Add</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchool.Id == null)" @onclick="(() => EditSchoolPageRedirect(SelectedSchool))">Edit</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSchool.Id == null)" @onclick="DeleteSchool">Delete</MudButton>
+    <AuthorizeView Roles="Admin">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchoolPageRedirect">Add</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchool.Id == null)" @onclick="(() => EditSchoolPageRedirect(SelectedSchool))">Edit</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSchool.Id == null)" @onclick="DeleteSchool">Delete</MudButton>
+    </AuthorizeView>
     <SH_SchoolsTable SchoolsTable="SchoolsTable" @bind-SelectedSchool="@SelectedSchool" @bind-SelectedSchool:event="SelectedSchoolChanged" />
 }
 

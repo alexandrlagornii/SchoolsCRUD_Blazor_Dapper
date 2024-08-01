@@ -43,6 +43,11 @@ builder.Services.AddSingleton<IEmailSender<User>, IdentityNoOpEmailSender>();
 builder.Services.AddScoped<SchoolsDbAccessLayer>();
 builder.Services.AddMudServices();
 
+builder.Services.Configure<SecurityStampValidatorOptions>(options =>
+{
+    options.ValidationInterval = TimeSpan.FromMinutes(1);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -60,8 +65,6 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
-
-app.MapAdditionalIdentityEndpoints();;
 
 // Add roles for authentication
 using (var scope = app.Services.CreateScope())
@@ -97,6 +100,50 @@ using (var scope = app.Services.CreateScope())
 
         // Assign admin role
         await userManager.AddToRoleAsync(user, "Admin");
+    }
+}
+
+// Create student (for testing) if doesn't exits
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+
+    string email = "student@student.com";
+    string password = "utOFlURzbYZPv9o@";
+
+    // If student account doesn't exist
+    if (await userManager.FindByEmailAsync(email) == null)
+    {
+        // Create user
+        var user = new User();
+        user.UserName = email;
+        user.Email = email;
+        var result = await userManager.CreateAsync(user, password);
+
+        // Assign Student role
+        await userManager.AddToRoleAsync(user, "Student");
+    }
+}
+
+// Create teacher (for testing) if doesn't exits
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+
+    string email = "teacher@teacher.com";
+    string password = "utOFlURzbYZPv9o@";
+
+    // If teacher account doesn't exist
+    if (await userManager.FindByEmailAsync(email) == null)
+    {
+        // Create user
+        var user = new User();
+        user.UserName = email;
+        user.Email = email;
+        var result = await userManager.CreateAsync(user, password);
+
+        // Assign Teacher role
+        await userManager.AddToRoleAsync(user, "Teacher");
     }
 }
 

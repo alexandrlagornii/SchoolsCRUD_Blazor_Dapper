@@ -8,6 +8,10 @@
 @using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
 @using MudBlazor;
 
+@using Microsoft.AspNetCore.Authorization;
+
+@attribute [Authorize(Roles = "Admin")]
+
 <MudThemeProvider />
 <MudPopoverProvider />
 <MudDialogProvider />

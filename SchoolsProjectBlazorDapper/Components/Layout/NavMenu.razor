@@ -10,46 +10,66 @@
 
 <div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="Account/Login" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="grades">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Grades
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="persons">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Persons
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="schools">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Schools
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="classes">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Classes
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="subjects">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Subjects
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="take">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Takes
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="schedule">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Schedule
-            </NavLink>
-        </div>
+        <AuthorizeView>
+            <NotAuthorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="Account/Manage" Match="NavLinkMatch.All">
+                        <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Login
+                    </NavLink>
+                </div>
+            </NotAuthorized>
+            <Authorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="Account/Manage" Match="NavLinkMatch.All">
+                        <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home/Account
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="grades">
+                        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Grades
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="classes">
+                        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Classes
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="take">
+                        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Takes
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="schedule">
+                        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Schedule
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="subjects">
+                        <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Subjects
+                    </NavLink>
+                </div>
+                <AuthorizeView Roles="Admin, Teacher" Context="adminTeacherContext">
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="schools">
+                            <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Schools
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="persons">
+                            <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Persons
+                        </NavLink>
+                    </div>
+                </AuthorizeView>
+                <AuthorizeView Roles="Admin" Context="adminContext">
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="users">
+                            <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Users
+                        </NavLink>
+                    </div>
+                </AuthorizeView>
+            </Authorized>
+        </AuthorizeView>
     </nav>
 </div>
 

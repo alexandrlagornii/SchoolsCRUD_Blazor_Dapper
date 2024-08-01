@@ -1,0 +1,63 @@
+﻿@page "/users"
+
+@using SchoolsProjectBlazorDapper.Data.Account;
+@using SchoolsProjectBlazorDapper.Components.Account.Pages.Reusable;
+@using MudBlazor;
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Identity;
+
+@inject NavigationManager NavigationManager
+@inject UsersDbAccessLayer UsersDbAccessLayer
+@inject UserManager<User> UserManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@attribute [Authorize(Roles = "Admin")]
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+@if (UsersTable.Count == 0)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddUserPageRedirect">Add</MudButton>
+    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedUser.Id == null)" @onclick="DeleteUser">Delete</MudButton>
+    <IdentityUsersTable _UsersTable="@UsersTable" @bind-SelectedUser="@SelectedUser" @bind-SelectedUser:event="SelectedUserChanged" />
+}
+
+@code {
+    // Data Models
+    List<UserViewModel> UsersTable = new();
+    private UserViewModel SelectedUser = new();
+
+    // Load Table
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(500);
+        UsersTable = UsersDbAccessLayer.GetUsersRoles();
+    }
+
+    private async Task DeleteUser()
+    {
+        if (SelectedUser.Id != null)
+        {
+            var userToDelete = await UserManager.FindByIdAsync(SelectedUser.Id);
+
+            if (userToDelete != null)
+            {
+                await UserManager.DeleteAsync(userToDelete);
+                NavigationManager.NavigateTo(NavigationManager.Uri, true);
+            }
+        }
+    }
+
+    private void AddUserPageRedirect()
+    {
+        NavigationManager.NavigateTo("/user-add");
+    }
+}

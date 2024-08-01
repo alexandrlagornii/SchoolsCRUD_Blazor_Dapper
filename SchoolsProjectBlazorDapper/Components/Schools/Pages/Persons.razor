@@ -8,6 +8,10 @@
 @using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
 @using MudBlazor;
 
+@using Microsoft.AspNetCore.Authorization;
+
+@attribute [Authorize(Roles = "Admin, Teacher")]
+
 <MudThemeProvider />
 <MudPopoverProvider />
 <MudDialogProvider />
@@ -15,14 +19,18 @@
 
 @if (PersonsTable.Count == 0)
 {
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
+    <AuthorizeView Roles="Admin">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
+    </AuthorizeView>
     <p style="padding-top: 10px;"><em>Loading Persons...</em></p>
 }
 else
 {
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedPerson.Id == null)" @onclick="(() => EditPersonPageRedirect(SelectedPerson))">Edit</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedPerson.Id == null)" @onclick="DeletePerson">Delete</MudButton>
+    <AuthorizeView Roles="Admin">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedPerson.Id == null)" @onclick="(() => EditPersonPageRedirect(SelectedPerson))">Edit</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedPerson.Id == null)" @onclick="DeletePerson">Delete</MudButton>
+    </AuthorizeView>
     <SH_PersonsTable NameTable="People" PersonsTable="@PersonsTable" @bind-SelectedPerson="@SelectedPerson" @bind-SelectedPerson:event="SelectedPersonChanged" />
 }
 

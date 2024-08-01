@@ -8,6 +8,10 @@
 @using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
 @using MudBlazor
 
+@using Microsoft.AspNetCore.Authorization;
+
+@attribute [Authorize]
+
 <MudThemeProvider />
 <MudPopoverProvider />
 <MudDialogProvider />
@@ -16,14 +20,18 @@
 @*Wait for everything to load*@
 @if (SchedulesTable.Count == 0)
 {
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchedulePageRedirect">Add</MudButton>
+    <AuthorizeView Roles="Admin, Teacher">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchedulePageRedirect">Add</MudButton>
+    </AuthorizeView>
     <p style="padding-top: 10px;"><em>Loading Schedules...</em></p>
 }
 else
 {
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchedulePageRedirect">Add</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchedule.Id == null)" @onclick="(() => EditSchedulePageRedirect(SelectedSchedule))">Edit</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSchedule.Id == null)" @onclick="DeleteSchedule">Delete</MudButton>
+    <AuthorizeView Roles="Admin, Teacher">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchedulePageRedirect">Add</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchedule.Id == null)" @onclick="(() => EditSchedulePageRedirect(SelectedSchedule))">Edit</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSchedule.Id == null)" @onclick="DeleteSchedule">Delete</MudButton>
+    </AuthorizeView>
     <SH_SchedulesTable ScheduleTable="@SchedulesTable" @bind-SelectedSchedule="@SelectedSchedule" @bind-SelectedSchedule:event="SelectedScheduleChanged" />
 }
 

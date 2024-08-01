@@ -1,0 +1,79 @@
+﻿@page "/user-add"
+
+@using SchoolsProjectBlazorDapper.Data.Account;
+@using SchoolsProjectBlazorDapper.Components.Account.Pages.Reusable;
+@using MudBlazor;
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Identity;
+@using System.Text.RegularExpressions
+
+@inject NavigationManager NavigationManager
+@inject UsersDbAccessLayer UsersDbAccessLayer
+@inject UserManager<User> UserManager
+@attribute [StreamRendering]
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@attribute [Authorize(Roles = "Admin")]
+
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudItem xs="12" sm="7">
+    <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">
+        <MudTextField T="string" Label="Email" Required="true" @bind-Text="@email" />
+        <MudTextField T="string" Label="Password"
+                      Validation="@(new Func<string, IEnumerable<string>>(PasswordStrength))" Required="true" @bind-Text="@password" />
+        <MudSelect T="string" Label="" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" @bind-Value="@role">
+            <MudSelectItem T="string" Value="@("Admin")" />
+            <MudSelectItem T="string" Value="@("Teacher")" />
+            <MudSelectItem T="string" Value="@("Student")" />
+        </MudSelect>
+        <MudButton Class="mt-4" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(!success || email.Equals(string.Empty) || role.Equals(string.Empty))" @onclick="AddUser">Submit</MudButton>
+    </MudForm>
+</MudItem>
+
+@code {
+    bool success;
+    string[] errors = { };
+    MudForm form;
+
+    string email = "";
+    string password = "";
+    string role = "";
+
+    private async Task AddUser()
+    {
+
+        // If admin account doesn't exist
+        if (await UserManager.FindByEmailAsync(email) == null)
+        {
+            // Create user
+            var user = new User();
+            user.UserName = email;
+            user.Email = email;
+            var result = await UserManager.CreateAsync(user, password);
+
+            // Assign admin role
+            await UserManager.AddToRoleAsync(user, role);
+        }
+        NavigationManager.NavigateTo("/users");
+    }
+
+    private IEnumerable<string> PasswordStrength(string pw)
+    {
+        if (string.IsNullOrWhiteSpace(pw))
+        {
+            yield break;
+        }
+        if (pw.Length < 7)
+            yield return "Password must be at least of length 7";
+        if (!Regex.IsMatch(pw, @"[A-Z]"))
+            yield return "Password must contain at least one capital letter";
+        if (!Regex.IsMatch(pw, @"[a-z]"))
+            yield return "Password must contain at least one lowercase letter";
+        if (!Regex.IsMatch(pw, @"[0-9]"))
+            yield return "Password must contain at least one digit";
+    }
+}

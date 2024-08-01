@@ -8,6 +8,10 @@
 @using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
 @using MudBlazor
 
+@using Microsoft.AspNetCore.Authorization;
+
+@attribute [Authorize]
+
 <MudThemeProvider />
 <MudPopoverProvider />
 <MudDialogProvider />
@@ -16,14 +20,18 @@
 @*Wait for everything to load*@
 @if (TakesTable.Count == 0)
 {
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
+    <AuthorizeView Roles="Admin, Teacher">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
+    </AuthorizeView>
     <p style="padding-top: 10px;"><em>Loading Takes...</em></p>
 }
 else
 {
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedTake.Id == null)" @onclick="(() => EditGradePageRedirect(SelectedTake))">Edit</MudButton>
-    <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedTake.Id == null)" @onclick="DeleteGrade">Delete</MudButton>
+    <AuthorizeView Roles="Admin, Teacher">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedTake.Id == null)" @onclick="(() => EditGradePageRedirect(SelectedTake))">Edit</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedTake.Id == null)" @onclick="DeleteGrade">Delete</MudButton>
+    </AuthorizeView>
     <SH_TakesTable TakeTable="TakesTable" @bind-SelectedTake="@SelectedTake" @bind-SelectedTake:event="SelectedTakeChanged" />
 }
 
