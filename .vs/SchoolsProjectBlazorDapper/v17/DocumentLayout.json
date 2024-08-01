@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper - copy\\schoolsprojectblazordapper\\components\\account\\pages\\reusable\\identityuserstable.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\account\\pages\\reusable\\identityuserstable.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper - copy\\schoolsprojectblazordapper\\components\\account\\pages\\useradd.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\account\\pages\\useradd.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -70,10 +74,6 @@
       "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\account\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper - copy\\schoolsprojectblazordapper\\components\\account\\pages\\reusable\\identityuserstable.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\account\\pages\\reusable\\identityuserstable.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|c:\\users\\userpc\\desktop\\job\\schoolscrud_blazor_dapper - copy\\schoolsprojectblazordapper\\components\\schools\\pages\\schools.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{352A11F2-A137-409F-9C08-F2C4BFFCEB40}|SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj|solutionrelative:schoolsprojectblazordapper\\components\\schools\\pages\\schools.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -113,11 +113,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UsersDbAccessLayer.cs",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Data\\Account\\UsersDbAccessLayer.cs",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Data\\Account\\UsersDbAccessLayer.cs",
@@ -130,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Users.razor",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Users.razor",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Users.razor",
@@ -144,20 +144,81 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UserAdd.razor",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\UserAdd.razor",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\UserAdd.razor",
               "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\UserAdd.razor",
               "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\UserAdd.razor",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABgAAAA+AAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-01T12:22:07.58Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Program.cs",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Program.cs",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Program.cs",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Program.cs",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAHYAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-01T09:08:11.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "20240731102706_usersmigration.cs",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Migrations\\20240731102706_usersmigration.cs",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Migrations\\20240731102706_usersmigration.cs",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Migrations\\20240731102706_usersmigration.cs",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Migrations\\20240731102706_usersmigration.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-01T09:05:43.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "NavMenu.razor.css",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor.css",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor.css",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor.css",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-08-01T11:17:32.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SchoolsDbAccessLayer.cs",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Data\\Schools\\SchoolsDbAccessLayer.cs",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Data\\Schools\\SchoolsDbAccessLayer.cs",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Data\\Schools\\SchoolsDbAccessLayer.cs",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Data\\Schools\\SchoolsDbAccessLayer.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAApwEUAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-01T09:32:55.145Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IdentityUsersTable.razor",
+              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Reusable\\IdentityUsersTable.razor",
+              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Reusable\\IdentityUsersTable.razor",
+              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Reusable\\IdentityUsersTable.razor",
+              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Reusable\\IdentityUsersTable.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-01T10:10:43.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "UserViewModel.cs",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Data\\Account\\UserViewModel.cs",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Data\\Account\\UserViewModel.cs",
@@ -170,54 +231,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Program.cs",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Program.cs",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Program.cs",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Program.cs",
-              "ViewState": "AQIAAF0AAAAAAAAAAAAAAHYAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T09:08:11.314Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "20240731102706_usersmigration.cs",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Migrations\\20240731102706_usersmigration.cs",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Migrations\\20240731102706_usersmigration.cs",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Migrations\\20240731102706_usersmigration.cs",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Migrations\\20240731102706_usersmigration.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T09:05:43.931Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "NavMenu.razor.css",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor.css",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor.css",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor.css",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-08-01T11:17:32.804Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SchoolsDbAccessLayer.cs",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Data\\Schools\\SchoolsDbAccessLayer.cs",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Data\\Schools\\SchoolsDbAccessLayer.cs",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Data\\Schools\\SchoolsDbAccessLayer.cs",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Data\\Schools\\SchoolsDbAccessLayer.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAApwEUAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-01T09:32:55.145Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "UsersDbAccessLayerModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Migrations\\UsersDbAccessLayerModelSnapshot.cs",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Migrations\\UsersDbAccessLayerModelSnapshot.cs",
@@ -229,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Persons.razor",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Schools\\Pages\\Persons.razor",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Schools\\Pages\\Persons.razor",
@@ -241,7 +254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ContinuationTaskFromTask.cs",
               "DocumentMoniker": "C:\\Users\\UserPC\\AppData\\Local\\Temp\\.vsdbgsrc\\0e9bf3699e09c1a3c9a45cf296003cd0e7bcd1f3368f1fbab82a14982aa0659a\\ContinuationTaskFromTask.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\0e9bf3699e09c1a3c9a45cf296003cd0e7bcd1f3368f1fbab82a14982aa0659a\\ContinuationTaskFromTask.cs",
@@ -254,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "PersonAdd.razor",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Schools\\Pages\\PersonAdd.razor",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Schools\\Pages\\PersonAdd.razor",
@@ -266,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "SH_School.cs",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Data\\Schools\\SH_School.cs",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Data\\Schools\\SH_School.cs",
@@ -278,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Layout\\MainLayout.razor",
@@ -290,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "NavMenu.razor",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Layout\\NavMenu.razor",
@@ -314,7 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Data\\Account\\User.cs",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Data\\Account\\User.cs",
@@ -327,18 +340,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 17,
-              "Title": "IdentityUsersTable.razor",
-              "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Reusable\\IdentityUsersTable.razor",
-              "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Reusable\\IdentityUsersTable.razor",
-              "ToolTip": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Reusable\\IdentityUsersTable.razor",
-              "RelativeToolTip": "SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Reusable\\IdentityUsersTable.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEAAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-01T10:10:43.73Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
               "Title": "Login.razor",
               "DocumentMoniker": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper - Copy\\SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Login.razor",
               "RelativeDocumentMoniker": "SchoolsProjectBlazorDapper\\Components\\Account\\Pages\\Login.razor",
