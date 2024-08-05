@@ -18,52 +18,80 @@
 <MudSnackbarProvider />
 
 @*Wait for everything to load*@
-@if (SH_d_CityTable?.Count == 0)
+
+<SH_SchoolsSimpleTable SelectedSchool="SelectedSchool" />
+<MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" @onclick="InsertSchool"
+           Disabled="@(SelectedSchool?.Name == null || SelectedSchool.SH_d_Country?.Id == null || SelectedSchool.SH_d_City?.Id == null
+           || SelectedSchool.Address == null)">
+    Submit
+</MudButton>
+
+@if (onInitializedDone == false)
 {
-    <p><em>Loading School...</em></p>
+    <p>Loading...</p>
 }
 else
 {
-    <SH_SchoolsSimpleTable SelectedSchool="SelectedSchool" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchool.Name == null || SelectedSchool.SH_d_Country?.Id == null || SelectedSchool.SH_d_City?.Id == null || SelectedSchool.Address == null)" @onclick="InsertSchool">Submit</MudButton>
-    
     <div class="edit-add-container">
-        <MudTextField @bind-Value="SelectedSchool.Name" Label="Name" Variant="Variant.Text"></MudTextField>
-        <MudTextField @bind-Value="SelectedSchool.Address" Label="Adderss" Variant="Variant.Text"></MudTextField>
-        <SH_d_CountryTable CountriesTable="SH_d_CountryTable" @bind-SelectedCountry="@SelectedSchool.SH_d_Country" @bind-SelectedCountry:event="SelectedCountryChanged" />
-        <SH_d_CityTable CitiesTable="SH_d_CityTable" @bind-SelectedCity="@SelectedSchool.SH_d_City" @bind-SelectedCity:event="SelectedCityChanged" />
+        @if (SelectedSchool != null)
+        {
+            <MudTextField @bind-Value="SelectedSchool.Name" Label="Name" Variant="Variant.Text"></MudTextField>
+            <MudTextField @bind-Value="SelectedSchool.Address" Label="Address" Variant="Variant.Text"></MudTextField>
+
+            @if (SH_d_CountryTable.Count != 0)
+            {
+                <SH_d_CountryTable CountriesTable="SH_d_CountryTable" @bind-SelectedCountry="@SelectedSchool.SH_d_Country" @bind-SelectedCountry:event="SelectedCountryChanged" />
+            }
+
+            @if (SH_d_CityTable.Count != 0)
+            {
+                <SH_d_CityTable CitiesTable="SH_d_CityTable" @bind-SelectedCity="@SelectedSchool.SH_d_City" @bind-SelectedCity:event="SelectedCityChanged" />
+            }
+        }
     </div>
-    
 }
+
 @code {
-    public SH_School? SelectedSchool = new();
+    public SH_School SelectedSchool = new();
 
     // School Table
-    List<SH_d_Country>? SH_d_CountryTable = new();
+    List<SH_d_Country> SH_d_CountryTable = new();
 
     // Type Table
-    List<SH_d_City>? SH_d_CityTable = new();
+    List<SH_d_City> SH_d_CityTable = new();
+
+    // Check if initialize is done
+    bool onInitializedDone = false;
 
     protected override async Task OnInitializedAsync()
     {
         // Initialize empty person
-        SelectedSchool.SH_d_Country = new();
-        SelectedSchool.SH_d_City = new();
+        if (SelectedSchool != null)
+        {
+            SelectedSchool.SH_d_Country = new();
+            SelectedSchool.SH_d_City = new();
+        }
 
         // Get schools for Schools table
         SH_d_CountryTable = await dbLayer.SH_d_CountriesSelectAll();
 
         // Get type for Type table
         SH_d_CityTable = await dbLayer.SH_d_CitiesSelectAll();
+
+        // Finished initializing
+        onInitializedDone = true;
     }
 
     private async Task InsertSchool()
     {
         // Change Ids
-        SelectedSchool.CountryId = SelectedSchool.SH_d_Country?.Id;
-        SelectedSchool.CityId = SelectedSchool.SH_d_City?.Id;
+        if (SelectedSchool != null)
+        {
+            SelectedSchool.CountryId = SelectedSchool.SH_d_Country?.Id ?? 0;
+            SelectedSchool.CityId = SelectedSchool.SH_d_City?.Id ?? 0;
+            await dbLayer.SH_SchoolsInsert(SelectedSchool);
+        }
 
-        await dbLayer.SH_SchoolsInsert(SelectedSchool);
         navigationManager.NavigateTo("/schools");
     }
 }

@@ -30,8 +30,8 @@ else
 {
     <AuthorizeView Roles="Admin">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchoolPageRedirect">Add</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchool.Id == null)" @onclick="(() => EditSchoolPageRedirect(SelectedSchool))">Edit</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSchool.Id == null)" @onclick="DeleteSchool">Delete</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchool.Id == 0)" @onclick="(() => EditSchoolPageRedirect(SelectedSchool))">Edit</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSchool.Id == 0)" @onclick="DeleteSchool">Delete</MudButton>
     </AuthorizeView>
     <SH_SchoolsTable SchoolsTable="SchoolsTable" @bind-SelectedSchool="@SelectedSchool" @bind-SelectedSchool:event="SelectedSchoolChanged" />
 }
@@ -44,7 +44,6 @@ else
     // Load table
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(500);
         SchoolsTable = await dbLayer.SH_SchoolsSelectAll();
     }
 

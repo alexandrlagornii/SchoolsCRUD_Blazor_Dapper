@@ -62,8 +62,8 @@ else
     private async Task UpdateSchool()
     {
         // Change Ids
-        SelectedSchool.CountryId = SelectedSchool.SH_d_Country?.Id;
-        SelectedSchool.CityId = SelectedSchool.SH_d_City?.Id;
+        SelectedSchool.CountryId = SelectedSchool.SH_d_Country.Id;
+        SelectedSchool.CityId = SelectedSchool.SH_d_City.Id;
 
         await dbLayer.SH_SchoolsUpdate(SelectedSchool);
         navigationManager.NavigateTo("/schools");

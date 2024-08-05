@@ -75,5 +75,7 @@
             yield return "Password must contain at least one lowercase letter";
         if (!Regex.IsMatch(pw, @"[0-9]"))
             yield return "Password must contain at least one digit";
+        if (!Regex.IsMatch(pw, @"[$&+,:;=?@#|'<>.^*()%!-]"))
+            yield return "Password must contain at least one special character";
     }
 }

@@ -16,8 +16,8 @@
     </ToolBarContent>
     <HeaderContent>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.Name ?? string.Empty)">Name</MudTableSortLabel></MudTh>
-        <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.NumStudents ?? int.MaxValue)">Num Students</MudTableSortLabel></MudTh>
-        <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.NumTeachers ?? int.MaxValue)">Num Teachers</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.NumStudents)">Num Students</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.NumTeachers)">Num Teachers</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.SH_d_Country?.Name ?? string.Empty)">Country Name</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.SH_d_City?.Name ?? string.Empty)">City Name</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_School, object>(x=>x.Address ?? string.Empty)">Address</MudTableSortLabel></MudTh>
