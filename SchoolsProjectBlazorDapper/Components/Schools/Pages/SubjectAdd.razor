@@ -1,21 +1,13 @@
 ﻿@page "/subject-add"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
-@attribute [StreamRendering]
-@rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 @using SchoolsProjectBlazorDapper.Data.Schools;
 @using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
 @using MudBlazor;
-
 @using Microsoft.AspNetCore.Authorization;
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
-
-<MudThemeProvider />
-<MudPopoverProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
 
 @*Wait for everything to load*@
 @if (SelectedSubject == null)

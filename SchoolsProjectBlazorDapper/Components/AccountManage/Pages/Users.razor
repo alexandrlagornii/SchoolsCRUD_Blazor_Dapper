@@ -1,7 +1,8 @@
-﻿@page "/users"
+﻿@page "/Users"
+@rendermode InteractiveServer
 
 @using SchoolsProjectBlazorDapper.Data.Account;
-@using SchoolsProjectBlazorDapper.Components.Account.Pages.Reusable;
+@using SchoolsProjectBlazorDapper.Components.AccountManage.Pages.Reusable;
 @using MudBlazor;
 @using Microsoft.AspNetCore.Authorization;
 @using Microsoft.AspNetCore.Identity;
@@ -9,15 +10,8 @@
 @inject NavigationManager NavigationManager
 @inject UsersDbAccessLayer UsersDbAccessLayer
 @inject UserManager<User> UserManager
-@attribute [StreamRendering]
-@rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 @attribute [Authorize(Roles = "Admin")]
-
-<MudThemeProvider />
-<MudPopoverProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
 
 @if (UsersTable.Count == 0)
 {
@@ -38,21 +32,17 @@ else
     // Load Table
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(500);
-        UsersTable = UsersDbAccessLayer.GetUsersRoles();
+        UsersTable = await UsersDbAccessLayer.GetUsersRoles();
     }
 
     private async Task DeleteUser()
     {
-        if (SelectedUser.Id != null)
-        {
-            var userToDelete = await UserManager.FindByIdAsync(SelectedUser.Id);
+        var userToDelete = await UserManager.FindByIdAsync(SelectedUser.Id ?? string.Empty);
 
-            if (userToDelete != null)
-            {
-                await UserManager.DeleteAsync(userToDelete);
-                NavigationManager.NavigateTo(NavigationManager.Uri, true);
-            }
+        if (userToDelete != null)
+        {
+            await UserManager.DeleteAsync(userToDelete);
+            NavigationManager.NavigateTo(NavigationManager.Uri, true);
         }
     }
 

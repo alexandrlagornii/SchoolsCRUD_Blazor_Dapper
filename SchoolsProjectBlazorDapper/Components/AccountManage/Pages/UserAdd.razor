@@ -1,7 +1,7 @@
 ﻿@page "/user-add"
 
 @using SchoolsProjectBlazorDapper.Data.Account;
-@using SchoolsProjectBlazorDapper.Components.Account.Pages.Reusable;
+@using SchoolsProjectBlazorDapper.Components.AccountManage.Pages.Reusable;
 @using MudBlazor;
 @using Microsoft.AspNetCore.Authorization;
 @using Microsoft.AspNetCore.Identity;
@@ -10,15 +10,8 @@
 @inject NavigationManager NavigationManager
 @inject UsersDbAccessLayer UsersDbAccessLayer
 @inject UserManager<User> UserManager
-@attribute [StreamRendering]
-@rendermode @(new InteractiveServerRenderMode(prerender: false))
 
 @attribute [Authorize(Roles = "Admin")]
-
-<MudThemeProvider />
-<MudPopoverProvider />
-<MudDialogProvider />
-<MudSnackbarProvider />
 
 <MudItem xs="12" sm="7">
     <MudForm @ref="form" @bind-IsValid="@success" @bind-Errors="@errors">

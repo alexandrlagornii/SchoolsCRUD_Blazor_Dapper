@@ -25,6 +25,7 @@ namespace SchoolsProjectBlazorDapper.Data.Schools
         private const string PRC_SH_SCHOOLS_DELETE_BY_ID = "prc_SH_SchoolsDeleteById";
         private const string PRC_SH_SCHOOLS_INSERT = "prc_SH_SchoolsInsert";
         private const string PRC_SH_SCHOOLS_UPDATE = "prc_SH_SchoolsUpdate";
+        private const string PRC_SH_SCHOOLS_JOIN_COUNTRY_JOIN_CITY = "prc_SH_SchoolsJoinCountriesJoinCities";
 
         private const string PRC_SH_D_TYPES_SELECT_ALL = "prc_SH_d_TypesSelectAll";
         private const string PRC_SH_D_TYPES_SELECT_BY_ID = "prc_SH_d_TypesSelectById";
@@ -64,7 +65,6 @@ namespace SchoolsProjectBlazorDapper.Data.Schools
         private const string PRC_SH_SCHEDULES_DELETE_BY_ID = "prc_SH_SchedulesDeleteById";
         private const string PRC_SH_SCHEDULES_SELECT_BY_ID = "prc_SH_SchedulesSelectById";
         private const string PRC_SH_SCHEDULES_UPDATE = "prc_SH_SchedulesUpdate";
-
 
         // Constructor
         public SchoolsDbAccessLayer(IConfiguration configuration)
@@ -200,26 +200,20 @@ namespace SchoolsProjectBlazorDapper.Data.Schools
 
         public async Task<List<SH_School>> SH_SchoolsSelectAll()
         {
-            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            using (var db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
 
-                // Get SH_Persons
-                var result = await db.QueryAsync<SH_School>(PRC_SH_SCHOOLS_SELECT_ALL, commandType: CommandType.StoredProcedure);
-
-                // For each row get the relations SH_School and SH_d_Type
-                foreach (SH_School school in result)
-                {
-                    // Get SH_School in the SH_Person datatype instance
-                    var pc = new DynamicParameters();
-                    pc.Add("@Id", school.CountryId);
-                    school.SH_d_Country = await db.QuerySingleOrDefaultAsync<SH_d_Country>(PRC_SH_D_COUNTRY_SELECT_BY_ID, pc, commandType: CommandType.StoredProcedure);
-
-                    // Get Sh_d_Type in the SH_Person datatype instance
-                    var pcc = new DynamicParameters();
-                    pcc.Add("@Id", school.CityId);
-                    school.SH_d_City = await db.QuerySingleOrDefaultAsync<SH_d_City>(PRC_SH_D_CITY_SELECT_BY_ID, pcc, commandType: CommandType.StoredProcedure);
-                }
+                var result = await db.QueryAsync<SH_School, SH_d_Country, SH_d_City, SH_School>(
+                    PRC_SH_SCHOOLS_JOIN_COUNTRY_JOIN_CITY,
+                    (school, country, city) =>
+                    {
+                        school.SH_d_Country = country;
+                        school.SH_d_City = city;
+                        return school;
+                    },
+                    commandType: CommandType.StoredProcedure
+                    );
                 return result.ToList();
             }
         }

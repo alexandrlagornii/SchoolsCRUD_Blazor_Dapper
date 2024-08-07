@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.Playwright;
 
 [Parallelizable(ParallelScope.Self)]
@@ -5,15 +6,14 @@ using Microsoft.Playwright;
 public class Tests
 {
     // Main page
-    const string mainPage = "https://localhost:7221/";
-    const string addSchoolPage = "https://localhost:7221/school-add";
+    const string mainPage = "http://localhost:5209/";
+    const string addSchoolPage = "http://localhost:5209/school-add";
 
     // Admin login and password
     const string adminLogin = "admin@admin.com";
     const string adminPassword = "utOFlURzbYZPv9o@";
 
-    [Test]
-    public async Task TestLoadSchools()
+    public async Task LoadSchools(int start, int end)
     {
         // Playwright
         using var playwright = await Playwright.CreateAsync();
@@ -21,7 +21,7 @@ public class Tests
         // Browser
         await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
-            Headless = false
+            //Headless = false
         });
 
         // Get main page
@@ -37,9 +37,12 @@ public class Tests
 
         await page.GetByRole(AriaRole.Button, new() { Name = "Log in" }).ClickAsync();
 
+
         // Get to add page
-        for (int i = 426; i <= 25000; i++)
+        for (int i = start; i <= end; i++)
         {
+            // Check how much time it took to write into database
+
             await page.GotoAsync(addSchoolPage);
 
             // Fill values
@@ -63,9 +66,31 @@ public class Tests
             await page.GetByPlaceholder("Search").Nth(1).PressAsync("Enter");
             await page.GetByRole(AriaRole.Cell, new() { Name = "Chisinau" }).ClickAsync();
 
-            // Click add
             await page.GetByRole(AriaRole.Button, new() { Name = "Submit" }).ClickAsync();
         }
+    }
 
+    [Test]
+    public async Task TestLoadSchools()
+    {
+        // Set up multiple clients
+        var tasks = new List<Task>();
+        int start = 1, end = 1000;
+        for (int i = 1; i <= 25; i++)
+        {
+            tasks.Add(LoadSchools(start, end));
+            start += 1000;
+            end += 1000;
+        }
+
+        // Time Test
+        string path = @"C:\Users\UserPC\Desktop\Test.txt";
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+
+        await Task.WhenAll(tasks);
+
+        watch.Stop();
+        var elapsedMs = watch.Elapsed.Milliseconds;
+        File.WriteAllText(path, elapsedMs.ToString());
     }
 }
