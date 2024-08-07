@@ -35,7 +35,6 @@ else
     // Load table
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(500);
         TakesTable = await dbLayer.SH_TakeSelectAll();
     }
 

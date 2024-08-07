@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GW6o1V840KA=",
+  "dgSpecHash": "lV/EIipMpGg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsTesting\\SchoolsTesting.csproj",
+  "projectFilePath": "C:\\Users\\UserPC\\Desktop\\Job\\Projects\\SchoolsProject\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsTesting\\SchoolsTesting.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\UserPC\\.nuget\\packages\\argon\\0.21.0\\argon.0.21.0.nupkg.sha512",
     "C:\\Users\\UserPC\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",

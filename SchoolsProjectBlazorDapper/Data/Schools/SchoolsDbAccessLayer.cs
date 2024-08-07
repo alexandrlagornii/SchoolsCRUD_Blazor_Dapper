@@ -198,7 +198,8 @@ namespace SchoolsProjectBlazorDapper.Data.Schools
             }
         }
 
-        public async Task<List<SH_School>> SH_SchoolsSelectAll()
+        // Schools Methods
+        public async Task<IEnumerable<SH_School>> SH_SchoolsSelectAll()
         {
             using (var db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
@@ -214,38 +215,19 @@ namespace SchoolsProjectBlazorDapper.Data.Schools
                     },
                     commandType: CommandType.StoredProcedure
                     );
-                return result.ToList();
+                return result;
             }
         }
 
         public async Task<SH_School> SH_SchoolsSelectById(SH_School school)
         {
-            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
-            {
-                db.Open();
-
-                // Get SH_Schools
-                var p = new DynamicParameters();
-                p.Add("@Id", school.Id);
-                var result = await db.QueryFirstOrDefaultAsync<SH_School>(PRC_SH_SCHOOLS_SELECT_BY_ID, p, commandType: CommandType.StoredProcedure);
-
-                // Get countries
-                var pc = new DynamicParameters();
-                p.Add("@Id", result.CountryId);
-                result.SH_d_Country = await db.QueryFirstOrDefaultAsync<SH_d_Country>(PRC_SH_D_COUNTRIES_SELECT_ALL, pc, commandType: CommandType.StoredProcedure);
-
-                // Get Cities
-                var pcc = new DynamicParameters();
-                pcc.Add("@Id", result.CityId);
-                result.SH_d_City = await db.QueryFirstOrDefaultAsync<SH_d_City>(PRC_SH_D_CITY_SELECT_BY_ID, pcc, commandType: CommandType.StoredProcedure);
-
-                return result;
-            }
+            var result = (await SH_SchoolsSelectAll()).First(s => s.Id == school.Id);
+            return result;
         }
 
         public async Task SH_SchoolsInsert(SH_School school)
         {
-            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            using (var db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
                 var p = new DynamicParameters();
@@ -258,7 +240,7 @@ namespace SchoolsProjectBlazorDapper.Data.Schools
         }
         public async Task SH_SchoolsUpdate(SH_School school)
         {
-            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            using (var db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
                 var p = new DynamicParameters();
@@ -273,7 +255,7 @@ namespace SchoolsProjectBlazorDapper.Data.Schools
 
         public async Task SH_SchoolsDeleteById(SH_School school)
         {
-            using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
+            using (var db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))
             {
                 db.Open();
                 var p = new DynamicParameters();
@@ -282,6 +264,7 @@ namespace SchoolsProjectBlazorDapper.Data.Schools
             }
         }
 
+        // Grades Methods
         public async Task<List<SH_Grade>> SH_GradesSelectAll()
         {
             using (IDbConnection db = new SqlConnection(Configuration.GetConnectionString(SCHOOLS_DATABASE)))

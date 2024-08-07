@@ -44,7 +44,7 @@ else
         SelectedPerson = await dbLayer.SH_PersonSelectById(SelectedPerson);
 
         // Get schools for Schools table
-        SH_SchoolTable = await dbLayer.SH_SchoolsSelectAll();
+        SH_SchoolTable = (await dbLayer.SH_SchoolsSelectAll()).ToList();
 
         // Get type for Type table
         SH_d_TypeTable = await dbLayer.SH_d_TypesSelectAll();

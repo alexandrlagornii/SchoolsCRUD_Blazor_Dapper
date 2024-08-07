@@ -10957,11 +10957,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsTesting\\SchoolsTesting.csproj",
+      "projectUniqueName": "C:\\Users\\UserPC\\Desktop\\Job\\Projects\\SchoolsProject\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsTesting\\SchoolsTesting.csproj",
       "projectName": "SchoolsTesting",
-      "projectPath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsTesting\\SchoolsTesting.csproj",
+      "projectPath": "C:\\Users\\UserPC\\Desktop\\Job\\Projects\\SchoolsProject\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsTesting\\SchoolsTesting.csproj",
       "packagesPath": "C:\\Users\\UserPC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsTesting\\obj\\",
+      "outputPath": "C:\\Users\\UserPC\\Desktop\\Job\\Projects\\SchoolsProject\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsTesting\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\UserPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10979,8 +10979,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj": {
-              "projectPath": "C:\\Users\\UserPC\\Desktop\\Job\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj"
+            "C:\\Users\\UserPC\\Desktop\\Job\\Projects\\SchoolsProject\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj": {
+              "projectPath": "C:\\Users\\UserPC\\Desktop\\Job\\Projects\\SchoolsProject\\SchoolsCRUD_Blazor_Dapper_Identity_Testing\\SchoolsProjectBlazorDapper\\SchoolsProjectBlazorDapper.csproj"
             }
           }
         }

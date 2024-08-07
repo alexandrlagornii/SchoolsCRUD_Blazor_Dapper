@@ -1,6 +1,6 @@
-﻿@page "/schools"
+﻿@page "/Schools/Schools"
 @inject SchoolsDbAccessLayer dbLayer
-@inject NavigationManager navigationManager
+@inject NavigationManager NavigationManager
 
 @using SchoolsProjectBlazorDapper.Data.Schools;
 @using SchoolsProjectBlazorDapper.Components.Schools.Pages.Reusable;
@@ -9,14 +9,14 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
-<PageTitle>Grades</PageTitle>
+<PageTitle>Schools</PageTitle>
 
-@if (SchoolsTable.Count == 0)
+@if (!initialized)
 {
     <AuthorizeView Roles="Admin">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchoolPageRedirect">Add</MudButton>
     </AuthorizeView>
-    <p style="padding-top: 10px;"><em>Loading Schools...</em></p>
+    <p style="padding-top: 10px;"><em>Loading...</em></p>
 }
 else
 {
@@ -29,31 +29,35 @@ else
 }
 
 @code {
-    // Data models
-    List <SH_School> SchoolsTable = new();
+    List<SH_School> SchoolsTable = new();
     private SH_School SelectedSchool = new();
+    bool initialized = false;
 
-    // Load table
     protected override async Task OnInitializedAsync()
     {
-        SchoolsTable = await dbLayer.SH_SchoolsSelectAll();
+        // Load table
+        SchoolsTable = (await dbLayer.SH_SchoolsSelectAll()).ToList();
+
+        // Set initialized flag
+        initialized = true;
     }
 
     // Delete school if selected and pressed delete
     private async Task DeleteSchool()
     {
         await dbLayer.SH_SchoolsDeleteById(SelectedSchool);
-        navigationManager.NavigateTo(navigationManager.Uri, true);
+        NavigationManager.NavigateTo(NavigationManager.Uri, true);
     }
 
     // Redirect to page for editing school
     private void EditSchoolPageRedirect(SH_School school)
     {
-        navigationManager.NavigateTo($"/school-edit/{school.Id}");
+        NavigationManager.NavigateTo($"/Schools/SchoolEdit/{school.Id}");
     }
 
+    // Redirect to page for adding school
     private void AddSchoolPageRedirect()
     {
-        navigationManager.NavigateTo("/school-add");
+        NavigationManager.NavigateTo("/Schools/SchoolAdd");
     }
 }

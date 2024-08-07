@@ -1,5 +1,6 @@
 using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.Playwright;
+using System.IO;
 
 [Parallelizable(ParallelScope.Self)]
 [TestFixture]
@@ -7,7 +8,8 @@ public class Tests
 {
     // Main page
     const string mainPage = "http://localhost:5209/";
-    const string addSchoolPage = "http://localhost:5209/school-add";
+    const string schoolsPage = "http://localhost:5209/Schools/Schools";
+    const string addSchoolPage = "http://localhost:5209/Schools/SchoolAdd";
 
     // Admin login and password
     const string adminLogin = "admin@admin.com";
@@ -21,7 +23,7 @@ public class Tests
         // Browser
         await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
-            //Headless = false
+             //Headless = false
         });
 
         // Get main page
@@ -37,12 +39,13 @@ public class Tests
 
         await page.GetByRole(AriaRole.Button, new() { Name = "Log in" }).ClickAsync();
 
+        // path for log
+        string path = @"C:\Users\UserPC\Desktop\Test.txt";
 
         // Get to add page
         for (int i = start; i <= end; i++)
         {
-            // Check how much time it took to write into database
-
+            // Get to page that adds schools
             await page.GotoAsync(addSchoolPage);
 
             // Fill values
@@ -66,31 +69,67 @@ public class Tests
             await page.GetByPlaceholder("Search").Nth(1).PressAsync("Enter");
             await page.GetByRole(AriaRole.Cell, new() { Name = "Chisinau" }).ClickAsync();
 
+            // Time submit request
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            
             await page.GetByRole(AriaRole.Button, new() { Name = "Submit" }).ClickAsync();
+
+            // Log time
+            watch.Stop();
+            var elapsedMs = watch.Elapsed.Milliseconds;
+            using (StreamWriter sw = File.AppendText(path))
+                sw.WriteLine(elapsedMs.ToString());
+        }
+    }
+
+    public async Task ReadSchools(int times)
+    {
+        // Playwright
+        using var playwright = await Playwright.CreateAsync();
+
+        // Browser
+        await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+        {
+            Headless = false
+        });
+
+        // Get main page
+        var page = await browser.NewPageAsync();
+        await page.GotoAsync(mainPage);
+
+        // Get login page
+        await page.GetByRole(AriaRole.Link, new() { Name = "Login" }).ClickAsync();
+
+        // Log in
+        await page.GetByPlaceholder("name@example.com").FillAsync(adminLogin);
+        await page.GetByPlaceholder("password").FillAsync(adminPassword);
+
+        await page.GetByRole(AriaRole.Button, new() { Name = "Log in" }).ClickAsync();
+
+        // path for log
+        string path = @"C:\Users\UserPC\Desktop\Test.txt";
+        
+        for (int i = 1; i <= times; i++)
+        {
+            await page.GotoAsync(schoolsPage);
+
+            // Time read request
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+
+            // Wait till you see value School-2 (Which will be seen when all rows are read)
+            await page.GetByRole(AriaRole.Cell, new() { Name = "School-2" }).ClickAsync();
+
+            // Log time
+            watch.Stop();
+            var elapsedMs = watch.Elapsed.Milliseconds;
+            using (StreamWriter sw = File.AppendText(path))
+                sw.WriteLine(elapsedMs.ToString());
         }
     }
 
     [Test]
     public async Task TestLoadSchools()
     {
-        // Set up multiple clients
-        var tasks = new List<Task>();
-        int start = 1, end = 1000;
-        for (int i = 1; i <= 25; i++)
-        {
-            tasks.Add(LoadSchools(start, end));
-            start += 1000;
-            end += 1000;
-        }
-
-        // Time Test
-        string path = @"C:\Users\UserPC\Desktop\Test.txt";
-        var watch = System.Diagnostics.Stopwatch.StartNew();
-
-        await Task.WhenAll(tasks);
-
-        watch.Stop();
-        var elapsedMs = watch.Elapsed.Milliseconds;
-        File.WriteAllText(path, elapsedMs.ToString());
+        await ReadSchools(10);
     }
 }

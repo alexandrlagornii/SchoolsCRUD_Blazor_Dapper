@@ -20,263 +20,263 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SchoolsProjectBlazorDapper
 build_property.RootNamespace = SchoolsProjectBlazorDapper
-build_property.ProjectDir = C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper_Identity_Testing\SchoolsProjectBlazorDapper\
+build_property.ProjectDir = C:\Users\UserPC\Desktop\Job\Projects\SchoolsProject\SchoolsCRUD_Blazor_Dapper_Identity_Testing\SchoolsProjectBlazorDapper\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\UserPC\Desktop\Job\SchoolsCRUD_Blazor_Dapper_Identity_Testing\SchoolsProjectBlazorDapper
+build_property.MSBuildProjectDirectory = C:\Users\UserPC\Desktop\Job\Projects\SchoolsProject\SchoolsCRUD_Blazor_Dapper_Identity_Testing\SchoolsProjectBlazorDapper
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/AccountManage/Pages/Reusable/IdentityUsersTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/AccountManage/Pages/Reusable/IdentityUsersTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50TWFuYWdlXFBhZ2VzXFJldXNhYmxlXElkZW50aXR5VXNlcnNUYWJsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/AccountManage/Pages/UserAdd.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/AccountManage/Pages/UserAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50TWFuYWdlXFBhZ2VzXFVzZXJBZGQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/AccountManage/Pages/Users.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/AccountManage/Pages/Users.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50TWFuYWdlXFBhZ2VzXFVzZXJzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Login.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFBhZ2VzXExvZ2luLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/ChangePassword.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/ChangePassword.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFBhZ2VzXE1hbmFnZVxDaGFuZ2VQYXNzd29yZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/Email.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/Email.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFBhZ2VzXE1hbmFnZVxFbWFpbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/Index.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFBhZ2VzXE1hbmFnZVxJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/Logout.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/Logout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFBhZ2VzXE1hbmFnZVxMb2dvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/SetPassword.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/SetPassword.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFBhZ2VzXE1hbmFnZVxTZXRQYXNzd29yZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/_Imports.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/Manage/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFBhZ2VzXE1hbmFnZVxfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/_Imports.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Pages/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFBhZ2VzXF9JbXBvcnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/AccountLayout.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/AccountLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFNoYXJlZFxBY2NvdW50TGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/ExternalLoginPicker.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/ExternalLoginPicker.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFNoYXJlZFxFeHRlcm5hbExvZ2luUGlja2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/ManageLayout.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/ManageLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFNoYXJlZFxNYW5hZ2VMYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/ManageNavMenu.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/ManageNavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFNoYXJlZFxNYW5hZ2VOYXZNZW51LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/RedirectToLogin.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/RedirectToLogin.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFNoYXJlZFxSZWRpcmVjdFRvTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/ShowRecoveryCodes.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/ShowRecoveryCodes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFNoYXJlZFxTaG93UmVjb3ZlcnlDb2Rlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/StatusMessage.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Account/Shared/StatusMessage.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBY2NvdW50XFNoYXJlZFxTdGF0dXNNZXNzYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/App.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Routes.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Classes.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Classes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXENsYXNzZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/ClassesAdd.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/ClassesAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXENsYXNzZXNBZGQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/ClassesEdit.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/ClassesEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXENsYXNzZXNFZGl0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/GradeAdd.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/GradeAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXEdyYWRlQWRkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/GradeEdit.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/GradeEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXEdyYWRlRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Grades.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Grades.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXEdyYWRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Main.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Main.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXE1haW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/PersonAdd.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/PersonAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFBlcnNvbkFkZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/PersonEdit.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/PersonEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFBlcnNvbkVkaXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Persons.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Persons.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFBlcnNvbnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_CityTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_CityTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX2RfQ2l0eVRhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_ClassesSimpleTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_ClassesSimpleTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX2RfQ2xhc3Nlc1NpbXBsZVRhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_ClassesTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_ClassesTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX2RfQ2xhc3Nlc1RhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_CountryTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_CountryTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX2RfQ291bnRyeVRhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_SubjectSimpleTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_SubjectSimpleTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX2RfU3ViamVjdFNpbXBsZVRhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_SubjectTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_SubjectTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX2RfU3ViamVjdFRhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_TypeTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_d_TypeTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX2RfVHlwZVRhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_GradesSimpleTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_GradesSimpleTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX0dyYWRlc1NpbXBsZVRhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_GradesTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_GradesTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX0dyYWRlc1RhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_PersonSimpleTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_PersonSimpleTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX1BlcnNvblNpbXBsZVRhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_PersonsTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_PersonsTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX1BlcnNvbnNUYWJsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_ScheduleSimpleTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_ScheduleSimpleTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX1NjaGVkdWxlU2ltcGxlVGFibGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_SchedulesTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_SchedulesTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX1NjaGVkdWxlc1RhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_SchoolsSimpleTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_SchoolsSimpleTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX1NjaG9vbHNTaW1wbGVUYWJsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_SchoolsTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_SchoolsTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX1NjaG9vbHNUYWJsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_TakesSimpleTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_TakesSimpleTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX1Rha2VzU2ltcGxlVGFibGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_TakesTable.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Reusable/SH_TakesTable.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFJldXNhYmxlXFNIX1Rha2VzVGFibGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Schedule.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Schedule.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFNjaGVkdWxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/ScheduleAdd.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/ScheduleAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFNjaGVkdWxlQWRkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/ScheduleEdit.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/ScheduleEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFNjaGVkdWxlRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/SchoolAdd.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/SchoolAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFNjaG9vbEFkZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/SchoolEdit.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/SchoolEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFNjaG9vbEVkaXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Schools.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Schools.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFNjaG9vbHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/SubjectAdd.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/SubjectAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFN1YmplY3RBZGQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Subjects.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Subjects.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFN1YmplY3RzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/SubjectsEdit.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/SubjectsEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFN1YmplY3RzRWRpdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Take.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Take.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFRha2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/TakeAdd.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/TakeAdd.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFRha2VBZGQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/TakeEdit.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/TakeEdit.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFRha2VFZGl0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Test.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Schools/Pages/Test.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTY2hvb2xzXFBhZ2VzXFRlc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/_Imports.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Layout/MainLayout.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-ysgh40ocfg
 
-[C:/Users/UserPC/Desktop/Job/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Layout/NavMenu.razor]
+[C:/Users/UserPC/Desktop/Job/Projects/SchoolsProject/SchoolsCRUD_Blazor_Dapper_Identity_Testing/SchoolsProjectBlazorDapper/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-buc21rslxh
