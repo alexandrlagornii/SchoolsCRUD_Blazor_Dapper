@@ -1,4 +1,4 @@
-﻿@page "/schedule"
+﻿@page "/Schools/Schedule"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,33 +9,36 @@
 
 @attribute [Authorize]
 
+<PageTitle>Schedules</PageTitle>
+
 @*Wait for everything to load*@
-@if (SchedulesTable.Count == 0)
+@if (!initialized)
 {
     <AuthorizeView Roles="Admin, Teacher">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchedulePageRedirect">Add</MudButton>
     </AuthorizeView>
-    <p style="padding-top: 10px;"><em>Loading Schedules...</em></p>
+    <p style="padding-top: 10px;"><em>Loading...</em></p>
 }
 else
 {
     <AuthorizeView Roles="Admin, Teacher">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSchedulePageRedirect">Add</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchedule.Id == null)" @onclick="(() => EditSchedulePageRedirect(SelectedSchedule))">Edit</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSchedule.Id == null)" @onclick="DeleteSchedule">Delete</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchedule.Id == 0)" @onclick="(() => EditSchedulePageRedirect(SelectedSchedule))">Edit</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSchedule.Id == 0)" @onclick="DeleteSchedule">Delete</MudButton>
     </AuthorizeView>
     <SH_SchedulesTable ScheduleTable="@SchedulesTable" @bind-SelectedSchedule="@SelectedSchedule" @bind-SelectedSchedule:event="SelectedScheduleChanged" />
 }
 
 @code {
-    // Data models
     List<SH_Schedule> SchedulesTable = new();
     private SH_Schedule SelectedSchedule = new();
+    bool initialized = false;
 
     // Load table
     protected override async Task OnInitializedAsync()
     {
         SchedulesTable = await dbLayer.SH_SchedulesSelectAll();
+        initialized = true;
     }
 
     // Delete grade if selected and pressed delete
@@ -48,12 +51,12 @@ else
     // Redirect to page for editing grade
     private void EditSchedulePageRedirect(SH_Schedule schedule)
     {
-        navigationManager.NavigateTo($"/schedule-edit/{schedule.Id}");
+        navigationManager.NavigateTo($"/Schools/ScheduleEdit/{schedule.Id}");
     }
 
     // Redirect to page for adding grade
     private void AddSchedulePageRedirect()
     {
-        navigationManager.NavigateTo("/schedule-add");
+        navigationManager.NavigateTo("/Schools/ScheduleAdd");
     }
 }

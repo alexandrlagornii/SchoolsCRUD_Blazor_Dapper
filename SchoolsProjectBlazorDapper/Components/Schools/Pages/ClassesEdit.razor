@@ -1,4 +1,4 @@
-﻿@page "/class-edit/{_classId}"
+﻿@page "/Schools/ClassEdit/{_classId}"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,19 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
+<PageTitle>ClassEdit</PageTitle>
+
 @*Wait for everything to load*@
-@if (SelectedClass == null)
+@if (!initialized)
 {
-    <p><em>Loading Class...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_d_ClassesSimpleTable SelectedClass="SelectedClass" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedClass.Name == null)" @onclick="UpdateClass">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary"
+               Disabled="@(SelectedClass.Name == string.Empty)"
+               @onclick="UpdateClass">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTextField @bind-Value="SelectedClass.Name" Label="Name" Variant="Variant.Text"></MudTextField>
@@ -26,18 +30,28 @@ else
 
 @code {
     [Parameter] public string? _classId { get; set; }
-
     public SH_d_Class SelectedClass = new();
+    bool initialized = false;
 
     protected override async Task OnInitializedAsync()
     {
-        SelectedClass.Id = int.Parse(_classId);
-        SelectedClass = await dbLayer.SH_d_ClassesSelectById(SelectedClass);
+        // Try to parse
+        int parsedId = 0;
+        bool parsedIdSuccess = Int32.TryParse(_classId, out parsedId);
+
+        if (parsedIdSuccess == true)
+        {
+            // Assign parsed id and select
+            SelectedClass.Id = parsedId;
+            SelectedClass = await dbLayer.SH_d_ClassesSelectById(SelectedClass);
+        }
+
+        initialized = true;
     }
 
     private async Task UpdateClass()
     {
         await dbLayer.SH_d_ClassesUpdate(SelectedClass);
-        navigationManager.NavigateTo("/classes");
+        navigationManager.NavigateTo("/Schools/Classes");
     }
 }

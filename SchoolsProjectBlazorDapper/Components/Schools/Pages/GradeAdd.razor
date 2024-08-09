@@ -1,4 +1,4 @@
-﻿@page "/grade-add"
+﻿@page "/Schools/GradeAdd"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,20 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
+<PageTitle>GradeAdd</PageTitle>
+
 @*Wait for everything to load*@
-@if (SH_d_SubjectTable?.Count == 0)
+@if (!initialized)
 {
-    <p><em>Loading Grade...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_GradesSimpleTable SelectedGrade="SelectedGrade" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedGrade.Grade == null || SelectedGrade.SH_PersonTeacher?.Id == null || SelectedGrade.SH_PersonStudent?.Id == null || SelectedGrade.SH_d_Subject?.Id == null)" @onclick="GradeInsert">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary"
+               Disabled="@(SelectedGrade.Grade == 0 || SelectedGrade.SH_PersonTeacher?.Id == 0
+                         || SelectedGrade.SH_PersonStudent?.Id == 0 || SelectedGrade.SH_d_Subject?.Id == 0)"
+               @onclick="GradeInsert">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTextField @bind-Value="SelectedGrade.Grade" Label="Grade" Variant="Variant.Text"></MudTextField>
@@ -28,16 +33,11 @@ else
 }
 
 @code {
-    public SH_Grade? SelectedGrade = new();
-
-    // Teacher table
-    List<SH_Person>? SH_PersonTeacherTable = new();
-
-    // Student Table
-    List<SH_Person>? SH_PersonStudentTable = new();
-
-    // Subject Table
-    List<SH_d_Subject>? SH_d_SubjectTable = new();
+    public SH_Grade SelectedGrade = new();
+    List<SH_Person> SH_PersonTeacherTable = new();
+    List<SH_Person> SH_PersonStudentTable = new();
+    List<SH_d_Subject> SH_d_SubjectTable = new();
+    bool initialized = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -48,27 +48,30 @@ else
 
         // Get persons for Teachers Table
         SH_Person teacherType = new SH_Person { TypeId = 2 };
-        SH_PersonTeacherTable = await dbLayer.SH_PersonsSelectAllByType(teacherType);
+        SH_PersonTeacherTable = (await dbLayer.SH_PersonsSelectAllByType(teacherType)).ToList();
 
         // Get persons for Student Table
         SH_Person studentType = new SH_Person { TypeId = 1 };
-        SH_PersonStudentTable = await dbLayer.SH_PersonsSelectAllByType(studentType);
+        SH_PersonStudentTable = (await dbLayer.SH_PersonsSelectAllByType(studentType)).ToList();
 
         // Get subjects for Subject Table
         SH_d_SubjectTable = await dbLayer.SH_d_SubjectsSelectAll();
+
+        // Set initialized flag
+        initialized = true;
     }
 
     private async Task GradeInsert()
     {
         // Select Ids
-        SelectedGrade.TeacherId = SelectedGrade.SH_PersonTeacher?.Id;
-        SelectedGrade.StudentId = SelectedGrade.SH_PersonStudent?.Id;
-        SelectedGrade.SubjectId = SelectedGrade.SH_d_Subject?.Id;
+        SelectedGrade.TeacherId = SelectedGrade.SH_PersonTeacher?.Id ?? 0;
+        SelectedGrade.StudentId = SelectedGrade.SH_PersonStudent?.Id ?? 0;
+        SelectedGrade.SubjectId = SelectedGrade.SH_d_Subject?.Id ?? 0;
         
         // Insert
         await dbLayer.SH_GradesInsert(SelectedGrade);
         
         // Back to main table
-        navigationManager.NavigateTo("/grades");
+        navigationManager.NavigateTo("/Schools/Grades");
     }
 }

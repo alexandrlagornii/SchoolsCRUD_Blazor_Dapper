@@ -1,4 +1,4 @@
-﻿@page "/class-add"
+﻿@page "/Schools/ClassAdd"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,19 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
+<PageTitle>ClassAdd</PageTitle>
+
 @*Wait for everything to load*@
-@if (SelectedClass == null)
+@if (!initialized)
 {
-    <p><em>Loading Class...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_d_ClassesSimpleTable SelectedClass="SelectedClass" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedClass.Name == null)" @onclick="InsertClass">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary"
+               Disabled="@(SelectedClass.Name == string.Empty)"
+               @onclick="InsertClass">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTextField @bind-Value="SelectedClass.Name" Label="Name" Variant="Variant.Text"></MudTextField>
@@ -26,10 +30,11 @@ else
 
 @code {
     public SH_d_Class SelectedClass = new();
+    bool initialized = true;
 
     private async Task InsertClass()
     {
         await dbLayer.SH_d_ClassesInsert(SelectedClass);
-        navigationManager.NavigateTo("/classes");
+        navigationManager.NavigateTo("/Schools/Classes");
     }
 }

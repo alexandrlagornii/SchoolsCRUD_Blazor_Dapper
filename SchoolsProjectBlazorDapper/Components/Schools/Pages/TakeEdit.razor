@@ -1,4 +1,4 @@
-﻿@page "/take-edit/{takeId}"
+﻿@page "/Schools/TakeEdit/{takeId}"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,19 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
+<PageTitle>TakeEdit</PageTitle>
+
 @*Wait for everything to load*@
-@if (SelectedTake == null)
+@if (!initialized)
 {
-    <p><em>Loading Take...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_TakesSimpleTable SelectedTake="SelectedTake" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedTake?.SH_d_Class?.Id == null || SelectedTake?.SH_Person?.Id == null)" @onclick="TakeUpdate">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary"
+               Disabled="@(SelectedTake.SH_d_Class?.Id == 0 || SelectedTake.SH_Person?.Id == 0)"
+               @onclick="TakeUpdate">Submit</MudButton>
 
     <div class="edit-add-container">
         <SH_d_ClassesTable ClassTable="SH_d_ClassTable" @bind-SelectedClass="@SelectedTake.SH_d_Class" @bind-SelectedClass:event="SelectedClassChanged" />
@@ -26,40 +30,46 @@ else
 }
 
 @code {
-    [Parameter] public string? takeId { get; set; }
-
-    public SH_Take? SelectedTake = new();
-
-    // Class table
-    List<SH_d_Class>? SH_d_ClassTable = new();
-
-    // Person table
-    List<SH_Person>? SH_StudentTable = new();
-
+    [Parameter] public string takeId { get; set; } = string.Empty;
+    public SH_Take SelectedTake = new();
+    List<SH_d_Class> SH_d_ClassTable = new();
+    List<SH_Person> SH_StudentTable = new();
+    bool initialized = false;
 
     protected override async Task OnInitializedAsync()
     {
-        SelectedTake.Id = int.Parse(takeId);
-        SelectedTake = await dbLayer.SH_TakeSelectById(SelectedTake);
+        // Try to parse
+        int parsedId = 0;
+        bool parsedIdSuccess = Int32.TryParse(takeId, out parsedId);
 
-        // Get classes
-        SH_d_ClassTable = await dbLayer.SH_d_ClassesSelectAll();
+        if (parsedIdSuccess == true)
+        {
+            // Assign parsed id and select the row
+            SelectedTake.Id = parsedId;
+            SelectedTake = await dbLayer.SH_TakeSelectById(SelectedTake);
 
-        // Get Students
-        SH_Person studentType = new SH_Person { TypeId = 1 };
-        SH_StudentTable = await dbLayer.SH_PersonsSelectAllByType(studentType);
+            // Get classes
+            SH_d_ClassTable = await dbLayer.SH_d_ClassesSelectAll();
+
+            // Get Students
+            SH_Person studentType = new SH_Person { TypeId = 1 };
+            SH_StudentTable = (await dbLayer.SH_PersonsSelectAllByType(studentType)).ToList();
+        }
+
+        // Set initialized flag
+        initialized = true;
     }
 
     private async Task TakeUpdate()
     {
         // Select Ids
-        SelectedTake.ClassId = SelectedTake.SH_d_Class?.Id;
-        SelectedTake.StudentId = SelectedTake.SH_Person?.Id;
+        SelectedTake.ClassId = SelectedTake.SH_d_Class?.Id ?? 0;
+        SelectedTake.StudentId = SelectedTake.SH_Person?.Id ?? 0;
 
         // Insert
         await dbLayer.SH_TakesUpdate(SelectedTake);
 
         // Back to main table
-        navigationManager.NavigateTo("/take");
+        navigationManager.NavigateTo("/Schools/Take");
     }
 }

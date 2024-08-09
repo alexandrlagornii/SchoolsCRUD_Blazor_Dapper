@@ -12,10 +12,10 @@
         <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
     </ToolBarContent>
     <HeaderContent>
-        <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id ?? int.MaxValue)">Id</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Id)">Id</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.FirstName ?? string.Empty)">First Name</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.LastName ?? string.Empty)">Last Name</MudTableSortLabel></MudTh>
-        <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Age ?? int.MaxValue)">Age</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.Age)">Age</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.SH_School?.Name ?? string.Empty)">School Name</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.SH_d_Type?.Name ?? string.Empty)">Type</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Person, object>(x=>x.DateOfBirth ?? DateTime.Now)">Date of Birth</MudTableSortLabel></MudTh>

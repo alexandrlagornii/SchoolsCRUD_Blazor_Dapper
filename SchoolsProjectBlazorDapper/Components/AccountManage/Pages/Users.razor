@@ -1,4 +1,4 @@
-﻿@page "/Users"
+﻿@page "/AccountManage/Users"
 @rendermode InteractiveServer
 
 @using SchoolsProjectBlazorDapper.Data.Account;
@@ -48,6 +48,6 @@ else
 
     private void AddUserPageRedirect()
     {
-        NavigationManager.NavigateTo("/user-add");
+        NavigationManager.NavigateTo("/AccountManage/UserAdd");
     }
 }

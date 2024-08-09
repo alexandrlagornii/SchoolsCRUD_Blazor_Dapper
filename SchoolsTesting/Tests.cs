@@ -1,5 +1,6 @@
 using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Microsoft.Playwright;
+using System.Diagnostics;
 using System.IO;
 
 [Parallelizable(ParallelScope.Self)]
@@ -70,13 +71,16 @@ public class Tests
             await page.GetByRole(AriaRole.Cell, new() { Name = "Chisinau" }).ClickAsync();
 
             // Time submit request
-            var watch = System.Diagnostics.Stopwatch.StartNew();
-            
+            var watch = Stopwatch.StartNew();
+
             await page.GetByRole(AriaRole.Button, new() { Name = "Submit" }).ClickAsync();
 
+            // Get to page that adds schools
+            await page.GotoAsync(addSchoolPage);
+            
             // Log time
             watch.Stop();
-            var elapsedMs = watch.Elapsed.Milliseconds;
+            var elapsedMs = watch.Elapsed.TotalMilliseconds;
             using (StreamWriter sw = File.AppendText(path))
                 sw.WriteLine(elapsedMs.ToString());
         }
@@ -90,7 +94,7 @@ public class Tests
         // Browser
         await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
-            Headless = false
+            //Headless = false
         });
 
         // Get main page
@@ -111,17 +115,19 @@ public class Tests
         
         for (int i = 1; i <= times; i++)
         {
+            // Got to page
             await page.GotoAsync(schoolsPage);
 
             // Time read request
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            var watch = new Stopwatch();
+            watch.Start();
 
             // Wait till you see value School-2 (Which will be seen when all rows are read)
             await page.GetByRole(AriaRole.Cell, new() { Name = "School-2" }).ClickAsync();
 
             // Log time
             watch.Stop();
-            var elapsedMs = watch.Elapsed.Milliseconds;
+            var elapsedMs = watch.Elapsed.TotalMilliseconds;
             using (StreamWriter sw = File.AppendText(path))
                 sw.WriteLine(elapsedMs.ToString());
         }
@@ -130,6 +136,6 @@ public class Tests
     [Test]
     public async Task TestLoadSchools()
     {
-        await ReadSchools(10);
+        await LoadSchools(1, 10);
     }
 }

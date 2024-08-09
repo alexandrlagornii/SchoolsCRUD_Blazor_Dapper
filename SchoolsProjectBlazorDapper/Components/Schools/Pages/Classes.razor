@@ -1,4 +1,4 @@
-﻿@page "/classes"
+﻿@page "/Schools/Classes"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,33 +9,35 @@
 
 @attribute [Authorize]
 
+<PageTitle>Classes</PageTitle>
+
 @*Wait for everything to load*@
-@if (ClassesTable.Count == 0)
+@if (!initialized)
 {
     <AuthorizeView Roles="Admin, Teacher">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddClassPageRedirect">Add</MudButton>
     </AuthorizeView>
-    <p style="padding-top: 10px;"><em>Loading Classes...</em></p>
+    <p style="padding-top: 10px;"><em>Loading...</em></p>
 }
 else
 {
     <AuthorizeView Roles="Admin, Teacher">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddClassPageRedirect">Add</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedClass.Id == null)" @onclick="(() => EditClassPageRedirect(SelectedClass))">Edit</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedClass.Id == null)" @onclick="DeleteClass">Delete</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedClass.Id == 0)" @onclick="(() => EditClassPageRedirect(SelectedClass))">Edit</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedClass.Id == 0)" @onclick="DeleteClass">Delete</MudButton>
     </AuthorizeView>
     <SH_d_ClassesTable ClassTable="@ClassesTable" @bind-SelectedClass="@SelectedClass" @bind-SelectedClass:event="SelectedClassChanged" />
 }
 
 @code {
-    // Data models
     List<SH_d_Class> ClassesTable = new();
     private SH_d_Class SelectedClass = new();
+    bool initialized = false;
 
-    // Load table
     protected override async Task OnInitializedAsync()
     {
         ClassesTable = await dbLayer.SH_d_ClassesSelectAll();
+        initialized = true;
     }
 
     // Delete class if selected and pressed delete
@@ -48,12 +50,12 @@ else
     // Redirect to page for editing class
     private void EditClassPageRedirect(SH_d_Class _class)
     {
-        navigationManager.NavigateTo($"/class-edit/{_class.Id}");
+        navigationManager.NavigateTo($"/Schools/ClassEdit/{_class.Id}");
     }
 
     // Redirect to page for adding class
     private void AddClassPageRedirect()
     {
-        navigationManager.NavigateTo("/class-add");
+        navigationManager.NavigateTo("/Schools/ClassAdd");
     }
 }

@@ -1,4 +1,4 @@
-﻿@page "/grade-edit/{gradeId}"
+﻿@page "/Schools/GradeEdit/{gradeId}"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,20 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
+<PageTitle>GradeEdit</PageTitle>
+
 @*Wait for everything to load*@
-@if (SH_d_SubjectTable?.Count == 0)
+@if (!initialized)
 {
-    <p><em>Loading Grade...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_GradesSimpleTable SelectedGrade="SelectedGrade" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedGrade.Grade == null || SelectedGrade.SH_PersonTeacher?.Id == null || SelectedGrade.SH_PersonStudent?.Id == null || SelectedGrade.SH_d_Subject?.Id == null)" @onclick="UpdateGrade">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary"
+               Disabled="@(SelectedGrade.Grade == 0 || SelectedGrade.SH_PersonTeacher?.Id == 0
+                         || SelectedGrade.SH_PersonStudent?.Id == 0 || SelectedGrade.SH_d_Subject?.Id == 0)"
+               @onclick="UpdateGrade">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTextField @bind-Value="SelectedGrade.Grade" Label="Grade" Variant="Variant.Text"></MudTextField>
@@ -28,47 +33,51 @@ else
 }
 
 @code {
-    [Parameter] public string? gradeId { get; set; }
-    public SH_Grade? SelectedGrade = new();
-
-    // Teacher table
-    List<SH_Person>? SH_PersonTeacherTable = new();
-
-    // Student Table
-    List<SH_Person>? SH_PersonStudentTable = new();
-
-    // Subject Table
-    List<SH_d_Subject>? SH_d_SubjectTable = new();
+    [Parameter] public string gradeId { get; set; } = string.Empty;
+    public SH_Grade SelectedGrade = new();
+    List<SH_Person> SH_PersonTeacherTable = new();
+    List<SH_Person> SH_PersonStudentTable = new();
+    List<SH_d_Subject> SH_d_SubjectTable = new();
+    bool initialized = false;
 
     protected override async Task OnInitializedAsync()
     {
-        // Get selected grade
-        SelectedGrade.Id = int.Parse(gradeId);
-        SelectedGrade = await dbLayer.SH_GradesSelectById(SelectedGrade);
+        // Try to parse
+        int parsedId = 0;
+        bool parsedIdSuccess = Int32.TryParse(gradeId, out parsedId);
 
-        // Get persons for Teachers Table
-        SH_Person teacherType = new SH_Person { TypeId = 2 };
-        SH_PersonTeacherTable = await dbLayer.SH_PersonsSelectAllByType(teacherType);
+        if (parsedIdSuccess == true)
+        {
+            // Get selected grade
+            SelectedGrade.Id = parsedId;
+            SelectedGrade = await dbLayer.SH_GradesSelectById(SelectedGrade);
 
-        // Get persons for Student Table
-        SH_Person studentType = new SH_Person { TypeId = 1 };
-        SH_PersonStudentTable = await dbLayer.SH_PersonsSelectAllByType(studentType);
+            // Get persons for Teachers Table
+            SH_Person teacherType = new SH_Person { TypeId = 2 };
+            SH_PersonTeacherTable = (await dbLayer.SH_PersonsSelectAllByType(teacherType)).ToList();
 
-        // Get subjects for Subject Table
-        SH_d_SubjectTable = await dbLayer.SH_d_SubjectsSelectAll();
+            // Get persons for Student Table
+            SH_Person studentType = new SH_Person { TypeId = 1 };
+            SH_PersonStudentTable = (await dbLayer.SH_PersonsSelectAllByType(studentType)).ToList();
+
+            // Get subjects for Subject Table
+            SH_d_SubjectTable = await dbLayer.SH_d_SubjectsSelectAll();
+        }
+
+        initialized = true;
     }
 
     private async Task UpdateGrade()
     {
         // Update Ids
-        SelectedGrade.TeacherId = SelectedGrade.SH_PersonTeacher?.Id;
-        SelectedGrade.StudentId = SelectedGrade.SH_PersonStudent?.Id;
-        SelectedGrade.SubjectId = SelectedGrade.SH_d_Subject?.Id;
+        SelectedGrade.TeacherId = SelectedGrade.SH_PersonTeacher?.Id ?? 0;
+        SelectedGrade.StudentId = SelectedGrade.SH_PersonStudent?.Id ?? 0;
+        SelectedGrade.SubjectId = SelectedGrade.SH_d_Subject?.Id ?? 0;
 
         // Update Grade
         await dbLayer.SH_GradesUpdate(SelectedGrade);
 
         // Move to main grades page
-        navigationManager.NavigateTo("/grades");
+        navigationManager.NavigateTo("/Schools/Grades");
     }
 }

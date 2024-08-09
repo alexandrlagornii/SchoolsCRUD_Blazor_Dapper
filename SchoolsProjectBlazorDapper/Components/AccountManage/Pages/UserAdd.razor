@@ -1,4 +1,4 @@
-﻿@page "/user-add"
+﻿@page "/AccountManage/UserAdd"
 
 @using SchoolsProjectBlazorDapper.Data.Account;
 @using SchoolsProjectBlazorDapper.Components.AccountManage.Pages.Reusable;
@@ -30,7 +30,7 @@
 @code {
     bool success;
     string[] errors = { };
-    MudForm form;
+    MudForm? form;
 
     string email = "";
     string password = "";
@@ -51,7 +51,7 @@
             // Assign admin role
             await UserManager.AddToRoleAsync(user, role);
         }
-        NavigationManager.NavigateTo("/users");
+        NavigationManager.NavigateTo("/AccountManage/Users");
     }
 
     private IEnumerable<string> PasswordStrength(string pw)

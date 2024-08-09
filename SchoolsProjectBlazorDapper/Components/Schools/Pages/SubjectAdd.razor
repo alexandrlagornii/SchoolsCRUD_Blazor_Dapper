@@ -1,4 +1,4 @@
-﻿@page "/subject-add"
+﻿@page "/Schools/SubjectAdd"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,18 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
+<PageTitle>SubjectAdd</PageTitle>
+
 @*Wait for everything to load*@
-@if (SelectedSubject == null)
+@if (!initialized)
 {
-    <p><em>Loading Subjects...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_d_SubjectSimpleTable SelectedSubject="SelectedSubject" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSubject.Name == null)" @onclick="InsertSubject">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSubject.Name == string.Empty)"
+               @onclick="InsertSubject">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTextField @bind-Value="SelectedSubject.Name" Label="Name" Variant="Variant.Text"></MudTextField>
@@ -26,10 +29,11 @@ else
 
 @code {
     public SH_d_Subject SelectedSubject = new();
+    bool initialized = true;
 
     private async Task InsertSubject()
     {
         await dbLayer.SH_d_SubjectsInsert(SelectedSubject);
-        navigationManager.NavigateTo("/subjects");
+        navigationManager.NavigateTo("/Schools/Subjects");
     }
 }

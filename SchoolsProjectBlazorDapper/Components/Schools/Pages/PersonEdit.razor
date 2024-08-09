@@ -1,4 +1,4 @@
-﻿@page "/person-edit/{personId}"
+﻿@page "/Schools/PersonEdit/{personId}"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,21 @@
 
 @attribute [Authorize(Roles = "Admin")]
 
+<PageTitle>PersonEdit</PageTitle>
+
 @*Wait for everything to load*@
-@if (SH_d_TypeTable?.Count == 0)
+@if (!initialized)
 {
-    <p><em>Loading Person...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_PersonSimpleTable SelectedPerson="SelectedPerson" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedPerson.FirstName == null || SelectedPerson.LastName == null || SelectedPerson.SH_School?.Id == null || SelectedPerson.SH_d_Type == null || SelectedPerson.DateOfBirth < new DateTime(1900, 1, 1) || SelectedPerson.DateOfBirth > DateTime.Today)" @onclick="UpdatePerson">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary"
+               Disabled="@(SelectedPerson.FirstName == string.Empty || SelectedPerson.LastName == string.Empty
+                         || SelectedPerson.SH_School?.Id == 0 || SelectedPerson.SH_d_Type?.Id == 0 || SelectedPerson.DateOfBirth == null
+                         || SelectedPerson.DateOfBirth < new DateTime(1900, 1, 1) || SelectedPerson.DateOfBirth >= DateTime.Today)"
+               @onclick="UpdatePerson">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTextField @bind-Value="SelectedPerson.FirstName" Label="FirstName" Variant="Variant.Text"></MudTextField>
@@ -28,38 +34,44 @@ else
     </div>
 }
 @code {
-    [Parameter] public string? personId { get; set; }
-    public SH_Person? SelectedPerson = new();
-
-    // School Table
-    List<SH_School>? SH_SchoolTable = new();
-
-    // Type Table
-    List<SH_d_Type>? SH_d_TypeTable = new();
+    [Parameter] public string personId { get; set; } = string.Empty;
+    public SH_Person SelectedPerson = new();
+    List<SH_School> SH_SchoolTable = new();
+    List<SH_d_Type> SH_d_TypeTable = new();
+    bool initialized = false;
 
     protected override async Task OnInitializedAsync()
     {
-        // Get selected person
-        SelectedPerson.Id = int.Parse(personId);
-        SelectedPerson = await dbLayer.SH_PersonSelectById(SelectedPerson);
+        // Try to parse
+        int parsedId = 0;
+        bool parsedIdSuccess = Int32.TryParse(personId, out parsedId);
 
-        // Get schools for Schools table
-        SH_SchoolTable = (await dbLayer.SH_SchoolsSelectAll()).ToList();
+        if (parsedIdSuccess)
+        {
+            // Get selected person
+            SelectedPerson.Id = parsedId;
+            SelectedPerson = await dbLayer.SH_PersonSelectById(SelectedPerson);
 
-        // Get type for Type table
-        SH_d_TypeTable = await dbLayer.SH_d_TypesSelectAll();
+            // Get schools for Schools table
+            SH_SchoolTable = (await dbLayer.SH_SchoolsSelectAll()).ToList();
+
+            // Get type for Type table
+            SH_d_TypeTable = await dbLayer.SH_d_TypesSelectAll();
+        }
+
+        initialized = true;
     }
 
     private async Task UpdatePerson()
     {
         // Update Ids
-        SelectedPerson.SchoolId = SelectedPerson.SH_School?.Id;
-        SelectedPerson.TypeId = SelectedPerson.SH_d_Type?.Id;
+        SelectedPerson.SchoolId = SelectedPerson.SH_School?.Id ?? 0;
+        SelectedPerson.TypeId = SelectedPerson.SH_d_Type?.Id ?? 0;
         
         // Update row in db
         await dbLayer.SH_PersonsUpdate(SelectedPerson);
         
         // Get back to persons table
-        navigationManager.NavigateTo("/persons");
+        navigationManager.NavigateTo("/Schools/Persons");
     }
 }

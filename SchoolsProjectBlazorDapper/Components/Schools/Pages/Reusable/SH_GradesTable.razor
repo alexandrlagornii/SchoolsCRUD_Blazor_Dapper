@@ -12,7 +12,7 @@
         <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
     </ToolBarContent>
     <HeaderContent>
-        <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.Grade ?? int.MaxValue)">Grade</MudTableSortLabel></MudTh>
+        <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.Grade)">Grade</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonTeacher?.FirstName ?? string.Empty)">Teacher First Name</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonTeacher?.LastName ?? string.Empty)">Teacher Last Name</MudTableSortLabel></MudTh>
         <MudTh><MudTableSortLabel SortBy="new Func<SH_Grade, object>(x=>x.SH_PersonStudent?.FirstName ?? string.Empty)">Student First Name</MudTableSortLabel></MudTh>

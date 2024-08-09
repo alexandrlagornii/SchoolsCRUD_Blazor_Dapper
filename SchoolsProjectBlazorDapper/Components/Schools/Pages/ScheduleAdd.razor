@@ -1,4 +1,4 @@
-﻿@page "/schedule-add"
+﻿@page "/Schools/ScheduleAdd"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,21 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
+<PageTitle>ScheduleAdd</PageTitle>
+
 @*Wait for everything to load*@
-@if (SH_d_SubjectTable?.Count == 0)
+@if (!initialized)
 {
-    <p><em>Loading Person...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_ScheduleSimpleTable SelectedSchedule="SelectedSchedule" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchedule.TimeStart == null || SelectedSchedule.TimeEnd == null || SelectedSchedule.TimeStart > SelectedSchedule.TimeEnd || SelectedSchedule.SH_d_Class?.Id == null || SelectedSchedule.SH_d_Subject?.Id == null || SelectedSchedule.SH_PersonTeacher?.Id == null)" @onclick="ScheduleInsert">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary"
+               Disabled="@(SelectedSchedule.TimeStart == null || SelectedSchedule.TimeEnd == null
+                         || SelectedSchedule.TimeStart > SelectedSchedule.TimeEnd || SelectedSchedule.SH_d_Class?.Id == 0
+                         || SelectedSchedule.SH_d_Subject?.Id == 0 || SelectedSchedule.SH_PersonTeacher?.Id == 0)"
+               @onclick="ScheduleInsert">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTimePicker Label="TimeStart" Editable="true" Placeholder="Start Time" @bind-Time="SelectedSchedule.TimeStart" />
@@ -30,15 +36,10 @@ else
 
 @code {
     public SH_Schedule SelectedSchedule = new();
-
-    // Person Table
-    List<SH_Person>? SH_TeacherTable = new();
-
-    // Class Table
-    List<SH_d_Class>? SH_d_ClassTable = new();
-
-    // Subject Table
-    List<SH_d_Subject>? SH_d_SubjectTable = new();
+    List<SH_Person> SH_TeacherTable = new();
+    List<SH_d_Class> SH_d_ClassTable = new();
+    List<SH_d_Subject> SH_d_SubjectTable = new();
+    bool initialized = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -49,26 +50,29 @@ else
 
         // Get persons for Teachers Table
         SH_Person teacherType = new SH_Person { TypeId = 2 };
-        SH_TeacherTable = await dbLayer.SH_PersonsSelectAllByType(teacherType);
+        SH_TeacherTable = (await dbLayer.SH_PersonsSelectAllByType(teacherType)).ToList();
 
         // Get classes table
         SH_d_ClassTable = await dbLayer.SH_d_ClassesSelectAll();
 
         // Get subjects table
         SH_d_SubjectTable = await dbLayer.SH_d_SubjectsSelectAll();
+
+        // Set initialized flag
+        initialized = true;
     }
 
     private async Task ScheduleInsert()
     {
         // Update Ids
-        SelectedSchedule.ClassId = SelectedSchedule.SH_d_Class?.Id;
-        SelectedSchedule.TeacherId = SelectedSchedule.SH_PersonTeacher?.Id;
-        SelectedSchedule.SubjectId = SelectedSchedule.SH_d_Subject?.Id;
+        SelectedSchedule.ClassId = SelectedSchedule.SH_d_Class?.Id ?? 0;
+        SelectedSchedule.TeacherId = SelectedSchedule.SH_PersonTeacher?.Id ?? 0;
+        SelectedSchedule.SubjectId = SelectedSchedule.SH_d_Subject?.Id ?? 0;
 
         // Insert row in db
         await dbLayer.SH_SchedulesInsert(SelectedSchedule);
 
         // Get back to persons table
-        navigationManager.NavigateTo("/schedule");
+        navigationManager.NavigateTo("/Schools/Schedule");
     }
 }

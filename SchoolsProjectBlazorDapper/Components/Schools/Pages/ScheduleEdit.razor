@@ -1,4 +1,4 @@
-﻿@page "/schedule-edit/{scheduleId}"
+﻿@page "/Schools/ScheduleEdit/{scheduleId}"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,21 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
+<PageTitle>ScheduleEdit</PageTitle>
+
 @*Wait for everything to load*@
-@if (SH_d_SubjectTable?.Count == 0)
+@if (!initialized)
 {
-    <p><em>Loading Schedule...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_ScheduleSimpleTable SelectedSchedule="SelectedSchedule" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSchedule.TimeStart == null || SelectedSchedule.TimeEnd == null || SelectedSchedule.TimeStart > SelectedSchedule.TimeEnd || SelectedSchedule.SH_d_Class?.Id == null || SelectedSchedule.SH_d_Subject?.Id == null || SelectedSchedule.SH_PersonTeacher?.Id == null)" @onclick="ScheduleUpdate">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary"
+               Disabled="@(SelectedSchedule.TimeStart == null || SelectedSchedule.TimeEnd == null
+                           || SelectedSchedule.TimeStart > SelectedSchedule.TimeEnd || SelectedSchedule.SH_d_Class?.Id == 0
+                           || SelectedSchedule.SH_d_Subject?.Id == 0 || SelectedSchedule.SH_PersonTeacher?.Id == 0)"
+               @onclick="ScheduleUpdate">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTimePicker Label="TimeStart" Editable="true" Placeholder="Start Time" @bind-Time="SelectedSchedule.TimeStart" />
@@ -29,49 +35,50 @@ else
 }
 
 @code {
-
-    [Parameter] public string? scheduleId { get; set; }
-
-    // Selected schedule
-    public SH_Schedule? SelectedSchedule = new();
-
-    // Person Table
-    List<SH_Person>? SH_TeacherTable = new();
-
-    // Class Table
-    List<SH_d_Class>? SH_d_ClassTable = new();
-
-    // Subject Table
-    List<SH_d_Subject>? SH_d_SubjectTable = new();
+    [Parameter] public string scheduleId { get; set; } = string.Empty;
+    public SH_Schedule SelectedSchedule = new();
+    List<SH_Person> SH_TeacherTable = new();
+    List<SH_d_Class> SH_d_ClassTable = new();
+    List<SH_d_Subject> SH_d_SubjectTable = new();
+    bool initialized = false;
 
     protected override async Task OnInitializedAsync()
     {
-        // Get Selected Schedule
-        SelectedSchedule.Id = int.Parse(scheduleId);
-        SelectedSchedule = await dbLayer.SH_SchedulesSelectById(SelectedSchedule);
+        // Try to parse
+        int parseId = 0;
+        bool parsedIdSuccess = Int32.TryParse(scheduleId, out parseId);
 
-        // Get persons for Teachers Table
-        SH_Person teacherType = new SH_Person { TypeId = 2 };
-        SH_TeacherTable = await dbLayer.SH_PersonsSelectAllByType(teacherType);
+        if (parsedIdSuccess == true)
+        {
+            // Get Selected Schedule
+            SelectedSchedule.Id = parseId;
+            SelectedSchedule = await dbLayer.SH_SchedulesSelectById(SelectedSchedule);
 
-        // Get classes table
-        SH_d_ClassTable = await dbLayer.SH_d_ClassesSelectAll();
+            // Get persons for Teachers Table
+            SH_Person teacherType = new SH_Person { TypeId = 2 };
+            SH_TeacherTable = (await dbLayer.SH_PersonsSelectAllByType(teacherType)).ToList();
 
-        // Get subjects table
-        SH_d_SubjectTable = await dbLayer.SH_d_SubjectsSelectAll();
+            // Get classes table
+            SH_d_ClassTable = await dbLayer.SH_d_ClassesSelectAll();
+
+            // Get subjects table
+            SH_d_SubjectTable = await dbLayer.SH_d_SubjectsSelectAll();
+        }
+
+        initialized = true;
     }
 
     private async Task ScheduleUpdate()
     {
         // Update Ids
-        SelectedSchedule.ClassId = SelectedSchedule.SH_d_Class?.Id;
-        SelectedSchedule.TeacherId = SelectedSchedule.SH_PersonTeacher?.Id;
-        SelectedSchedule.SubjectId = SelectedSchedule.SH_d_Subject?.Id;
+        SelectedSchedule.ClassId = SelectedSchedule.SH_d_Class?.Id ?? 0;
+        SelectedSchedule.TeacherId = SelectedSchedule.SH_PersonTeacher?.Id ?? 0;
+        SelectedSchedule.SubjectId = SelectedSchedule.SH_d_Subject?.Id ?? 0;
 
         // Insert row in db
         await dbLayer.SH_SchedulesUpdate(SelectedSchedule);
 
         // Get back to persons table
-        navigationManager.NavigateTo("/schedule");
+        navigationManager.NavigateTo("/Schools/Schedule");
     }
 }

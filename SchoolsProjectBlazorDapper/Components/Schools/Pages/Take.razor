@@ -1,4 +1,4 @@
-﻿@page "/take"
+﻿@page "/Schools/Take"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,33 +9,36 @@
 
 @attribute [Authorize]
 
+<PageTitle>Take</PageTitle>
+
 @*Wait for everything to load*@
-@if (TakesTable.Count == 0)
+@if (!initialized)
 {
     <AuthorizeView Roles="Admin, Teacher">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
     </AuthorizeView>
-    <p style="padding-top: 10px;"><em>Loading Takes...</em></p>
+    <p style="padding-top: 10px;"><em>Loading...</em></p>
 }
 else
 {
     <AuthorizeView Roles="Admin, Teacher">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddGradePageRedirect">Add</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedTake.Id == null)" @onclick="(() => EditGradePageRedirect(SelectedTake))">Edit</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedTake.Id == null)" @onclick="DeleteGrade">Delete</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedTake.Id == 0)" @onclick="(() => EditGradePageRedirect(SelectedTake))">Edit</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedTake.Id == 0)" @onclick="DeleteGrade">Delete</MudButton>
     </AuthorizeView>
     <SH_TakesTable TakeTable="TakesTable" @bind-SelectedTake="@SelectedTake" @bind-SelectedTake:event="SelectedTakeChanged" />
 }
 
 @code {
-    // Data models
     List<SH_Take> TakesTable = new();
     private SH_Take SelectedTake = new();
+    bool initialized = false;
 
     // Load table
     protected override async Task OnInitializedAsync()
     {
         TakesTable = await dbLayer.SH_TakeSelectAll();
+        initialized = true;
     }
 
     // Delete grade if selected and pressed delete
@@ -48,12 +51,12 @@ else
     // Redirect to page for editing grade
     private void EditGradePageRedirect(SH_Take take)
     {
-        navigationManager.NavigateTo($"/take-edit/{take.Id}");
+        navigationManager.NavigateTo($"/Schools/TakeEdit/{take.Id}");
     }
 
     // Redirect to page for adding grade
     private void AddGradePageRedirect()
     {
-        navigationManager.NavigateTo("/take-add");
+        navigationManager.NavigateTo("/Schools/TakeAdd");
     }
 }

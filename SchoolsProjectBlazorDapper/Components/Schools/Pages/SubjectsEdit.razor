@@ -1,4 +1,4 @@
-﻿@page "/subject-edit/{subjectId}"
+﻿@page "/Schools/SubjectEdit/{subjectId}"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,18 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
+<PageTitle>SubjectEdit</PageTitle>
+
 @*Wait for everything to load*@
-@if (SelectedSubject == null)
+@if (!initialized)
 {
-    <p><em>Loading Subject...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_d_SubjectSimpleTable SelectedSubject="SelectedSubject" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSubject.Name == null)" @onclick="UpdateSubject">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSubject.Name == string.Empty)"
+               @onclick="UpdateSubject">Submit</MudButton>
 
     <div class="edit-add-container">
         <MudTextField @bind-Value="SelectedSubject.Name" Label="Name" Variant="Variant.Text"></MudTextField>
@@ -25,19 +28,32 @@ else
 }
 
 @code {
-    [Parameter] public string? subjectId { get; set; }
+    [Parameter] public string subjectId { get; set; } = string.Empty;
     public SH_d_Subject SelectedSubject = new();
+    bool initialized = false;
 
     protected override async Task OnInitializedAsync()
     {
-        // Get selected subject
-        SelectedSubject.Id = int.Parse(subjectId);
-        SelectedSubject = await dbLayer.SH_d_SubjectsSelectById(SelectedSubject);
+        // try to parse
+        int parsedId = 0;
+        bool parsedIdSuccess = Int32.TryParse(subjectId, out parsedId);
+
+        if (parsedIdSuccess == true)
+        {
+            // Get selected subject
+            SelectedSubject.Id = parsedId;
+
+            // Get Selected Subject
+            SelectedSubject = await dbLayer.SH_d_SubjectsSelectById(SelectedSubject);
+        }
+
+        // Set initialized flag
+        initialized = true;
     }
 
     private async Task UpdateSubject()
     {
         await dbLayer.SH_d_SubjectsUpdate(SelectedSubject);
-        navigationManager.NavigateTo("/subjects");
+        navigationManager.NavigateTo("/Schools/Subjects");
     }
 }

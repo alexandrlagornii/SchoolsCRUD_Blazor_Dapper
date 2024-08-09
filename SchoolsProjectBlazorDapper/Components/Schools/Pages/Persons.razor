@@ -1,4 +1,4 @@
-﻿@page "/persons"
+﻿@page "/Schools/Persons"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,32 +9,35 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
-@if (PersonsTable.Count == 0)
+<PageTitle>Persons</PageTitle>
+
+@if (!initialized)
 {
     <AuthorizeView Roles="Admin">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
     </AuthorizeView>
-    <p style="padding-top: 10px;"><em>Loading Persons...</em></p>
+    <p style="padding-top: 10px;"><em>Loading...</em></p>
 }
 else
 {
     <AuthorizeView Roles="Admin">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddPersonPageRedirect">Add</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedPerson.Id == null)" @onclick="(() => EditPersonPageRedirect(SelectedPerson))">Edit</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedPerson.Id == null)" @onclick="DeletePerson">Delete</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedPerson.Id == 0)" @onclick="(() => EditPersonPageRedirect(SelectedPerson))">Edit</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedPerson.Id == 0)" @onclick="DeletePerson">Delete</MudButton>
     </AuthorizeView>
     <SH_PersonsTable NameTable="People" PersonsTable="@PersonsTable" @bind-SelectedPerson="@SelectedPerson" @bind-SelectedPerson:event="SelectedPersonChanged" />
 }
 
 @code {
-    // Data models
     List<SH_Person> PersonsTable = new();
     private SH_Person SelectedPerson = new();
+    bool initialized = false;
 
     // Load table
     protected override async Task OnInitializedAsync()
     {
-        PersonsTable = await dbLayer.SH_PersonsSelectAll();
+        PersonsTable = (await dbLayer.SH_PersonsSelectAll()).ToList();
+        initialized = true;
     }
 
     // Delete person if selected and pressed delete
@@ -47,12 +50,12 @@ else
     // Redirect to page for editing person
     private void EditPersonPageRedirect(SH_Person person)
     {
-        navigationManager.NavigateTo($"/person-edit/{person.Id}");
+        navigationManager.NavigateTo($"/Schools/PersonEdit/{person.Id}");
     }
 
     // Redirect to page for adding person
     private void AddPersonPageRedirect()
     {
-        navigationManager.NavigateTo("/person-add");
+        navigationManager.NavigateTo("/Schools/PersonAdd");
     }
 }

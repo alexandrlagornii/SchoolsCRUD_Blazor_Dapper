@@ -1,4 +1,4 @@
-﻿@page "/take-add"
+﻿@page "/Schools/TakeAdd"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,15 +9,19 @@
 
 @attribute [Authorize(Roles = "Admin, Teacher")]
 
+<PageTitle>TakeAdd</PageTitle>
+
 @*Wait for everything to load*@
-@if (SH_StudentTable?.Count == 0)
+@if (!initialized)
 {
-    <p><em>Loading Take...</em></p>
+    <p><em>Loading...</em></p>
 }
 else
 {
     <SH_TakesSimpleTable SelectedTake="SelectedTake" />
-    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedTake?.SH_d_Class?.Id == null || SelectedTake?.SH_Person?.Id == null)" @onclick="TakeInsert">Submit</MudButton>
+    <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary"
+               Disabled="@(SelectedTake.SH_d_Class?.Id == 0 || SelectedTake.SH_Person?.Id == 0)"
+               @onclick="TakeInsert">Submit</MudButton>
 
     <div class="edit-add-container">
         <SH_d_ClassesTable ClassTable="SH_d_ClassTable" @bind-SelectedClass="@SelectedTake.SH_d_Class" @bind-SelectedClass:event="SelectedClassChanged" />
@@ -26,14 +30,10 @@ else
 }
 
 @code {
-    public SH_Take? SelectedTake = new();
-
-    // Class table
-    List<SH_d_Class>? SH_d_ClassTable = new();
-
-    // Person table
-    List<SH_Person>? SH_StudentTable = new();
-
+    public SH_Take SelectedTake = new();
+    List<SH_d_Class> SH_d_ClassTable = new();
+    List<SH_Person> SH_StudentTable = new();
+    bool initialized = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -46,19 +46,22 @@ else
 
         // Get Students
         SH_Person studentType = new SH_Person { TypeId = 1 };
-        SH_StudentTable = await dbLayer.SH_PersonsSelectAllByType(studentType);
+        SH_StudentTable = (await dbLayer.SH_PersonsSelectAllByType(studentType)).ToList();
+
+        // Set initialized flag
+        initialized = true;
     }
 
     private async Task TakeInsert()
     {
         // Select Ids
-        SelectedTake.ClassId = SelectedTake.SH_d_Class?.Id;
-        SelectedTake.StudentId = SelectedTake.SH_Person?.Id;
+        SelectedTake.ClassId = SelectedTake.SH_d_Class?.Id ?? 0;
+        SelectedTake.StudentId = SelectedTake.SH_Person?.Id ?? 0;
 
         // Insert
         await dbLayer.SH_TakesInsert(SelectedTake);
 
         // Back to main table
-        navigationManager.NavigateTo("/take");
+        navigationManager.NavigateTo("/Schools/Take");
     }
 }

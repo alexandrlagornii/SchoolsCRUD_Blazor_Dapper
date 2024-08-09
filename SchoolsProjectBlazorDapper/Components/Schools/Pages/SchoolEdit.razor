@@ -20,8 +20,8 @@ else
 {
     <SH_SchoolsSimpleTable SelectedSchool="SelectedSchool" />
     <MudButton Class="mb-4 mt-1" Variant="Variant.Outlined" Color="Color.Primary"
-               Disabled="@(SelectedSchool?.Name == string.Empty || SelectedSchool?.SH_d_Country?.Id == 0
-                         || SelectedSchool?.SH_d_City?.Id == 0 || SelectedSchool?.Address == string.Empty)"
+               Disabled="@(SelectedSchool.Name == string.Empty || SelectedSchool.SH_d_Country?.Id == 0
+                         || SelectedSchool.SH_d_City?.Id == 0 || SelectedSchool.Address == string.Empty)"
                @onclick="UpdateSchool">Submit</MudButton>
 
     <div class="edit-add-container">

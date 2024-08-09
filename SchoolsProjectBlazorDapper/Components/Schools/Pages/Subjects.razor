@@ -1,4 +1,4 @@
-﻿@page "/subjects"
+﻿@page "/Schools/Subjects"
 @inject SchoolsDbAccessLayer dbLayer
 @inject NavigationManager navigationManager
 
@@ -9,33 +9,36 @@
 
 @attribute [Authorize]
 
+<PageTitle>Subjects</PageTitle>
+
 @*Wait for everything to load*@
-@if (SubjectsTable.Count == 0)
+@if (!initialized)
 {
     <AuthorizeView Roles="Admin, Teacher">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSubjectPageRedirect">Add</MudButton>
     </AuthorizeView>
-    <p style="padding-top: 10px;"><em>Loading Subjects...</em></p>
+    <p style="padding-top: 10px;"><em>Loading...</em></p>
 }
 else
 {
     <AuthorizeView Roles="Admin, Teacher">
         <MudButton Variant="Variant.Outlined" Color="Color.Primary" @onclick="AddSubjectPageRedirect">Add</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSubject.Id == null)" @onclick="(() => EditSubjectPageRedirect(SelectedSubject))">Edit</MudButton>
-        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSubject.Id == null)" @onclick="DeleteSubject">Delete</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Disabled="@(SelectedSubject.Id == 0)" @onclick="(() => EditSubjectPageRedirect(SelectedSubject))">Edit</MudButton>
+        <MudButton Variant="Variant.Outlined" Color="Color.Secondary" Disabled="@(SelectedSubject.Id == 0)" @onclick="DeleteSubject">Delete</MudButton>
     </AuthorizeView>
     <SH_d_SubjectTable SubjectTable="@SubjectsTable" @bind-SelectedSubject="@SelectedSubject" @bind-SelectedSubject:event="SelectedSubjectChanged" />
 }
 
 @code {
-    // Data models
     List<SH_d_Subject> SubjectsTable = new();
     private SH_d_Subject SelectedSubject = new();
+    bool initialized = false;
 
     // Load table
     protected override async Task OnInitializedAsync()
     {
         SubjectsTable = await dbLayer.SH_d_SubjectsSelectAll();
+        initialized = true;
     }
 
     // Delete subject if selected and pressed delete
@@ -48,12 +51,12 @@ else
     // Redirect to page for editing subject
     private void EditSubjectPageRedirect(SH_d_Subject subject)
     {
-        navigationManager.NavigateTo($"/subject-edit/{subject.Id}");
+        navigationManager.NavigateTo($"/Schools/SubjectEdit/{subject.Id}");
     }
 
     // Redirect to page for adding subject
     private void AddSubjectPageRedirect()
     {
-        navigationManager.NavigateTo("/subject-add");
+        navigationManager.NavigateTo("/Schools/SubjectAdd");
     }
 }
